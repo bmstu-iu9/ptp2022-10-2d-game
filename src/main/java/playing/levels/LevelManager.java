@@ -2,6 +2,7 @@ package playing.levels;
 
 import playing.PlayingDrawInterface;
 import playing.PlayingUpdateInterface;
+import playing.entities.PlayerLevelManager;
 import utilz.LoadSave;
 
 import java.awt.*;
@@ -10,10 +11,12 @@ import java.util.ArrayList;
 
 public class LevelManager implements PlayingUpdateInterface, PlayingDrawInterface {
 
+    private PlayerLevelManager playerLevelManager;
     private ArrayList<Level> levels;
     private int lvlIndex = 0;
 
-    public LevelManager() {
+    public LevelManager(PlayerLevelManager playerLevelManager) {
+        this.playerLevelManager = playerLevelManager;
         buildAllLevels();
     }
 
@@ -33,5 +36,9 @@ public class LevelManager implements PlayingUpdateInterface, PlayingDrawInterfac
     @Override
     public void draw(Graphics g, float scale, int lvlOffsetX, int lvlOffsetY) {
         levels.get(lvlIndex).draw(g, scale, lvlOffsetY, lvlOffsetY);
+    }
+
+    public int[][] getLvlData() {
+        return levels.get(lvlIndex).getLvlData();
     }
 }

@@ -9,12 +9,16 @@ import playing.PlayingUpdateInterface;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.awt.geom.Rectangle2D;
 
 public class Player implements PlayingUpdateInterface, PlayingDrawInterface,
         PlayingMouseListenerInterface, PlayingKeyListenerInterface {
+
+    private PlayerManager playerManager;
     private PlayerModuleManager playerModuleManager;
 
-    public Player() {
+    public Player(PlayerManager playerManager) {
+        this.playerManager = playerManager;
         initClasses();
     }
 
@@ -53,5 +57,12 @@ public class Player implements PlayingUpdateInterface, PlayingDrawInterface,
 
     public PlayerModuleManager getPlayerModulesManager() {
         return playerModuleManager;
+    }
+
+    public boolean IsPlayerOnFloor(Rectangle2D.Double hitBox) {
+        return playerManager.IsPlayerOnFloor(hitBox);
+    }
+    public boolean CanMoveHere(Rectangle2D.Double hitBox) {
+        return playerManager.CanMoveHere(hitBox);
     }
 }
