@@ -1,5 +1,6 @@
 package playing.entities.player.playerModules;
 
+import gamestates.playingstates.EnumPlayState;
 import playing.PlayingDrawInterface;
 import playing.PlayingUpdateInterface;
 import playing.entities.player.PlayerModuleManager;
@@ -35,6 +36,9 @@ public class PlayerAnimation extends PlayerModule implements PlayingUpdateInterf
     private int flipW = 1;
     private int flipX = 0;
 
+    private boolean dead;
+
+
     public PlayerAnimation(PlayerModuleManager playerModuleManager) {
         super(playerModuleManager);
         loadImages();
@@ -65,6 +69,9 @@ public class PlayerAnimation extends PlayerModule implements PlayingUpdateInterf
             aniTick = 0;
             aniIndex++;
             if (aniIndex >= GetSpriteAmount()) {
+                if (animationState == DEAD) {
+                    EnumPlayState.state = EnumPlayState.GAME_OVER;
+                }
                 animationState = IDLE;
                 aniIndex = 0;
             }
@@ -118,6 +125,12 @@ public class PlayerAnimation extends PlayerModule implements PlayingUpdateInterf
     }
 
     public void setAnimationState(AnimationState state) {
+        if (dead) {
+            return;
+        }
+        if (state == DEAD) {
+            dead = true;
+        }
         animationState = state;
         aniIndex = 0;
     }

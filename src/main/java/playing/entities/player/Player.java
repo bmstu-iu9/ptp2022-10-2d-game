@@ -63,7 +63,7 @@ public class Player extends Entity implements PlayingUpdateInterface, PlayingDra
 
 
     public void kill() {
-        EnumPlayState.state = EnumPlayState.GAME_OVER;
+        playerModuleManager.kill();
     }
 
     public boolean IsPlayerOnFloor(Rectangle2D.Double hitBox) {

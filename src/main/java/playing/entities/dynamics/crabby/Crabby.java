@@ -41,7 +41,7 @@ public class Crabby extends DynamicEntity implements PlayingDrawInterface, Playi
         crabbyAnimation.draw(g, scale, lvlOffsetX, lvlOffsetY);
         drawHitBox(g, scale, lvlOffsetX, lvlOffsetY);
         drawHitBoxTexture(g, scale, lvlOffsetX, lvlOffsetY);
-        crabbyAttack.draw(g, scale, lvlOffsetX, lvlOffsetY);
+//        crabbyAttack.draw(g, scale, lvlOffsetX, lvlOffsetY);
     }
 
     @Override

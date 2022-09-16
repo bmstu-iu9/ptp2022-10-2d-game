@@ -139,7 +139,7 @@ public class PlayerModuleManager implements PlayingUpdateInterface, PlayingDrawI
     }
 
     public void attackPlayer(int damage) {
-        playerStatusBar.decreasePower(damage);
+        playerStatusBar.decreaseHealth(damage);
     }
 
     public Rectangle2D.Double getHitBox() {
@@ -149,4 +149,9 @@ public class PlayerModuleManager implements PlayingUpdateInterface, PlayingDrawI
     public void attackEnemy(Rectangle2D.Double attackBox, int damage) {
         player.attackEnemy(attackBox, damage);
     }
+
+    public void kill() {
+        playerAnimation.setAnimationState(PlayerAnimation.AnimationState.DEAD);
+    }
+
 }

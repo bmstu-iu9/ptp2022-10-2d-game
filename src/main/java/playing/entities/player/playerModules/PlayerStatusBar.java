@@ -67,6 +67,7 @@ public class PlayerStatusBar extends PlayerModule implements PlayingUpdateInterf
         currentHealth -= Math.abs(value);
         if (currentHealth <= 0) {
             currentHealth = 0;
+            playerModuleManager.kill();
         }
     }
 
