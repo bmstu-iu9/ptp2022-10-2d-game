@@ -83,26 +83,15 @@ public class Constants {
             public static class GameOver {
                 public static final int GAME_OVER_URM_PLAY_POS_X = 440;
                 public static final int GAME_OVER_URM_MENU_POS_X = 335;
-                public static final int GAME_OVER_URM_POS_Y = 195;
+                public static final int GAME_OVER_URM_POS_Y = 205;
             }
 
             public static class LevelCompleted {
                 public static final int LEVEL_COMPLETED_URM_NEXT_POS_X = 445;
                 public static final int LEVEL_COMPLETED_URM_MENU_POS_X = 330;
-                public static final int LEVEL_COMPLETED_URM_POS_Y = 195;
+                public static final int LEVEL_COMPLETED_URM_POS_Y = 245;
             }
         }
-
-
-//        public static class PositionButtons {
-//            public static final int COMPLETE_URM_MENU_POS_X = (int) (330 * SCALE);
-//            public static final int COMPLETE_URM_PLAY_POS_X = (int) (445 * SCALE);
-//            public static final int COMPLETE_URM_POS_Y = (int) (195 * SCALE);
-//
-//            public static final int GAME_OVER_URM_MENU_POS_X = (int) (335 * SCALE);
-//            public static final int GAME_OVER_URM_PLAY_POS_X = (int) (440 * SCALE);
-//            public static final int GAME_OVER_URM_POS_Y = (int) (195 * SCALE);
-//        }
 
     }
 
