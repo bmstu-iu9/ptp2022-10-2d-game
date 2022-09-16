@@ -48,4 +48,16 @@ public class LevelManager implements PlayingUpdateInterface, PlayingDrawInterfac
     public int getLvlOffsetY() {
         return levels.get(lvlIndex).getMaxLvlOffsetY();
     }
+
+
+    public Level getCurrentLevel() {
+        return levels.get(lvlIndex);
+    }
+
+    public void nextLevel() {
+        lvlIndex++;
+        if (lvlIndex >= levels.size()) {
+            lvlIndex = 0;
+        }
+    }
 }

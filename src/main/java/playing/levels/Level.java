@@ -3,11 +3,14 @@ package playing.levels;
 import main.Game;
 import playing.PlayingDrawInterface;
 import playing.PlayingUpdateInterface;
+import playing.entities.statics.EnumObjectEntity;
+import playing.entities.statics.Spike;
 import playing.levels.clouds.CloudManager;
 import utilz.LoadSave;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 import java.util.Random;
 
 import static utilz.Constants.GameWindowConstants.*;
@@ -27,14 +30,14 @@ public class Level implements PlayingUpdateInterface, PlayingDrawInterface {
 
     public Level(BufferedImage levelImg) {
         this.levelImg = levelImg;
-        GetLevelData(levelImg);
+        GetLevelData();
         loadBackgroundImages();
         calcLvlOffset();
         importOutsideSprites();
         cloudManager = new CloudManager();
     }
 
-    private void GetLevelData(BufferedImage levelImg) {
+    private void GetLevelData() {
         int[][] lvlData = new int[levelImg.getHeight()][levelImg.getWidth()];
 
         for (int j = 0; j < levelImg.getHeight(); j++)
@@ -120,5 +123,27 @@ public class Level implements PlayingUpdateInterface, PlayingDrawInterface {
 
     public int getMaxLvlOffsetY() {
         return maxLvlOffsetY;
+    }
+
+    public ArrayList<Spike> getSpikes() {
+        ArrayList<Spike> list = new ArrayList<>();
+
+        for (int j = 0; j < levelImg.getHeight(); j++) {
+            for (int i = 0; i < levelImg.getWidth(); i++) {
+                Color color = new Color(levelImg.getRGB(i, j));
+                int value = color.getBlue();
+                if (value == EnumObjectEntity.SPIKE_DOWN.ordinal()) {
+                    list.add(new Spike(i * TILE_SIZE_DEFAULT, j * TILE_SIZE_DEFAULT, Spike.SpikeState.DOWN));
+                } else if (value == EnumObjectEntity.SPIKE_UP.ordinal()) {
+                    list.add(new Spike(i * TILE_SIZE_DEFAULT, j * TILE_SIZE_DEFAULT, Spike.SpikeState.UP));
+                } else if (value == EnumObjectEntity.SPIKE_LEFT.ordinal()) {
+                    list.add(new Spike(i * TILE_SIZE_DEFAULT, j * TILE_SIZE_DEFAULT, Spike.SpikeState.LEFT));
+                } else if (value == EnumObjectEntity.SPIKE_RIGHT.ordinal()) {
+                    list.add(new Spike(i * TILE_SIZE_DEFAULT, j * TILE_SIZE_DEFAULT, Spike.SpikeState.RIGHT));
+                }
+            }
+        }
+
+        return list;
     }
 }

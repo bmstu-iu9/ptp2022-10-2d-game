@@ -88,20 +88,14 @@ public class Constants {
     }
 
     public static final class LvlConstants {
-//        public static class Environment {
-//            public static final int BIG_CLOUD_WIDTH_DEFAULT = 448;
-//            public static final int BIG_CLOUD_HEIGHT_DEFAULT = 101;
-//            public static final int SMALL_CLOUD_WIDTH_DEFAULT = 74;
-//            public static final int SMALL_CLOUD_HEIGHT_DEFAULT = 24;
-//
-//            public static final int BIG_CLOUD_WIDTH = (int) (BIG_CLOUD_WIDTH_DEFAULT * SCALE);
-//            public static final int BIG_CLOUD_HEIGHT = (int) (BIG_CLOUD_HEIGHT_DEFAULT * SCALE);
-//            public static final int SMALL_CLOUD_WIDTH = (int) (SMALL_CLOUD_WIDTH_DEFAULT * SCALE);
-//            public static final int SMALL_CLOUD_HEIGHT = (int) (SMALL_CLOUD_HEIGHT_DEFAULT * SCALE);
-//
-//            public static final float SPEED_BIG_CLOUDS = 0.3f;
-//            public static final float SPEED_SMALL_CLOUDS = 0.7f;
-//        }
+
+        public static final class Entity {
+
+            public static final class Spike {
+                public static final int SPIKE_SIZE_DEFAULT = 32;
+            }
+        }
+
     }
 
     public static class Player {
@@ -170,6 +164,12 @@ public class Constants {
             public static final String PLAYER_SPRITES_PNG = "player_sprites.png";
             public static final String HEALTH_POWER_BAR = "health_power_bar.png";
 
+        }
+
+        public static final class Entity {
+            public static final String ENTITY_LOCATION_TEXTURES = "entity";
+
+            public static final String TRAP_ATLAS_PNG = "trap_atlas.png";
         }
 
     }

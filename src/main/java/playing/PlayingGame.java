@@ -2,7 +2,10 @@ package playing;
 
 import gamestates.GamePanelInterface;
 import playing.entities.PlayerLevelManager;
+import playing.entities.dynamics.EnemyManager;
 import playing.entities.player.PlayerManager;
+import playing.entities.statics.ObjectManager;
+import playing.levels.Level;
 import playing.levels.LevelManager;
 
 
@@ -17,6 +20,11 @@ public class PlayingGame implements GamePanelInterface,
 
     private LevelManager levelManager;
     private PlayerManager playerManager;
+    private Level currentLevel;
+
+    private EnemyManager enemyManager;
+
+    private ObjectManager objectManager;
     private PlayerLevelManager playerLevelManager;
 
     private int lvlOffsetX, lvlOffsetY;
@@ -29,19 +37,39 @@ public class PlayingGame implements GamePanelInterface,
     private void initClasses() {
         playerLevelManager = new PlayerLevelManager(this);
         levelManager = new LevelManager(playerLevelManager);
+        currentLevel = levelManager.getCurrentLevel();
         playerManager = new PlayerManager(playerLevelManager);
+
+        initCurrentLevelManager();
+
         calcLvlOffset();
     }
+
+    private void initCurrentLevelManager() {
+        enemyManager = new EnemyManager(this, currentLevel);
+        objectManager = new ObjectManager(this, currentLevel);
+    }
+
 
     private void calcLvlOffset() {
         maxLvlOffsetX = levelManager.getLvlOffsetX();
         maxLvlOffsetY = levelManager.getLvlOffsetY();
     }
 
+    public void nextLevel() {
+        levelManager.nextLevel();
+        currentLevel = levelManager.getCurrentLevel();
+
+        initCurrentLevelManager();
+    }
+
+
     @Override
     public void update() {
         levelManager.update();
         playerManager.update();
+        enemyManager.update();
+        objectManager.update();
         checkCloseToBorder();
     }
 
@@ -83,6 +111,8 @@ public class PlayingGame implements GamePanelInterface,
     public void draw(Graphics g, float scale) {
         levelManager.draw(g, scale, lvlOffsetX, lvlOffsetY);
         playerManager.draw(g, scale, lvlOffsetX, lvlOffsetY);
+        enemyManager.draw(g, scale, lvlOffsetX, lvlOffsetY);
+        objectManager.draw(g, scale, lvlOffsetX, lvlOffsetY);
     }
 
     @Override
@@ -102,6 +132,8 @@ public class PlayingGame implements GamePanelInterface,
 
     public void resetAll() {
         playerManager.resetAll();
+        enemyManager.resetAll();
+        objectManager.resetAll();
     }
 
     public void resetDirBooleans() {
