@@ -1,5 +1,6 @@
 package main;
 
+import gamestates.GameState;
 import inputs.KeyboardInputs;
 import inputs.MouseInputs;
 
@@ -50,4 +51,7 @@ public class GamePanel extends JPanel {
         return game;
     }
 
+    public void windowFocusLost() {
+        game.windowFocusLost();
+    }
 }

@@ -51,6 +51,11 @@ public class PlayerManager implements PlayingUpdateInterface, PlayingDrawInterfa
         player.resetAll();
     }
 
+    public void resetDirBooleans() {
+        player.resetDirBooleans();
+    }
+
+
     public Player getPlayer() {
         return player;
     }

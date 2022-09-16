@@ -1,8 +1,7 @@
 package main;
 
 import gamestates.EnumGameState;
-import gamestates.Menu;
-import gamestates.Playing;
+import gamestates.GameState;
 
 import java.awt.*;
 import static utilz.Constants.GameWindowConstants.FPS_SET;
@@ -99,5 +98,9 @@ public class Game implements Runnable{
 
     public GameDistribution getGameDistribution() {
         return gameDistribution;
+    }
+
+    public void windowFocusLost() {
+        gameDistribution.windowFocusLost();
     }
 }

@@ -162,4 +162,9 @@ public class GameDistribution implements MainGameInterface, MouseListener, Mouse
         }
     }
 
+    public void windowFocusLost() {
+        if (EnumGameState.state == EnumGameState.PLAYING)
+            playing.resetDirBooleans();
+    }
+
 }

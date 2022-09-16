@@ -56,6 +56,11 @@ public class Player extends Entity implements PlayingUpdateInterface, PlayingDra
         playerModuleManager.resetAll();
     }
 
+    public void resetDirBooleans() {
+        playerModuleManager.resetDirBooleans();
+    }
+
+
     public PlayerModuleManager getPlayerModulesManager() {
         return playerModuleManager;
     }

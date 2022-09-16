@@ -19,7 +19,7 @@ public class PlayerMove extends PlayerModule implements PlayingKeyListenerInterf
     private boolean onFloor;
 
     private final float speedWalk = 1.f;
-    private final float speedJump = -2.25f;
+    private final float speedJump = -2.6f;
     private float speedInAir;
     private float speedInWater;
     private float ySpeed = 0;
@@ -151,5 +151,12 @@ public class PlayerMove extends PlayerModule implements PlayingKeyListenerInterf
     public boolean isJump() {
         return jump;
     }
+
+    public void resetDirBooleans() {
+        setJump(false);
+        setRight(false);
+        setLeft(false);
+    }
+
 
 }

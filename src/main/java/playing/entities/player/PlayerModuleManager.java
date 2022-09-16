@@ -114,6 +114,11 @@ public class PlayerModuleManager implements PlayingUpdateInterface, PlayingDrawI
 
     }
 
+    public void resetDirBooleans() {
+        playerMove.resetDirBooleans();
+    }
+
+
     public boolean IsPlayerOnFloor() {
         return player.IsPlayerOnFloor(playerHitBox.getHitBox());
     }
