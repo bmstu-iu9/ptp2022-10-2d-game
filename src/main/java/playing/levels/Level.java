@@ -1,9 +1,8 @@
 package playing.levels;
 
-import main.Game;
 import playing.PlayingDrawInterface;
 import playing.PlayingUpdateInterface;
-import playing.entities.statics.EnumObjectEntity;
+import playing.entities.statics.Portal;
 import playing.entities.statics.Spike;
 import playing.levels.clouds.CloudManager;
 import utilz.LoadSave;
@@ -11,9 +10,9 @@ import utilz.LoadSave;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-import java.util.Random;
 
 import static utilz.Constants.GameWindowConstants.*;
+import static utilz.Constants.LvlConstants.Entity.Object.*;
 import static utilz.Constants.TextureConstants.Level.*;
 
 public class Level implements PlayingUpdateInterface, PlayingDrawInterface {
@@ -132,13 +131,13 @@ public class Level implements PlayingUpdateInterface, PlayingDrawInterface {
             for (int i = 0; i < levelImg.getWidth(); i++) {
                 Color color = new Color(levelImg.getRGB(i, j));
                 int value = color.getBlue();
-                if (value == EnumObjectEntity.SPIKE_DOWN.ordinal()) {
+                if (value == OBJECT_INDEX_SPIKE_DOWN) {
                     list.add(new Spike(i * TILE_SIZE_DEFAULT, j * TILE_SIZE_DEFAULT, Spike.SpikeState.DOWN));
-                } else if (value == EnumObjectEntity.SPIKE_UP.ordinal()) {
+                } else if (value == OBJECT_INDEX_SPIKE_UP) {
                     list.add(new Spike(i * TILE_SIZE_DEFAULT, j * TILE_SIZE_DEFAULT, Spike.SpikeState.UP));
-                } else if (value == EnumObjectEntity.SPIKE_LEFT.ordinal()) {
+                } else if (value == OBJECT_INDEX_SPIKE_LEFT) {
                     list.add(new Spike(i * TILE_SIZE_DEFAULT, j * TILE_SIZE_DEFAULT, Spike.SpikeState.LEFT));
-                } else if (value == EnumObjectEntity.SPIKE_RIGHT.ordinal()) {
+                } else if (value == OBJECT_INDEX_SPIKE_RIGHT) {
                     list.add(new Spike(i * TILE_SIZE_DEFAULT, j * TILE_SIZE_DEFAULT, Spike.SpikeState.RIGHT));
                 }
             }
@@ -146,4 +145,22 @@ public class Level implements PlayingUpdateInterface, PlayingDrawInterface {
 
         return list;
     }
+
+
+    public ArrayList<Portal> getPortals() {
+        ArrayList<Portal> list = new ArrayList<>();
+
+        for (int j = 0; j < levelImg.getHeight(); j++) {
+            for (int i = 0; i < levelImg.getWidth(); i++) {
+                Color color = new Color(levelImg.getRGB(i, j));
+                int value = color.getBlue();
+                if (value == OBJECT_INDEX_PORTAL) {
+                    list.add(new Portal(i * TILE_SIZE_DEFAULT, j * TILE_SIZE_DEFAULT));
+                }
+            }
+        }
+
+        return list;
+    }
+
 }

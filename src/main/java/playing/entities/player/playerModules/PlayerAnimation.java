@@ -10,6 +10,7 @@ import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
 import static playing.entities.player.playerModules.PlayerAnimation.AnimationState.*;
+import static utilz.Constants.GameConstants.ANI_SPEED;
 import static utilz.Constants.TextureConstants.Player.PLAYER_LOCATION_TEXTURES;
 import static utilz.Constants.TextureConstants.Player.PLAYER_SPRITES_PNG;
 
@@ -33,7 +34,6 @@ public class PlayerAnimation extends PlayerModule implements PlayingUpdateInterf
     private int aniTick, aniIndex;
     private int flipW = 1;
     private int flipX = 0;
-    private static final float ANI_SPEED = 25;
 
     public PlayerAnimation(PlayerModuleManager playerModuleManager) {
         super(playerModuleManager);

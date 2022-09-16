@@ -104,8 +104,21 @@ public class Constants {
 
         public static final class Entity {
 
+            public static final class Object {
+                public static final int VOID = 0;
+                public static final int OBJECT_INDEX_SPIKE_DOWN = 1;
+                public static final int OBJECT_INDEX_SPIKE_UP = 2;
+                public static final int OBJECT_INDEX_SPIKE_LEFT = 3;
+                public static final int OBJECT_INDEX_SPIKE_RIGHT = 4;
+                public static final int OBJECT_INDEX_PORTAL = 108;
+            }
+
             public static final class Spike {
                 public static final int SPIKE_SIZE_DEFAULT = 32;
+            }
+            public static final class Portal {
+                public static final int PORTAL_WIDTH_DEFAULT = 32;
+                public static final int PORTAL_HEIGHT_DEFAULT = 64;
             }
         }
 
@@ -179,6 +192,7 @@ public class Constants {
             public static final String ENTITY_LOCATION_TEXTURES = "entity";
 
             public static final String TRAP_ATLAS_PNG = "trap_atlas.png";
+            public static final String PORTAL_ATLAS_PNG = "portal_atlas.png";
         }
 
     }
