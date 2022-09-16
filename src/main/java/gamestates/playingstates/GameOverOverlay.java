@@ -13,15 +13,16 @@ public class GameOverOverlay extends PlayState {
     private BufferedImage backgroundImg;
     private int gameOverX, gameOverY, gameOverWidth, gameOverHeight;
 
-    public GameOverOverlay() {
-        loadBackgroundImg();
+    public GameOverOverlay(Playing playing) {
+        super(playing);
+        loadImages();
         calcBorder();
         createButtons();
     }
 
 
-    @Override
-    protected void loadBackgroundImg() {
+
+    protected void loadImages() {
 
     }
 

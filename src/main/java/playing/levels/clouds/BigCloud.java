@@ -13,7 +13,7 @@ public class BigCloud extends Cloud {
     public static final int BIG_CLOUD_HEIGHT_DEFAULT = 101;
 
     public BigCloud(int x, int y) {
-        super(x * BIG_CLOUD_WIDTH_DEFAULT, y);
+        super(x * BIG_CLOUD_WIDTH_DEFAULT-1, y);
         cloudSpeed = 0.2;
         loadCloudImg();
     }

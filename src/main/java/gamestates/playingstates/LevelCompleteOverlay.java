@@ -13,13 +13,14 @@ public class LevelCompleteOverlay extends PlayState {
     private BufferedImage backgroundImg;
     private int completeX, completeY, completeWidth, completeHeight;
 
-    public LevelCompleteOverlay() {
-        loadBackgroundImg();
+    public LevelCompleteOverlay(Playing playing) {
+        super(playing);
+        loadImages();
         calcBorder();
         createButtons();
     }
 
-    protected void loadBackgroundImg() {
+    protected void loadImages() {
 
     }
 

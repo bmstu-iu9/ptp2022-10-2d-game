@@ -20,9 +20,9 @@ public class Playing implements GamePanelInterface, GamePanelListenerInterface {
 
     private void initClasses() {
         playingGame = new PlayingGame();
-        pauseOverlay = new PauseOverlay();
-        gameOverOverlay = new GameOverOverlay();
-        levelCompletedOverlay = new LevelCompleteOverlay();
+        pauseOverlay = new PauseOverlay(this);
+        gameOverOverlay = new GameOverOverlay(this);
+        levelCompletedOverlay = new LevelCompleteOverlay(this);
     }
 
     @Override

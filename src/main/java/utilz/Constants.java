@@ -7,16 +7,16 @@ public class Constants {
         public final static int UPS_SET = 200;
 
         public final static int TILE_SIZE_DEFAULT = 32;
-        public final static int TILES_IN_WIDTH = 32;
-        public final static int TILES_IN_HEIGHT = 16;
+        public final static int TILES_IN_WIDTH = 26;
+        public final static int TILES_IN_HEIGHT = 14;
 
         public final static int GAME_WIDTH_DEFAULT = TILE_SIZE_DEFAULT * TILES_IN_WIDTH;
         public final static int GAME_HEIGHT_DEFAULT = TILE_SIZE_DEFAULT * TILES_IN_HEIGHT;
 
-        public final static int LEFT_BORDER = (int) (0.2 * GAME_WIDTH_DEFAULT);
-        public final static int RIGHT_BORDER = (int) (0.8 * GAME_WIDTH_DEFAULT);
-        public final static int TOP_BORDER = (int) (0.2 * GAME_HEIGHT_DEFAULT);
-        public final static int DOWN_BORDER = (int) (0.8 * GAME_HEIGHT_DEFAULT);
+        public final static int LEFT_BORDER = (int) (0.3 * GAME_WIDTH_DEFAULT);
+        public final static int RIGHT_BORDER = (int) (0.7 * GAME_WIDTH_DEFAULT);
+        public final static int TOP_BORDER = (int) (0.3 * GAME_HEIGHT_DEFAULT);
+        public final static int DOWN_BORDER = (int) (0.7 * GAME_HEIGHT_DEFAULT);
 
     }
 
@@ -44,41 +44,36 @@ public class Constants {
             public static final int BUTTON_HEIGHT_DEFAULT = 56;
         }
 
-//        public static class PauseSoundButtons {
-//            public static final int MUTED_OFF = 0;
-//            public static final int MUTED_ON = 1;
-//
-//            public static final int PAUSE_SOUND_POS_X = (int) (450 * SCALE);
-//            public static final int PAUSE_SOUND_MUSIC_POS_Y = (int) (140 * SCALE);
-//            public static final int PAUSE_SOUND_SFX_POS_Y = (int) (186 * SCALE);
-//
-//            public static final int SOUND_SIZE_DEFAULT = 42;
-//            public static final int SOUND_SIZE = (int) (SOUND_SIZE_DEFAULT * SCALE);
-//        }
-//        public static class PauseURMButtons {
-//            public static final int URM_PLAY = 0;
-//            public static final int URM_REPLAY = 1;
-//            public static final int URM_MENU = 2;
-//
-//            public static final int PAUSE_URM_MENU_POS_X = (int) (313 * SCALE);
-//            public static final int PAUSE_URM_REPLAY_POS_X = (int) (387 * SCALE);
-//            public static final int PAUSE_URM_PLAY_POS_X = (int) (462 * SCALE);
-//            public static final int PAUSE_URM_POS_Y = (int) (325 * SCALE);
-//
-//            public static final int URM_DEFAULT_SIZE = 56;
-//            public static final int URM_SIZE = (int) (URM_DEFAULT_SIZE * SCALE);
-//        }
-//        public static class PauseVolumeButtons {
-//            public static final int PAUSE_VOLUME_POS_X = (int) (309 * SCALE);
-//            public static final int PAUSE_VOLUME_POS_Y = (int) (278 * SCALE);
-//
-//            public static final int VOLUME_WIDTH_DEFAULT = 28;
-//            public static final int VOLUME_HEIGHT_DEFAULT = 44;
-//            public static final int SLIDER_WIDTH_DEFAULT = 215;
-//            public static final int VOLUME_WIDTH = (int) (VOLUME_WIDTH_DEFAULT * SCALE);
-//            public static final int VOLUME_HEIGHT = (int) (VOLUME_HEIGHT_DEFAULT * SCALE);
-//            public static final int SLIDER_WIDTH = (int) (SLIDER_WIDTH_DEFAULT * SCALE);
-//        }
+        public static class PauseSoundButtons {
+            public static final int MUTED_OFF = 0;
+            public static final int MUTED_ON = 1;
+
+            public static final int PAUSE_SOUND_POS_X = 450;
+            public static final int PAUSE_SOUND_MUSIC_POS_Y = 140;
+            public static final int PAUSE_SOUND_SFX_POS_Y = 186;
+
+            public static final int SOUND_SIZE_DEFAULT = 42;
+        }
+        public static class PauseURMButtons {
+            public static final int URM_PLAY = 0;
+            public static final int URM_REPLAY = 1;
+            public static final int URM_MENU = 2;
+
+            public static final int PAUSE_URM_PLAY_POS_X = 462;
+            public static final int PAUSE_URM_REPLAY_POS_X = 387;
+            public static final int PAUSE_URM_MENU_POS_X = 313;
+            public static final int PAUSE_URM_POS_Y = 325;
+
+            public static final int URM_DEFAULT_SIZE = 56;
+        }
+        public static class PauseVolumeButtons {
+            public static final int PAUSE_VOLUME_POS_X = 309;
+            public static final int PAUSE_VOLUME_POS_Y = 278;
+
+            public static final int VOLUME_WIDTH_DEFAULT = 28;
+            public static final int VOLUME_HEIGHT_DEFAULT = 44;
+            public static final int SLIDER_WIDTH_DEFAULT = 215;
+        }
 
 //        public static class PositionButtons {
 //            public static final int COMPLETE_URM_MENU_POS_X = (int) (330 * SCALE);
@@ -151,10 +146,12 @@ public class Constants {
         }
 
         public static final class Pause {
-//            public static final String PAUSE_BACKGROUND_PNG = "pause_background.png";
-//            public static final String PAUSE_SOUND_BUTTON_PNG = "pause_sound_buttons.png";
-//            public static final String PAUSE_URM_BUTTON_PNG = "pause_urm_buttons.png";
-//            public static final String PAUSE_VOLUME_BUTTON_PNG = "pause_volume_buttons.png";
+            public static final String PAUSE_LOCATION_TEXTURES = "pause";
+
+            public static final String PAUSE_ATLAS_PNG = "pause_atlas.png";
+            public static final String PAUSE_SOUND_BUTTON_PNG = "pause_sound_buttons.png";
+            public static final String PAUSE_URM_BUTTON_PNG = "pause_urm_buttons.png";
+            public static final String PAUSE_VOLUME_BUTTON_PNG = "pause_volume_buttons.png";
         }
 
         public static final class Complete {
