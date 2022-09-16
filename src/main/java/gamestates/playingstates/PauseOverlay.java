@@ -15,7 +15,7 @@ import java.awt.image.BufferedImage;
 import static utilz.Constants.GameWindowConstants.GAME_HEIGHT_DEFAULT;
 import static utilz.Constants.GameWindowConstants.GAME_WIDTH_DEFAULT;
 import static utilz.Constants.TextureConstants.Overlay.PAUSE_ATLAS_PNG;
-import static utilz.Constants.TextureConstants.Overlay.PAUSE_LOCATION_TEXTURES;
+import static utilz.Constants.TextureConstants.Overlay.OVERLAY_LOCATION_TEXTURES;
 import static utilz.Constants.UI.Overlay.Pause.*;
 import static utilz.Constants.UI.SoundButtons.*;
 import static utilz.Constants.UI.URMButtons.*;
@@ -38,7 +38,7 @@ public class PauseOverlay extends PlayState {
     }
 
     protected void loadImages() {
-        pauseImg = LoadSave.GetSpriteAtlas(PAUSE_LOCATION_TEXTURES, PAUSE_ATLAS_PNG);
+        pauseImg = LoadSave.GetSpriteAtlas(OVERLAY_LOCATION_TEXTURES, PAUSE_ATLAS_PNG);
     }
 
     protected void calcBorder() {

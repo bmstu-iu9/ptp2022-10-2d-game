@@ -85,6 +85,12 @@ public class Constants {
                 public static final int GAME_OVER_URM_MENU_POS_X = 335;
                 public static final int GAME_OVER_URM_POS_Y = 195;
             }
+
+            public static class LevelCompleted {
+                public static final int LEVEL_COMPLETED_URM_NEXT_POS_X = 445;
+                public static final int LEVEL_COMPLETED_URM_MENU_POS_X = 330;
+                public static final int LEVEL_COMPLETED_URM_POS_Y = 195;
+            }
         }
 
 
@@ -159,11 +165,11 @@ public class Constants {
         }
 
         public static final class Overlay {
-            public static final String PAUSE_LOCATION_TEXTURES = "overlay";
+            public static final String OVERLAY_LOCATION_TEXTURES = "overlay";
 
             public static final String PAUSE_ATLAS_PNG = "pause_atlas.png";
             public static final String GAME_OVER_ATLAS_PNG = "game_over_atlas.png";
-            public static final String COMPLETE_ATLAS_PNG = "complete_atlas.png";
+            public static final String COMPLETED_ATLAS_PNG = "completed_atlas.png";
             public static final String OPTIONS_ATLAS_PNG = "options_atlas.png";
 
             public static final String OVERLAY_SOUND_BUTTONS_PNG = "overlay_sound_buttons.png";

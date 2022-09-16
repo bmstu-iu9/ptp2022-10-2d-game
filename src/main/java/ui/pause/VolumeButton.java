@@ -6,7 +6,7 @@ import utilz.LoadSave;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-import static utilz.Constants.TextureConstants.Overlay.PAUSE_LOCATION_TEXTURES;
+import static utilz.Constants.TextureConstants.Overlay.OVERLAY_LOCATION_TEXTURES;
 import static utilz.Constants.TextureConstants.Overlay.OVERLAY_VOLUME_BUTTONS_PNG;
 import static utilz.Constants.UI.VolumeButtons.*;
 
@@ -33,7 +33,7 @@ public class VolumeButton extends Button {
 
     @Override
     protected void loadImages() {
-        BufferedImage temp = LoadSave.GetSpriteAtlas(PAUSE_LOCATION_TEXTURES, OVERLAY_VOLUME_BUTTONS_PNG);
+        BufferedImage temp = LoadSave.GetSpriteAtlas(OVERLAY_LOCATION_TEXTURES, OVERLAY_VOLUME_BUTTONS_PNG);
         images = new BufferedImage[3];
         for (int i = 0; i < images.length; i++)
             images[i] = temp.getSubimage(

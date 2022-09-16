@@ -2,7 +2,6 @@ package gamestates.playingstates;
 
 import gamestates.EnumGameState;
 import gamestates.Playing;
-import main.Game;
 import ui.pause.UrmButton;
 import utilz.LoadSave;
 
@@ -14,7 +13,7 @@ import java.awt.image.BufferedImage;
 import static utilz.Constants.GameWindowConstants.GAME_HEIGHT_DEFAULT;
 import static utilz.Constants.GameWindowConstants.GAME_WIDTH_DEFAULT;
 import static utilz.Constants.TextureConstants.Overlay.GAME_OVER_ATLAS_PNG;
-import static utilz.Constants.TextureConstants.Overlay.PAUSE_LOCATION_TEXTURES;
+import static utilz.Constants.TextureConstants.Overlay.OVERLAY_LOCATION_TEXTURES;
 import static utilz.Constants.UI.Overlay.GameOver.*;
 import static utilz.Constants.UI.URMButtons.*;
 
@@ -35,7 +34,7 @@ public class GameOverOverlay extends PlayState {
 
 
     protected void loadImages() {
-        backgroundImg = LoadSave.GetSpriteAtlas(PAUSE_LOCATION_TEXTURES, GAME_OVER_ATLAS_PNG);
+        backgroundImg = LoadSave.GetSpriteAtlas(OVERLAY_LOCATION_TEXTURES, GAME_OVER_ATLAS_PNG);
     }
 
     @Override

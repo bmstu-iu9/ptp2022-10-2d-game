@@ -212,4 +212,8 @@ public class Playing implements GamePanelInterface, GamePanelListenerInterface {
     public void resetDirBooleans() {
         playingGame.resetDirBooleans();
     }
+
+    public void nextLevel() {
+        playingGame.nextLevel();
+    }
 }
