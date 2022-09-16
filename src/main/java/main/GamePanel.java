@@ -1,6 +1,5 @@
 package main;
 
-import gamestates.GameState;
 import inputs.KeyboardInputs;
 import inputs.MouseInputs;
 

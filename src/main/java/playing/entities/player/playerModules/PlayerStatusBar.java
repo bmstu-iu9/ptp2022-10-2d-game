@@ -18,6 +18,7 @@ import static utilz.Constants.Player.StatusBar.*;
 public class PlayerStatusBar extends PlayerModule implements PlayingUpdateInterface, PlayingDrawInterface {
 
     private BufferedImage healthPowerBarImg;
+
     private BufferedImage[] numberImages;
 
     private BufferedImage coinImg;
@@ -102,35 +103,33 @@ public class PlayerStatusBar extends PlayerModule implements PlayingUpdateInterf
         }
     }
 
-    public void increaseHealth(int value) {
+    public void increaseHealth(int value){
         currentHealth += Math.abs(value);
-        if (currentHealth >= maxHealth) {
+        if (currentHealth >= maxHealth){
             currentHealth = maxHealth;
         }
     }
 
-    public void decreaseHealth(int value) {
+    public void decreaseHealth(int value){
         currentHealth -= Math.abs(value);
         if (currentHealth <= 0) {
             currentHealth = 0;
             playerModuleManager.kill();
         }
     }
-
-    public void increasePower(int value) {
+    public void increasePower(int value){
         currentPower += Math.abs(value);
-        if (currentPower >= maxPower) {
+        if (currentPower >= maxPower){
             currentPower = maxPower;
         }
     }
 
-    public void decreasePower(int value) {
+    public void decreasePower(int value){
         currentPower -= Math.abs(value);
         if (currentPower <= 0) {
             currentPower = 0;
         }
     }
-
     public int getMaxHealth() {
         return maxHealth;
     }

@@ -12,7 +12,6 @@ import static utilz.Constants.UI.URMButtons.URM_DEFAULT_SIZE;
 
 public class UrmButton extends Button {
     private BufferedImage[] images;
-
     public UrmButton(int x, int y, int width, int height, int typeButton) {
         super(x, y, width, height);
         this.typeButton = typeButton;

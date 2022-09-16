@@ -8,7 +8,6 @@ import playing.entities.statics.ObjectManager;
 import playing.levels.Level;
 import playing.levels.LevelManager;
 
-
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
@@ -17,7 +16,7 @@ import java.awt.geom.Rectangle2D;
 import static utilz.Constants.GameWindowConstants.*;
 
 public class PlayingGame implements GamePanelInterface,
-        PlayingMouseListenerInterface, PlayingKeyListenerInterface {
+        PlayingMouseListenerInterface, PlayingKeyListenerInterface{
 
     private LevelManager levelManager;
     private PlayerManager playerManager;
@@ -30,6 +29,7 @@ public class PlayingGame implements GamePanelInterface,
 
     private int lvlOffsetX, lvlOffsetY;
     private int maxLvlOffsetX, maxLvlOffsetY;
+
 
     public PlayingGame() {
         initClasses();
@@ -51,7 +51,6 @@ public class PlayingGame implements GamePanelInterface,
         objectManager = new ObjectManager(entityLevelManager, currentLevel);
     }
 
-
     private void calcLvlOffset() {
         maxLvlOffsetX = levelManager.getLvlOffsetX();
         maxLvlOffsetY = levelManager.getLvlOffsetY();
@@ -66,7 +65,6 @@ public class PlayingGame implements GamePanelInterface,
         initCurrentLevelManager();
         calcLvlOffset();
     }
-
 
     @Override
     public void update() {
@@ -153,7 +151,6 @@ public class PlayingGame implements GamePanelInterface,
     public Rectangle2D.Double getPlayerHitBox() {
         return playerManager.getPlayerHitBox();
     }
-
 
     public void attackPlayer(int damage) {
         playerManager.attackPlayer(damage);

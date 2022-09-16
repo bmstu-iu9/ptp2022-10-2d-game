@@ -1,11 +1,11 @@
 package playing.entities.player;
 
 import gamestates.playingstates.EnumPlayState;
-import playing.entities.Entity;
 import playing.PlayingDrawInterface;
 import playing.PlayingKeyListenerInterface;
 import playing.PlayingMouseListenerInterface;
 import playing.PlayingUpdateInterface;
+import playing.entities.Entity;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -16,6 +16,7 @@ public class Player extends Entity implements PlayingUpdateInterface, PlayingDra
         PlayingMouseListenerInterface, PlayingKeyListenerInterface {
 
     private PlayerManager playerManager;
+
     private PlayerModuleManager playerModuleManager;
 
     public Player(PlayerManager playerManager, int x, int y) {
@@ -61,20 +62,20 @@ public class Player extends Entity implements PlayingUpdateInterface, PlayingDra
         playerModuleManager.resetDirBooleans();
     }
 
-
     public void kill() {
         playerModuleManager.kill();
     }
-
     public boolean IsPlayerOnFloor(Rectangle2D.Double hitBox) {
         return playerManager.IsPlayerOnFloor(hitBox);
     }
     public boolean CanMoveHere(Rectangle2D.Double hitBox) {
         return playerManager.CanMoveHere(hitBox);
     }
+
     public void attackPlayer(int damage) {
         playerModuleManager.attackPlayer(damage);
     }
+
     public void attackEnemy(Rectangle2D.Double attackBox, int damage) {
         playerManager.attackEnemy(attackBox, damage);
     }

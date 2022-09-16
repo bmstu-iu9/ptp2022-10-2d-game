@@ -11,10 +11,7 @@ import static utilz.Constants.GameConstants.ANI_SPEED_ENEMY;
 import static utilz.Constants.GameWindowConstants.TILE_SIZE_DEFAULT;
 import static utilz.Constants.LvlConstants.Entity.Portal.PORTAL_HEIGHT_DEFAULT;
 import static utilz.Constants.LvlConstants.Entity.Portal.PORTAL_WIDTH_DEFAULT;
-import static utilz.Constants.TextureConstants.Entity.ENTITY_LOCATION_TEXTURES;
 import static utilz.Constants.TextureConstants.Entity.*;
-
-
 
 public class Portal extends ObjectEntity implements PlayingDrawInterface, PlayingUpdateInterface {
 
@@ -35,6 +32,7 @@ public class Portal extends ObjectEntity implements PlayingDrawInterface, Playin
             portalAnimation[i] = img.getSubimage(i * 32, 0, 32, 64);
         }
     }
+
 
 
     @Override

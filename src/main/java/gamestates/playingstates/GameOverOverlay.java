@@ -19,7 +19,6 @@ import static utilz.Constants.UI.URMButtons.*;
 
 public class GameOverOverlay extends PlayState {
 
-
     private BufferedImage backgroundImg;
     private int gameOverX, gameOverY, gameOverWidth, gameOverHeight;
     private UrmButton menu, play;
@@ -32,7 +31,7 @@ public class GameOverOverlay extends PlayState {
     }
 
 
-
+    @Override
     protected void loadImages() {
         backgroundImg = LoadSave.GetSpriteAtlas(OVERLAY_LOCATION_TEXTURES, GAME_OVER_ATLAS_PNG);
     }

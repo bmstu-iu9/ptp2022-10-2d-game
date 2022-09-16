@@ -36,4 +36,5 @@ public class BigCloud extends Cloud {
                 (int) (BIG_CLOUD_HEIGHT_DEFAULT * scale),
                 null);
     }
+
 }

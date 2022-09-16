@@ -93,8 +93,8 @@ public class Level implements PlayingUpdateInterface, PlayingDrawInterface {
         drawLvlSprite(g, scale, lvlOffsetX, lvlOffsetY);
     }
 
+
     private void drawLvlSprite(Graphics g, float scale, int lvlOffsetX, int lvlOffsetY) {
-        int TILE_SIZE = (int) (TILE_SIZE_DEFAULT * scale);
         for (int j = 0; j < lvlData.length; j++) {
             for (int i = 0; i < lvlData[0].length; i++) {
                 int index = lvlData[j][i];
@@ -113,11 +113,9 @@ public class Level implements PlayingUpdateInterface, PlayingDrawInterface {
                 null);
     }
 
-
     public int[][] getLvlData() {
         return lvlData;
     }
-
 
     public int getMaxLvlOffsetX() {
         return maxLvlOffsetX;
@@ -149,7 +147,6 @@ public class Level implements PlayingUpdateInterface, PlayingDrawInterface {
         return list;
     }
 
-
     public ArrayList<Portal> getPortals() {
         ArrayList<Portal> list = new ArrayList<>();
 
@@ -159,23 +156,6 @@ public class Level implements PlayingUpdateInterface, PlayingDrawInterface {
                 int value = color.getBlue();
                 if (value == OBJECT_INDEX_PORTAL) {
                     list.add(new Portal(i * TILE_SIZE_DEFAULT, j * TILE_SIZE_DEFAULT));
-                }
-            }
-        }
-
-        return list;
-    }
-
-
-    public ArrayList<Crabby> getCrabbies() {
-        ArrayList<Crabby> list = new ArrayList<>();
-
-        for (int j = 0; j < levelImg.getHeight(); j++) {
-            for (int i = 0; i < levelImg.getWidth(); i++) {
-                Color color = new Color(levelImg.getRGB(i, j));
-                int value = color.getGreen();
-                if (value == ENEMY_INDEX_CRABBY) {
-                    list.add(new Crabby(i * TILE_SIZE_DEFAULT, j * TILE_SIZE_DEFAULT));
                 }
             }
         }
@@ -199,4 +179,19 @@ public class Level implements PlayingUpdateInterface, PlayingDrawInterface {
         return list;
     }
 
+    public ArrayList<Crabby> getCrabbies() {
+        ArrayList<Crabby> list = new ArrayList<>();
+
+        for (int j = 0; j < levelImg.getHeight(); j++) {
+            for (int i = 0; i < levelImg.getWidth(); i++) {
+                Color color = new Color(levelImg.getRGB(i, j));
+                int value = color.getGreen();
+                if (value == ENEMY_INDEX_CRABBY) {
+                    list.add(new Crabby(i * TILE_SIZE_DEFAULT, j * TILE_SIZE_DEFAULT));
+                }
+            }
+        }
+
+        return list;
+    }
 }

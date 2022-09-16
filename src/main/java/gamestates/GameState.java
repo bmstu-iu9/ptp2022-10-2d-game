@@ -16,4 +16,5 @@ public abstract class GameState {
                 (int) (border.height * scale));
         return borderWindow.contains(e.getX(), e.getY());
     }
+
 }

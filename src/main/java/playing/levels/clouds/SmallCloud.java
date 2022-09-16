@@ -36,4 +36,5 @@ public class SmallCloud extends Cloud {
                 (int) (SMALL_CLOUD_HEIGHT_DEFAULT * scale),
                 null);
     }
+
 }

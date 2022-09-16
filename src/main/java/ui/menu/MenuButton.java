@@ -12,6 +12,7 @@ import static utilz.Constants.UI.Button.*;
 import static utilz.Constants.UI.MenuButtons.*;
 import static utilz.Constants.UI.MenuButtons.BUTTON_HEIGHT_DEFAULT;
 
+
 public class MenuButton extends Button {
 
     private final EnumGameState state;

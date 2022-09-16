@@ -21,7 +21,6 @@ import static utilz.Constants.UI.URMButtons.*;
 
 public class LevelCompleteOverlay extends PlayState {
 
-
     private BufferedImage backgroundImg;
     private int completeX, completeY, completeWidth, completeHeight;
     private UrmButton menu, next;
@@ -37,6 +36,7 @@ public class LevelCompleteOverlay extends PlayState {
         backgroundImg = LoadSave.GetSpriteAtlas(OVERLAY_LOCATION_TEXTURES, COMPLETED_ATLAS_PNG);
     }
 
+    @Override
     protected void calcBorder() {
         completeWidth = backgroundImg.getWidth();
         completeHeight = backgroundImg.getHeight();
@@ -44,6 +44,7 @@ public class LevelCompleteOverlay extends PlayState {
         completeY = GAME_HEIGHT_DEFAULT / 2 - completeHeight / 2;
     }
 
+    @Override
     protected void createButtons() {
         next = new UrmButton(LEVEL_COMPLETED_URM_NEXT_POS_X,
                 LEVEL_COMPLETED_URM_POS_Y,

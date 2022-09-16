@@ -20,11 +20,11 @@ public class PlayerAttack extends PlayerModule
         super(playerModuleManager);
         initAttackBox(x, y, width, height);
     }
-
     protected void initAttackBox(int x, int y ,int width, int height) {
         attackBox = new Rectangle2D.Double(x, y, width, height);
     }
 
+    @Override
     public void update() {
         updateAttackBox();
     }
@@ -32,6 +32,7 @@ public class PlayerAttack extends PlayerModule
         Rectangle2D.Double hitBox = playerModuleManager.getHitBox();
         boolean right = playerModuleManager.getPlayerMove().isRight();
         boolean left = playerModuleManager.getPlayerMove().isLeft();
+
         if (right) {
             attackBox.x = hitBox.x + hitBox.width + 3;
         } else if (left) {
@@ -40,10 +41,10 @@ public class PlayerAttack extends PlayerModule
         attackBox.y = hitBox.y + 10;
     }
 
+    @Override
     public void draw(Graphics g, float scale, int lvlOffsetX, int lvlOffsetY) {
 //        drawAttackBox(g, scale, lvlOffsetX, lvlOffsetY);
     }
-
     protected void drawAttackBox(Graphics g, float scale, int lvlOffsetX, int lvlOffsetY) {
         g.setColor(Color.red);
         g.drawRect((int) ((attackBox.x - lvlOffsetX) * scale),
@@ -52,9 +53,11 @@ public class PlayerAttack extends PlayerModule
                 (int) (attackBox.height * scale));
     }
 
+    @Override
     public void mouseClicked(MouseEvent e) {
         playerModuleManager.getPlayerAnimation().setAnimationState(PlayerAnimation.AnimationState.ATTACK);
         int damage = 50;
         playerModuleManager.attackEnemy(attackBox, damage);
     }
+
 }

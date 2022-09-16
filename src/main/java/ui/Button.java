@@ -3,7 +3,7 @@ package ui;
 import java.awt.*;
 
 public abstract class Button {
-    protected int x, y, width, height;
+    protected int x, y , width, height;
     protected Rectangle border;
 
     protected int typeButton;
