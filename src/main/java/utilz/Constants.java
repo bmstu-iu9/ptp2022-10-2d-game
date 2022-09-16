@@ -1,5 +1,7 @@
 package utilz;
 
+import static utilz.Constants.GameWindowConstants.TILE_SIZE_DEFAULT;
+
 public class Constants {
 
     public static final class GameWindowConstants {
@@ -108,12 +110,31 @@ public class Constants {
                 public static final int OBJECT_INDEX_PORTAL = 108;
             }
 
+            public static final class Enemy {
+                public static final int VOID = 0;
+                public static final int ENEMY_INDEX_CRABBY = 1;
+            }
+
+
             public static final class Spike {
                 public static final int SPIKE_SIZE_DEFAULT = 32;
+                public static final int SPIKE_WIDTH_TEXTURE = 32;
+                public static final int SPIKE_HEIGHT_TEXTURE = 32;
+                public static final int SPIKE_WIDTH_DEFAULT_UD = 32;
+                public static final int SPIKE_HEIGHT_DEFAULT_UD = 16;
+                public static final int SPIKE_WIDTH_DEFAULT_LR = 16;
+                public static final int SPIKE_HEIGHT_DEFAULT_LR = 32;
             }
             public static final class Portal {
                 public static final int PORTAL_WIDTH_DEFAULT = 32;
                 public static final int PORTAL_HEIGHT_DEFAULT = 64;
+            }
+
+            public static final class CRABBY {
+                public static final int CRABBY_WIDTH_DEFAULT = 22;
+                public static final int CRABBY_HEIGHT_DEFAULT = 19;
+
+                public static final int CRABBY_RANGE = TILE_SIZE_DEFAULT * 5;
             }
         }
 
@@ -188,6 +209,8 @@ public class Constants {
 
             public static final String TRAP_ATLAS_PNG = "trap_atlas.png";
             public static final String PORTAL_ATLAS_PNG = "portal_atlas.png";
+            public static final String CRABBY_SPRITE_PNG = "crabby_sprite.png";
+
         }
 
     }

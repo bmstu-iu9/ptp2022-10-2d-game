@@ -41,7 +41,7 @@ public class PlayerAttack extends PlayerModule
     }
 
     public void draw(Graphics g, float scale, int lvlOffsetX, int lvlOffsetY) {
-        drawAttackBox(g, scale, lvlOffsetX, lvlOffsetY);
+//        drawAttackBox(g, scale, lvlOffsetX, lvlOffsetY);
     }
 
     protected void drawAttackBox(Graphics g, float scale, int lvlOffsetX, int lvlOffsetY) {

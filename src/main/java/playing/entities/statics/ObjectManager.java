@@ -4,6 +4,7 @@ import gamestates.playingstates.EnumPlayState;
 import playing.PlayingDrawInterface;
 import playing.PlayingGame;
 import playing.PlayingUpdateInterface;
+import playing.entities.EntityLevelManager;
 import playing.entities.player.Player;
 import playing.levels.Level;
 
@@ -12,13 +13,13 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class ObjectManager implements PlayingUpdateInterface, PlayingDrawInterface {
-    private PlayingGame playingGame;
+    private EntityLevelManager entityLevelManager;
 
     private ArrayList<Spike> spikes;
     private ArrayList<Portal> portals;
 
-    public ObjectManager(PlayingGame playingGame, Level level) {
-        this.playingGame = playingGame;
+    public ObjectManager(EntityLevelManager entityLevelManager, Level level) {
+        this.entityLevelManager = entityLevelManager;
         loadObjects(level);
     }
 

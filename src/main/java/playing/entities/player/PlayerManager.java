@@ -4,7 +4,7 @@ import playing.PlayingDrawInterface;
 import playing.PlayingKeyListenerInterface;
 import playing.PlayingMouseListenerInterface;
 import playing.PlayingUpdateInterface;
-import playing.entities.PlayerLevelManager;
+import playing.entities.EntityLevelManager;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -14,17 +14,18 @@ import java.awt.geom.Rectangle2D;
 public class PlayerManager implements PlayingUpdateInterface, PlayingDrawInterface,
         PlayingMouseListenerInterface, PlayingKeyListenerInterface {
 
-    private PlayerLevelManager playerLevelManager;
+    private EntityLevelManager entityLevelManager;
+
 
     private Player player;
 
-    public PlayerManager(PlayerLevelManager playerLevelManager) {
-        this.playerLevelManager = playerLevelManager;
+    public PlayerManager(EntityLevelManager entityLevelManager) {
+        this.entityLevelManager = entityLevelManager;
         initClasses();
     }
 
     private void initClasses() {
-        player = new Player(this, 100, 250);
+        player = new Player(this, 100, 100);
     }
 
     @Override
@@ -38,7 +39,7 @@ public class PlayerManager implements PlayingUpdateInterface, PlayingDrawInterfa
     }
 
     public void resetAll() {
-        player = new Player(this, 100, 250);
+        player = new Player(this, 100, 100);
     }
 
     public void resetDirBooleans() {
@@ -67,11 +68,11 @@ public class PlayerManager implements PlayingUpdateInterface, PlayingDrawInterfa
 
 
     public boolean IsPlayerOnFloor(Rectangle2D.Double hitBox) {
-        return playerLevelManager.IsPlayerOnFloor(hitBox);
+        return entityLevelManager.IsPlayerOnFloor(hitBox);
     }
 
     public boolean CanMoveHere(Rectangle2D.Double hitBox) {
-        return playerLevelManager.CanMoveHere(hitBox);
+        return entityLevelManager.CanMoveHere(hitBox);
     }
 
     public int getPlayerX() {
@@ -80,5 +81,10 @@ public class PlayerManager implements PlayingUpdateInterface, PlayingDrawInterfa
 
     public int getPlayerY() {
         return (int) player.getY();
+    }
+
+
+    public Rectangle2D.Double getPlayerHitBox() {
+        return player.getHitBox();
     }
 }

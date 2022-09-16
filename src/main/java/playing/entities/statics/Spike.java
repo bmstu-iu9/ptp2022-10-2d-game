@@ -8,7 +8,8 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
-import static utilz.Constants.LvlConstants.Entity.Spike.SPIKE_SIZE_DEFAULT;
+
+import static utilz.Constants.LvlConstants.Entity.Spike.*;
 import static utilz.Constants.TextureConstants.Entity.ENTITY_LOCATION_TEXTURES;
 import static utilz.Constants.TextureConstants.Entity.TRAP_ATLAS_PNG;
 
@@ -25,34 +26,34 @@ public class Spike extends ObjectEntity implements PlayingDrawInterface {
     public Spike(double x, double y, SpikeState type) {
         super(0,0,0,0);
         loadImages();
-        setHitBoxTexture(x, y, SPIKE_SIZE_DEFAULT, SPIKE_SIZE_DEFAULT);
+        setHitBoxTexture(x, y, SPIKE_WIDTH_TEXTURE, SPIKE_HEIGHT_TEXTURE);
         switch (type) {
             case DOWN:
                 setHitBox(x,
-                        y + (double) SPIKE_SIZE_DEFAULT / 2,
-                        SPIKE_SIZE_DEFAULT,
-                        (double) SPIKE_SIZE_DEFAULT / 2);
+                        y + SPIKE_HEIGHT_DEFAULT_UD,
+                        SPIKE_WIDTH_DEFAULT_UD,
+                        SPIKE_HEIGHT_DEFAULT_UD);
                 break;
             case UP:
                 spikeImg = createRotated(spikeImg, 180);
                 setHitBox(x,
                         y,
-                        SPIKE_SIZE_DEFAULT,
-                        (double) SPIKE_SIZE_DEFAULT / 2);
+                        SPIKE_WIDTH_DEFAULT_UD,
+                        SPIKE_HEIGHT_DEFAULT_UD);
                 break;
             case LEFT:
                 spikeImg = createRotated(spikeImg, 90);
                 setHitBox(x,
                         y,
-                        (double) SPIKE_SIZE_DEFAULT / 2,
-                        SPIKE_SIZE_DEFAULT);
+                        SPIKE_WIDTH_DEFAULT_LR,
+                        SPIKE_HEIGHT_DEFAULT_LR);
                 break;
             case RIGHT:
                 spikeImg = createRotated(spikeImg, 270);
-                setHitBox(x + (double) SPIKE_SIZE_DEFAULT / 2,
+                setHitBox(x + SPIKE_WIDTH_DEFAULT_LR,
                         y,
-                        (double) SPIKE_SIZE_DEFAULT / 2,
-                        SPIKE_SIZE_DEFAULT);
+                        SPIKE_WIDTH_DEFAULT_LR,
+                        SPIKE_HEIGHT_DEFAULT_LR);
                 break;
         }
     }
