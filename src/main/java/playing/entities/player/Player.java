@@ -11,13 +11,14 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Rectangle2D;
 
-public class Player implements PlayingUpdateInterface, PlayingDrawInterface,
+public class Player extends Entity implements PlayingUpdateInterface, PlayingDrawInterface,
         PlayingMouseListenerInterface, PlayingKeyListenerInterface {
 
     private PlayerManager playerManager;
     private PlayerModuleManager playerModuleManager;
 
-    public Player(PlayerManager playerManager) {
+    public Player(PlayerManager playerManager, int x, int y) {
+        super(x, y);
         this.playerManager = playerManager;
         initClasses();
     }
