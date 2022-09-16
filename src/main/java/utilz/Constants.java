@@ -104,30 +104,23 @@ public class Constants {
 //        }
     }
 
-    public static class PlayerConstants {
-//        public static final int IDLE = 0;
-//        public static final int RUNNING = 1;
-//        public static final int JUMP = 2;
-//        public static final int FALLING = 3;
-//        public static final int ATTACK = 4;
-//        public static final int HIT = 5;
-//        public static final int DEAD = 6;
-//
-//        public static int GetSpriteAmount(int player_action) {
-//
-//            switch (player_action) {
-//                case DEAD: return 8;
-//                case RUNNING: return 6;
-//                case IDLE: return 5;
-//                case HIT: return 4;
-//                case JUMP:
-//                case ATTACK:
-//                    return 3;
-//                case FALLING:
-//                default:
-//                    return 1;
-//            }
-//        }
+    public static class Player {
+        public static class StatusBar {
+            public static final int STATUS_BAR_POS_X = 10;
+            public static final int STATUS_BAR_POS_Y = 10;
+            public static final int STATUS_BAR_WIDTH = 192;
+            public static final int STATUS_BAR_HEIGHT = 58;
+
+            public static final int HEALTH_BAR_POS_X = 45;
+            public static final int HEALTH_BAR_POS_Y = 24;
+            public static final int HEALTH_BAR_WIDTH = 150;
+            public static final int HEALTH_BAR_HEIGHT = 4;
+
+            public static final int POWER_BAR_POS_X = 56;
+            public static final int POWER_BAR_POS_Y = 44;
+            public static final int POWER_BAR_WIDTH = 100;
+            public static final int POWER_BAR_HEIGHT = 4;
+        }
     }
 
 

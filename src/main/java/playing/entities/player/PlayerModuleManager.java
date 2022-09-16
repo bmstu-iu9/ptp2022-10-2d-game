@@ -23,7 +23,7 @@ public class PlayerModuleManager implements PlayingUpdateInterface, PlayingDrawI
     private PlayerHitBox playerHitBox;
     private PlayerMove playerMove;
     private PlayerAttack playerAttack;
-    private PlayerHealth playerHealth;
+    private PlayerStatusBar playerStatusBar;
     private PlayerAnimation playerAnimation;
 
 
@@ -43,7 +43,7 @@ public class PlayerModuleManager implements PlayingUpdateInterface, PlayingDrawI
                 (int) playerHitBox.getHitBox().y, 20 ,20);
         playerMove = new PlayerMove(this);
         playerAnimation = new PlayerAnimation(this);
-
+        playerStatusBar = new PlayerStatusBar(this);
     }
     public void setPlayerX(double x) {
         player.setX(x);
@@ -74,6 +74,7 @@ public class PlayerModuleManager implements PlayingUpdateInterface, PlayingDrawI
         playerHitBox.draw(g, scale, lvlOffsetX, lvlOffsetY);
         playerAttack.draw(g, scale, lvlOffsetX, lvlOffsetY);
         playerAnimation.draw(g, scale, lvlOffsetX, lvlOffsetY);
+        playerStatusBar.draw(g, scale, lvlOffsetX, lvlOffsetY);
     }
 
     @Override
