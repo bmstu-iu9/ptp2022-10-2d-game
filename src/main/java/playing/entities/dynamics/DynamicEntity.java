@@ -11,7 +11,7 @@ public abstract class DynamicEntity extends Entity {
     public DynamicEntity(double x, double y) {
         super(x, y);
     }
-    +
+
     public DynamicEntity(double x, double y, double width, double height) {
         super(x, y, width, height);
     }
@@ -42,7 +42,12 @@ public abstract class DynamicEntity extends Entity {
         return enemyManager.wherePlayerX(getHitBox());
     }
 
+    public void attackPlayer(int damage) {
+        enemyManager.attackPlayer(damage);
+    }
 
 
-
+    public boolean checkPlayerHit(Rectangle2D.Double attackBox) {
+        return enemyManager.checkPlayerHit(attackBox);
+    }
 }

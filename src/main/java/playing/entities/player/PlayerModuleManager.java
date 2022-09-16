@@ -142,4 +142,8 @@ public class PlayerModuleManager implements PlayingUpdateInterface, PlayingDrawI
         return player.CanMoveHere(hitBox);
     }
 
+    public void attackPlayer(int damage) {
+        playerStatusBar.decreasePower(damage);
+    }
+
 }

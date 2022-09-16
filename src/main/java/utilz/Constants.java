@@ -134,7 +134,8 @@ public class Constants {
                 public static final int CRABBY_WIDTH_DEFAULT = 22;
                 public static final int CRABBY_HEIGHT_DEFAULT = 19;
 
-                public static final int CRABBY_RANGE = TILE_SIZE_DEFAULT * 5;
+                public static final int CRABBY_VIEW_RANGE = TILE_SIZE_DEFAULT * 5;
+                public static final int CRABBY_ATTACK_RANGE = TILE_SIZE_DEFAULT;
             }
         }
 

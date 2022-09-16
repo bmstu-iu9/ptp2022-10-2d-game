@@ -72,4 +72,7 @@ public class Player extends Entity implements PlayingUpdateInterface, PlayingDra
     public boolean CanMoveHere(Rectangle2D.Double hitBox) {
         return playerManager.CanMoveHere(hitBox);
     }
+    public void attackPlayer(int damage) {
+        playerModuleManager.attackPlayer(damage);
+    }
 }

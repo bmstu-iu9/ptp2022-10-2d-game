@@ -15,6 +15,7 @@ public class Crabby extends DynamicEntity implements PlayingDrawInterface, Playi
 
     private CrabbyMove crabbyMove;
     private CrabbyAnimation crabbyAnimation;
+    private CrabbyAttack crabbyAttack;
 
     public Crabby(double x, double y) {
         super(x, y, CRABBY_WIDTH_DEFAULT, CRABBY_HEIGHT_DEFAULT);
@@ -30,6 +31,7 @@ public class Crabby extends DynamicEntity implements PlayingDrawInterface, Playi
     private void initModules() {
         crabbyMove = new CrabbyMove(this);
         crabbyAnimation = new CrabbyAnimation(this);
+        crabbyAttack = new CrabbyAttack(this);
     }
 
     @Override
@@ -37,12 +39,14 @@ public class Crabby extends DynamicEntity implements PlayingDrawInterface, Playi
         crabbyAnimation.draw(g, scale, lvlOffsetX, lvlOffsetY);
         drawHitBox(g, scale, lvlOffsetX, lvlOffsetY);
         drawHitBoxTexture(g, scale, lvlOffsetX, lvlOffsetY);
+        crabbyAttack.draw(g, scale, lvlOffsetX, lvlOffsetY);
     }
 
     @Override
     public void update() {
         crabbyMove.update();
         crabbyAnimation.update();
+        crabbyAttack.update();
     }
 
     public CrabbyMove getCrabbyMove() {

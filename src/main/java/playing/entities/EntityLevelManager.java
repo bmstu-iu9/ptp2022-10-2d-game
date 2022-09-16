@@ -72,6 +72,16 @@ public class EntityLevelManager {
         return (int) (playerHitBox.x - hitBox.x);
     }
 
+    public void attackPlayer(int damage) {
+        playingGame.attackPlayer(damage);
+    }
+
+    public boolean checkPlayerHit(Rectangle2D.Double attackBox) {
+        Rectangle2D.Double playerHitBox = playingGame.getPlayerHitBox();
+        return attackBox.intersects(playerHitBox);
+    }
+
+
     private boolean IsSightClear(int[][] lvlData, Rectangle2D.Double firstHitbox, Rectangle2D.Double secondHitbox, int yTile) {
         int firstXTile = (int) (firstHitbox.x / TILE_SIZE_DEFAULT);
         int secondXTile = (int) (secondHitbox.x / TILE_SIZE_DEFAULT);

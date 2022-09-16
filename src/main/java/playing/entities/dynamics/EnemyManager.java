@@ -79,5 +79,12 @@ public class EnemyManager implements PlayingUpdateInterface, PlayingDrawInterfac
         return entityLevelManager.wherePlayerX(hitBox);
     }
 
+    public void attackPlayer(int damage) {
+        entityLevelManager.attackPlayer(damage);
+    }
+
+    public boolean checkPlayerHit(Rectangle2D.Double attackBox) {
+        return entityLevelManager.checkPlayerHit(attackBox);
+    }
 
 }

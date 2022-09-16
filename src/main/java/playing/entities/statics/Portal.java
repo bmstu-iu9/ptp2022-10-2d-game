@@ -12,8 +12,8 @@ import static utilz.Constants.GameWindowConstants.TILE_SIZE_DEFAULT;
 import static utilz.Constants.LvlConstants.Entity.Portal.PORTAL_HEIGHT_DEFAULT;
 import static utilz.Constants.LvlConstants.Entity.Portal.PORTAL_WIDTH_DEFAULT;
 import static utilz.Constants.TextureConstants.Entity.ENTITY_LOCATION_TEXTURES;
-import static utilz.Constants.TextureConstants.Entity.PORTAL_ATLAS_PNG;
-import static utilz.Constants.TextureConstants.Entity.CRABBY_SPRITE_PNG;
+import static utilz.Constants.TextureConstants.Entity.*;
+
 
 
 public class Portal extends ObjectEntity implements PlayingDrawInterface, PlayingUpdateInterface {
@@ -29,7 +29,7 @@ public class Portal extends ObjectEntity implements PlayingDrawInterface, Playin
     }
 
     private void loadImages() {
-        BufferedImage img = LoadSave.GetSpriteAtlas(ENTITY_LOCATION_TEXTURES, CRABBY_SPRITE_PNG);
+        BufferedImage img = LoadSave.GetSpriteAtlas(ENTITY_LOCATION_TEXTURES, PORTAL_ATLAS_PNG);
         portalAnimation = new BufferedImage[4];
         for (int i = 0; i < portalAnimation.length; i++) {
             portalAnimation[i] = img.getSubimage(i * 32, 0, 32, 64);

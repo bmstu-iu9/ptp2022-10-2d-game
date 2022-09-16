@@ -5,7 +5,7 @@ import playing.PlayingUpdateInterface;
 import java.awt.geom.Rectangle2D;
 
 import static utilz.Constants.GameConstants.GRAVITY;
-import static utilz.Constants.LvlConstants.Entity.CRABBY.CRABBY_RANGE;
+import static utilz.Constants.LvlConstants.Entity.CRABBY.CRABBY_VIEW_RANGE;
 
 public class CrabbyMove extends CrabbyModule implements PlayingUpdateInterface {
     private boolean moving;
@@ -27,7 +27,7 @@ public class CrabbyMove extends CrabbyModule implements PlayingUpdateInterface {
     }
 
     private void checkEnvironment() {
-        if (crabby.canSeePlayer(CRABBY_RANGE)) {
+        if (crabby.canSeePlayer(CRABBY_VIEW_RANGE)) {
             turnTowardsPlayer();
         } else if (!right && !left) {
             left = true;

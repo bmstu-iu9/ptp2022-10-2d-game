@@ -87,4 +87,8 @@ public class PlayerManager implements PlayingUpdateInterface, PlayingDrawInterfa
     public Rectangle2D.Double getPlayerHitBox() {
         return player.getHitBox();
     }
+
+    public void attackPlayer(int damage) {
+        player.attackPlayer(damage);
+    }
 }
