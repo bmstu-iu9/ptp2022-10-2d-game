@@ -221,6 +221,21 @@ public class Constants {
             public static final String CRABBY_SPRITE_PNG = "crabby_sprite.png";
 
         }
+        public static final class Number {
+            public static final String NUMBER_LOCATION_TEXTURES = "number";
+
+            public static final String NUMBER_0_PNG = "number_0.png";
+            public static final String NUMBER_1_PNG = "number_1.png";
+            public static final String NUMBER_2_PNG = "number_2.png";
+            public static final String NUMBER_3_PNG = "number_3.png";
+            public static final String NUMBER_4_PNG = "number_4.png";
+            public static final String NUMBER_5_PNG = "number_5.png";
+            public static final String NUMBER_6_PNG = "number_6.png";
+            public static final String NUMBER_7_PNG = "number_7.png";
+            public static final String NUMBER_8_PNG = "number_8.png";
+            public static final String NUMBER_9_PNG = "number_9.png";
+
+        }
 
     }
 

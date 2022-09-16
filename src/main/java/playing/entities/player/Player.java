@@ -18,9 +18,6 @@ public class Player extends Entity implements PlayingUpdateInterface, PlayingDra
     private PlayerManager playerManager;
     private PlayerModuleManager playerModuleManager;
 
-    private int coin = 0;
-
-
     public Player(PlayerManager playerManager, int x, int y) {
         super(x, y, 20, 27);
         this.playerManager = playerManager;
@@ -83,6 +80,10 @@ public class Player extends Entity implements PlayingUpdateInterface, PlayingDra
     }
 
     public void addCoin() {
-        coin++;
+        playerModuleManager.addCoin();
+    }
+
+    public int getCoins() {
+        return playerModuleManager.getCoins();
     }
 }

@@ -86,7 +86,9 @@ public class ObjectManager implements PlayingUpdateInterface, PlayingDrawInterfa
     public void checkPortalTouched(Player p) {
         for (Portal portal : portals) {
             if (portal.getHitBox().intersects(p.getHitBox())) {
-                EnumPlayState.state = EnumPlayState.LVL_COMPLETED;
+                if (p.getCoins() == coins.size()) {
+                    EnumPlayState.state = EnumPlayState.LVL_COMPLETED;
+                }
             }
         }
     }

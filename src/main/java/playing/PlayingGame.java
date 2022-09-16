@@ -60,6 +60,7 @@ public class PlayingGame implements GamePanelInterface,
     public void nextLevel() {
         levelManager.nextLevel();
         currentLevel = levelManager.getCurrentLevel();
+        playerManager = new PlayerManager(entityLevelManager);
         playerManager.setSpawnPlayer(100, 100);
 
         initCurrentLevelManager();
