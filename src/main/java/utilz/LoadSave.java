@@ -17,8 +17,7 @@ public class LoadSave {
         return img;
     }
 
-    public static BufferedImage[] GetAllLevels() {
-        File file = new File("src/main/resources/lvls");
+    public static BufferedImage[] GetAllLevelsAtlas() {        File file = new File("src/main/resources/lvls");
 
         File[] files = file.listFiles();
         assert files != null;

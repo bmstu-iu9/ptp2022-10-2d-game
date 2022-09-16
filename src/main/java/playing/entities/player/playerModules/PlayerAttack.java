@@ -1,33 +1,16 @@
-package gamestates.playingstates;
+package playing.entities.player.playerModules;
 
-import gamestates.Playing;
+import playing.PlayingListenerInterface;
+import playing.entities.player.Player;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
 
-public class PauseOverlay extends PlayState {
+public class PlayerAttack extends PlayerModule implements PlayingListenerInterface {
 
-    private BufferedImage backgroundImg;
-    private int pauseX, pauseY, pauseWidth, pauseHeight;
-
-    public PauseOverlay() {
-        loadBackgroundImg();
-        calcBorder();
-        createButtons();
-    }
-
-    protected void loadBackgroundImg() {
-
-    }
-
-    protected void calcBorder() {
-
-    }
-
-    protected void createButtons() {
-
+    public PlayerAttack(Player player) {
+        super(player);
     }
 
     @Override
@@ -36,12 +19,13 @@ public class PauseOverlay extends PlayState {
     }
 
     @Override
-    public void draw(Graphics g, float scale) {
+    public void draw(Graphics g, float scale, int LvlOffsetX, int LvlOffsetY) {
 
     }
 
     @Override
     public void mouseClicked(MouseEvent e, float scale) {
+
     }
 
     @Override
@@ -73,5 +57,4 @@ public class PauseOverlay extends PlayState {
     public void keyReleased(KeyEvent e, float scale) {
 
     }
-
 }

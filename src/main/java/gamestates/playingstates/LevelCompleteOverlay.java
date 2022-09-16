@@ -9,13 +9,11 @@ import java.awt.image.BufferedImage;
 
 public class LevelCompleteOverlay extends PlayState {
 
-    private Playing playing;
 
     private BufferedImage backgroundImg;
     private int completeX, completeY, completeWidth, completeHeight;
 
-    public LevelCompleteOverlay(Playing playing) {
-        this.playing = playing;
+    public LevelCompleteOverlay() {
         loadBackgroundImg();
         calcBorder();
         createButtons();
