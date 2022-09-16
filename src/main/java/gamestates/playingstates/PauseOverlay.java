@@ -1,9 +1,7 @@
 package gamestates.playingstates;
 
 import gamestates.EnumGameState;
-import gamestates.GameState;
 import gamestates.Playing;
-import main.Game;
 import ui.pause.SoundButton;
 import ui.pause.UrmButton;
 import ui.pause.VolumeButton;
@@ -16,11 +14,12 @@ import java.awt.image.BufferedImage;
 
 import static utilz.Constants.GameWindowConstants.GAME_HEIGHT_DEFAULT;
 import static utilz.Constants.GameWindowConstants.GAME_WIDTH_DEFAULT;
-import static utilz.Constants.TextureConstants.Pause.PAUSE_ATLAS_PNG;
-import static utilz.Constants.TextureConstants.Pause.PAUSE_LOCATION_TEXTURES;
-import static utilz.Constants.UI.PauseSoundButtons.*;
-import static utilz.Constants.UI.PauseURMButtons.*;
-import static utilz.Constants.UI.PauseVolumeButtons.*;
+import static utilz.Constants.TextureConstants.Overlay.PAUSE_ATLAS_PNG;
+import static utilz.Constants.TextureConstants.Overlay.PAUSE_LOCATION_TEXTURES;
+import static utilz.Constants.UI.Overlay.Pause.*;
+import static utilz.Constants.UI.SoundButtons.*;
+import static utilz.Constants.UI.URMButtons.*;
+import static utilz.Constants.UI.VolumeButtons.*;
 
 public class PauseOverlay extends PlayState {
 

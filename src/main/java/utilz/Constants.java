@@ -44,36 +44,49 @@ public class Constants {
             public static final int BUTTON_HEIGHT_DEFAULT = 56;
         }
 
-        public static class PauseSoundButtons {
+        public static class SoundButtons {
             public static final int MUTED_OFF = 0;
             public static final int MUTED_ON = 1;
 
-            public static final int PAUSE_SOUND_POS_X = 450;
-            public static final int PAUSE_SOUND_MUSIC_POS_Y = 140;
-            public static final int PAUSE_SOUND_SFX_POS_Y = 186;
-
             public static final int SOUND_SIZE_DEFAULT = 42;
         }
-        public static class PauseURMButtons {
+
+        public static class URMButtons {
             public static final int URM_PLAY = 0;
             public static final int URM_REPLAY = 1;
             public static final int URM_MENU = 2;
 
-            public static final int PAUSE_URM_PLAY_POS_X = 462;
-            public static final int PAUSE_URM_REPLAY_POS_X = 387;
-            public static final int PAUSE_URM_MENU_POS_X = 313;
-            public static final int PAUSE_URM_POS_Y = 325;
-
             public static final int URM_DEFAULT_SIZE = 56;
         }
-        public static class PauseVolumeButtons {
-            public static final int PAUSE_VOLUME_POS_X = 309;
-            public static final int PAUSE_VOLUME_POS_Y = 278;
 
+        public static class VolumeButtons {
             public static final int VOLUME_WIDTH_DEFAULT = 28;
             public static final int VOLUME_HEIGHT_DEFAULT = 44;
             public static final int SLIDER_WIDTH_DEFAULT = 215;
         }
+
+        public static class Overlay {
+            public static class Pause {
+                public static final int PAUSE_SOUND_POS_X = 450;
+                public static final int PAUSE_SOUND_MUSIC_POS_Y = 140;
+                public static final int PAUSE_SOUND_SFX_POS_Y = 186;
+
+                public static final int PAUSE_URM_PLAY_POS_X = 462;
+                public static final int PAUSE_URM_REPLAY_POS_X = 387;
+                public static final int PAUSE_URM_MENU_POS_X = 313;
+                public static final int PAUSE_URM_POS_Y = 325;
+
+                public static final int PAUSE_VOLUME_POS_X = 309;
+                public static final int PAUSE_VOLUME_POS_Y = 278;
+            }
+
+            public static class GameOver {
+                public static final int GAME_OVER_URM_PLAY_POS_X = 440;
+                public static final int GAME_OVER_URM_MENU_POS_X = 335;
+                public static final int GAME_OVER_URM_POS_Y = 195;
+            }
+        }
+
 
 //        public static class PositionButtons {
 //            public static final int COMPLETE_URM_MENU_POS_X = (int) (330 * SCALE);
@@ -132,21 +145,17 @@ public class Constants {
 
         }
 
-        public static final class Pause {
-            public static final String PAUSE_LOCATION_TEXTURES = "pause";
+        public static final class Overlay {
+            public static final String PAUSE_LOCATION_TEXTURES = "overlay";
 
             public static final String PAUSE_ATLAS_PNG = "pause_atlas.png";
-            public static final String PAUSE_SOUND_BUTTON_PNG = "pause_sound_buttons.png";
-            public static final String PAUSE_URM_BUTTON_PNG = "pause_urm_buttons.png";
-            public static final String PAUSE_VOLUME_BUTTON_PNG = "pause_volume_buttons.png";
-        }
+            public static final String GAME_OVER_ATLAS_PNG = "game_over_atlas.png";
+            public static final String COMPLETE_ATLAS_PNG = "complete_atlas.png";
+            public static final String OPTIONS_ATLAS_PNG = "options_atlas.png";
 
-        public static final class Complete {
-//            public static final String COMPLETE_BACKGROUND_PNG = "complete_background.png";
-        }
-
-        public static final class GameOver {
-//            public static final String GAME_OVER_BACKGROUND_PNG = "game_over_background.png";
+            public static final String OVERLAY_SOUND_BUTTONS_PNG = "overlay_sound_buttons.png";
+            public static final String OVERLAY_URM_BUTTONS_PNG = "overlay_urm_buttons.png";
+            public static final String OVERLAY_VOLUME_BUTTONS_PNG = "overlay_volume_buttons.png";
         }
 
         public static final class Level {

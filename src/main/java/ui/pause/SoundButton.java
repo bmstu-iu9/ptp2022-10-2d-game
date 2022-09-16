@@ -6,9 +6,9 @@ import utilz.LoadSave;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-import static utilz.Constants.TextureConstants.Pause.PAUSE_LOCATION_TEXTURES;
-import static utilz.Constants.TextureConstants.Pause.PAUSE_SOUND_BUTTON_PNG;
-import static utilz.Constants.UI.PauseSoundButtons.SOUND_SIZE_DEFAULT;
+import static utilz.Constants.TextureConstants.Overlay.PAUSE_LOCATION_TEXTURES;
+import static utilz.Constants.TextureConstants.Overlay.OVERLAY_SOUND_BUTTONS_PNG;
+import static utilz.Constants.UI.SoundButtons.SOUND_SIZE_DEFAULT;
 
 public class SoundButton extends Button {
     private BufferedImage[][] soundImages;
@@ -22,7 +22,7 @@ public class SoundButton extends Button {
 
     @Override
     protected void loadImages() {
-        BufferedImage temp = LoadSave.GetSpriteAtlas(PAUSE_LOCATION_TEXTURES, PAUSE_SOUND_BUTTON_PNG);
+        BufferedImage temp = LoadSave.GetSpriteAtlas(PAUSE_LOCATION_TEXTURES, OVERLAY_SOUND_BUTTONS_PNG);
         soundImages = new BufferedImage[2][3];
         for (int j = 0; j < soundImages.length; j++)
             for (int i = 0; i < soundImages[j].length; i++)
