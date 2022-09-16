@@ -10,14 +10,15 @@ public class LoadSave {
     public static BufferedImage GetSpriteAtlas(String location, String fileName) {
         BufferedImage img = null;
         try {
-            img = ImageIO.read(new File("src/main/resources/textures/" + location + "/" + fileName));
+            img = ImageIO.read(new File("src/main/resources/textures/" + location + "/" +fileName));
         } catch (IOException e) {
             e.printStackTrace();
         }
         return img;
     }
 
-    public static BufferedImage[] GetAllLevelsAtlas() {        File file = new File("src/main/resources/lvls");
+    public static BufferedImage[] GetAllLevelsAtlas() {
+        File file = new File("src/main/resources/lvls");
 
         File[] files = file.listFiles();
         assert files != null;

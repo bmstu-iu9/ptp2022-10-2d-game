@@ -11,7 +11,6 @@ public class Constants {
         public final static int TILE_SIZE_DEFAULT = 32;
         public final static int TILES_IN_WIDTH = 26;
         public final static int TILES_IN_HEIGHT = 14;
-
         public final static int GAME_WIDTH_DEFAULT = TILE_SIZE_DEFAULT * TILES_IN_WIDTH;
         public final static int GAME_HEIGHT_DEFAULT = TILE_SIZE_DEFAULT * TILES_IN_HEIGHT;
 
@@ -19,7 +18,6 @@ public class Constants {
         public final static int RIGHT_BORDER = (int) (0.7 * GAME_WIDTH_DEFAULT);
         public final static int TOP_BORDER = (int) (0.3 * GAME_HEIGHT_DEFAULT);
         public final static int DOWN_BORDER = (int) (0.7 * GAME_HEIGHT_DEFAULT);
-
     }
 
     public static class GameConstants {
@@ -118,9 +116,7 @@ public class Constants {
                 public static final int ENEMY_INDEX_CRABBY = 1;
             }
 
-
             public static final class Spike {
-                public static final int SPIKE_SIZE_DEFAULT = 32;
                 public static final int SPIKE_WIDTH_TEXTURE = 32;
                 public static final int SPIKE_HEIGHT_TEXTURE = 32;
                 public static final int SPIKE_WIDTH_DEFAULT_UD = 32;
@@ -128,13 +124,14 @@ public class Constants {
                 public static final int SPIKE_WIDTH_DEFAULT_LR = 16;
                 public static final int SPIKE_HEIGHT_DEFAULT_LR = 32;
             }
-            public static final class Coin {
-                public static final int COIN_WIDTH_DEFAULT = 32;
-                public static final int COIN_HEIGHT_DEFAULT = 32;
-            }
             public static final class Portal {
                 public static final int PORTAL_WIDTH_DEFAULT = 32;
                 public static final int PORTAL_HEIGHT_DEFAULT = 64;
+            }
+
+            public static final class Coin {
+                public static final int COIN_WIDTH_DEFAULT = 32;
+                public static final int COIN_HEIGHT_DEFAULT = 32;
             }
 
             public static final class CRABBY {
@@ -178,7 +175,6 @@ public class Constants {
         }
 
         public static final class Options {
-//            public static final String OPTIONS_BACKGROUND_PNG = "options_background.png";
 
         }
 
@@ -193,6 +189,8 @@ public class Constants {
             public static final String OVERLAY_SOUND_BUTTONS_PNG = "overlay_sound_buttons.png";
             public static final String OVERLAY_URM_BUTTONS_PNG = "overlay_urm_buttons.png";
             public static final String OVERLAY_VOLUME_BUTTONS_PNG = "overlay_volume_buttons.png";
+
+
         }
 
         public static final class Level {
@@ -219,8 +217,8 @@ public class Constants {
             public static final String TRAP_ATLAS_PNG = "trap_atlas.png";
             public static final String PORTAL_ATLAS_PNG = "portal_atlas.png";
             public static final String CRABBY_SPRITE_PNG = "crabby_sprite.png";
-
         }
+
         public static final class Number {
             public static final String NUMBER_LOCATION_TEXTURES = "number";
 

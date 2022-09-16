@@ -25,7 +25,6 @@ public class PlayerModuleManager implements PlayingUpdateInterface, PlayingDrawI
     private PlayerStatusBar playerStatusBar;
     private PlayerAnimation playerAnimation;
 
-
     public PlayerModuleManager(Player player) {
         this.player = player;
         initClasses();
@@ -36,9 +35,10 @@ public class PlayerModuleManager implements PlayingUpdateInterface, PlayingDrawI
         playerOutPut = new PlayerOutPut(this);
         playerListener = new PlayerListener(this);
 
+
         playerAttack = new PlayerAttack(this,
                 (int) (player.getHitBox().x + player.getHitBox().width) + 3,
-                (int) player.getHitBox().y, 20, 20);
+                (int) player.getHitBox().y, 20 ,20);
         playerMove = new PlayerMove(this);
         playerAnimation = new PlayerAnimation(this);
         playerStatusBar = new PlayerStatusBar(this);
@@ -63,7 +63,6 @@ public class PlayerModuleManager implements PlayingUpdateInterface, PlayingDrawI
     public void drawHitBox(Graphics g, float scale, int LvlOffsetX, int LvlOffsetY) {
         player.drawHitBox(g, scale, LvlOffsetX, LvlOffsetY);
     }
-
 
     @Override
     public void update() {
@@ -120,7 +119,6 @@ public class PlayerModuleManager implements PlayingUpdateInterface, PlayingDrawI
         return playerAnimation;
     }
 
-
     public void resetAll() {
 
     }
@@ -128,7 +126,6 @@ public class PlayerModuleManager implements PlayingUpdateInterface, PlayingDrawI
     public void resetDirBooleans() {
         playerMove.resetDirBooleans();
     }
-
 
     public boolean IsPlayerOnFloor() {
         return player.IsPlayerOnFloor(player.getHitBox());
@@ -154,7 +151,6 @@ public class PlayerModuleManager implements PlayingUpdateInterface, PlayingDrawI
         playerAnimation.setAnimationState(PlayerAnimation.AnimationState.DEAD);
     }
 
-
     public void addCoin() {
         playerStatusBar.addCoin();
     }
@@ -162,5 +158,4 @@ public class PlayerModuleManager implements PlayingUpdateInterface, PlayingDrawI
     public int getCoins() {
         return playerStatusBar.getCoins();
     }
-
 }

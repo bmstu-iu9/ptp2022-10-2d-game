@@ -60,7 +60,6 @@ public class EntityLevelManager {
 
         return false;
     }
-
     public boolean isPlayerInRange(Rectangle2D.Double hitBox, float range) {
         Rectangle2D.Double playerHitBox = playingGame.getPlayerHitBox();
         int absValue = (int) Math.abs(playerHitBox.x - hitBox.x);
@@ -85,10 +84,9 @@ public class EntityLevelManager {
         playingGame.attackEnemy(attackBox,damage);
     }
 
-
     private boolean IsSightClear(int[][] lvlData, Rectangle2D.Double firstHitbox, Rectangle2D.Double secondHitbox, int yTile) {
         int firstXTile = (int) (firstHitbox.x / TILE_SIZE_DEFAULT);
-        int secondXTile = (int) (secondHitbox.x / TILE_SIZE_DEFAULT);
+        int secondXTile = (int) (secondHitbox.x  / TILE_SIZE_DEFAULT);
 
         if (firstXTile > secondXTile)
             return IsAllTilesWalkable(secondXTile, firstXTile, yTile, lvlData);

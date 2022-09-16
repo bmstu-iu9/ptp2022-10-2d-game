@@ -1,5 +1,6 @@
 package playing.levels;
 
+
 import playing.PlayingDrawInterface;
 import playing.PlayingUpdateInterface;
 import playing.entities.EntityLevelManager;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 public class LevelManager implements PlayingUpdateInterface, PlayingDrawInterface {
 
     private EntityLevelManager playerLevelManager;
+
     private ArrayList<Level> levels;
     private int lvlIndex = 0;
 
@@ -48,7 +50,6 @@ public class LevelManager implements PlayingUpdateInterface, PlayingDrawInterfac
     public int getLvlOffsetY() {
         return levels.get(lvlIndex).getMaxLvlOffsetY();
     }
-
 
     public Level getCurrentLevel() {
         return levels.get(lvlIndex);

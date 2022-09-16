@@ -14,7 +14,9 @@ import static utilz.Constants.UI.MenuButtons.COUNT_BUTTONS;
 import static utilz.Constants.UI.MenuButtons.PLAY;
 
 public class Menu extends GameState implements GamePanelInterface, GamePanelListenerInterface {
+
     private float scale;
+
     private final MenuButton[] buttons = new MenuButton[COUNT_BUTTONS];
     private BufferedImage menuImg, backgroundImg;
     private int menuX, menuY, menuWidth, menuHeight;
@@ -48,7 +50,6 @@ public class Menu extends GameState implements GamePanelInterface, GamePanelList
 
     @Override
     public void update() {
-
         for (MenuButton mb : buttons) {
             mb.update();
         }
@@ -79,7 +80,6 @@ public class Menu extends GameState implements GamePanelInterface, GamePanelList
 
     @Override
     public void mousePressed(MouseEvent e, float scale) {
-
         for (MenuButton mb : buttons) {
             if (isIn(e, mb, scale)) {
                 mb.setMousePressed(true);
@@ -90,7 +90,6 @@ public class Menu extends GameState implements GamePanelInterface, GamePanelList
 
     @Override
     public void mouseReleased(MouseEvent e, float scale) {
-
         for (MenuButton mb : buttons) {
             if (isIn(e, mb, scale)) {
                 if (mb.isMousePressed()) {
@@ -102,7 +101,6 @@ public class Menu extends GameState implements GamePanelInterface, GamePanelList
 
         resetButtons();
     }
-
     private void resetButtons() {
         for (MenuButton mb : buttons) {
             mb.resetBool();
@@ -116,7 +114,6 @@ public class Menu extends GameState implements GamePanelInterface, GamePanelList
 
     @Override
     public void mouseMoved(MouseEvent e, float scale) {
-
         for (MenuButton mb : buttons) {
             mb.setMouseOver(false);
         }

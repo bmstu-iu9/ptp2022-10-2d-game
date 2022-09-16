@@ -15,7 +15,6 @@ import static utilz.Constants.TextureConstants.Entity.ENTITY_LOCATION_TEXTURES;
 public class CrabbyAnimation extends CrabbyModule implements PlayingDrawInterface, PlayingUpdateInterface {
 
     private BufferedImage[][] animations;
-
     public enum AnimationState {
         IDLE,
         RUNNING,
@@ -25,14 +24,12 @@ public class CrabbyAnimation extends CrabbyModule implements PlayingDrawInterfac
 
         public static AnimationState animationState = IDLE;
     }
-
     private int aniTick, aniIndex;
     private int flipW = 1;
     private int flipX = 0;
 
     private boolean dead;
     private boolean pause;
-
     public CrabbyAnimation(Crabby crabby) {
         super(crabby);
         loadImages();
@@ -131,7 +128,6 @@ public class CrabbyAnimation extends CrabbyModule implements PlayingDrawInterfac
     public AnimationState getAnimationState() {
         return animationState;
     }
-
 
     public int getAniIndex() {
         return aniIndex;

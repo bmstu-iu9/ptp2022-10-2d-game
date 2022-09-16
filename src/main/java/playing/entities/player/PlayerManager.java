@@ -16,7 +16,6 @@ public class PlayerManager implements PlayingUpdateInterface, PlayingDrawInterfa
 
     private EntityLevelManager entityLevelManager;
 
-
     private Player player;
 
     public PlayerManager(EntityLevelManager entityLevelManager) {
@@ -46,7 +45,6 @@ public class PlayerManager implements PlayingUpdateInterface, PlayingDrawInterfa
         player.resetDirBooleans();
     }
 
-
     public Player getPlayer() {
         return player;
     }
@@ -66,7 +64,6 @@ public class PlayerManager implements PlayingUpdateInterface, PlayingDrawInterfa
         player.keyReleased(e);
     }
 
-
     public boolean IsPlayerOnFloor(Rectangle2D.Double hitBox) {
         return entityLevelManager.IsPlayerOnFloor(hitBox);
     }
@@ -82,7 +79,6 @@ public class PlayerManager implements PlayingUpdateInterface, PlayingDrawInterfa
     public int getPlayerY() {
         return (int) player.getY();
     }
-
 
     public Rectangle2D.Double getPlayerHitBox() {
         return player.getHitBox();

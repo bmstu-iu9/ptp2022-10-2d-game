@@ -22,7 +22,6 @@ public class Spike extends ObjectEntity implements PlayingDrawInterface {
         LEFT,
         RIGHT
     }
-
     public Spike(double x, double y, SpikeState type) {
         super(0,0,0,0);
         loadImages();
@@ -56,6 +55,7 @@ public class Spike extends ObjectEntity implements PlayingDrawInterface {
                         SPIKE_HEIGHT_DEFAULT_LR);
                 break;
         }
+
     }
 
     private static BufferedImage createRotated(BufferedImage image, int x) {

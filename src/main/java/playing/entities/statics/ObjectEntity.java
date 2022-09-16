@@ -7,7 +7,6 @@ import java.awt.geom.Rectangle2D;
 
 public abstract class ObjectEntity extends Entity {
     protected Rectangle2D.Double hitBoxTexture;
-
     public ObjectEntity(double x, double y) {
         super(x, y);
     }

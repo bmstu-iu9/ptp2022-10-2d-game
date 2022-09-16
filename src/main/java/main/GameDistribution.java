@@ -7,7 +7,7 @@ import gamestates.Playing;
 import java.awt.*;
 import java.awt.event.*;
 
-public class GameDistribution implements MainGameInterface, MouseListener, MouseMotionListener, KeyListener {
+public class GameDistribution implements MainGameInterface, MouseListener, MouseMotionListener, KeyListener{
 
     private final Game game;
     private final float scale;
@@ -175,5 +175,4 @@ public class GameDistribution implements MainGameInterface, MouseListener, Mouse
         if (EnumGameState.state == EnumGameState.PLAYING)
             playing.resetDirBooleans();
     }
-
 }

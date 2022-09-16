@@ -68,7 +68,6 @@ public class EnemyManager implements PlayingUpdateInterface, PlayingDrawInterfac
 
     }
 
-
     public boolean IsPlayerOnFloor(Rectangle2D.Double hitBox) {
         return entityLevelManager.IsPlayerOnFloor(hitBox);
     }
@@ -100,5 +99,4 @@ public class EnemyManager implements PlayingUpdateInterface, PlayingDrawInterfac
     public boolean checkPlayerHit(Rectangle2D.Double attackBox) {
         return entityLevelManager.checkPlayerHit(attackBox);
     }
-
 }

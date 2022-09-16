@@ -31,11 +31,9 @@ public abstract class Entity {
 //                (int) (hitBoxTexture.height * scale));
     }
 
-
     public Rectangle2D.Double getHitBox() {
         return new Rectangle2D.Double(hitBox.x, hitBox.y, hitBox.width, hitBox.height);
     }
-
 
     public Rectangle2D.Double getHitBoxTexture() {
         return hitBoxTexture;
@@ -48,7 +46,6 @@ public abstract class Entity {
     protected void setHitBoxTexture(double x, double y, double width, double height) {
         hitBoxTexture = new Rectangle2D.Double(x, y, width, height);
     }
-
     public double getX() {
         return hitBox.x;
     }
@@ -60,7 +57,6 @@ public abstract class Entity {
             hitBoxTexture.x = hitBoxTexture.x - (hitBox.x - x);
         }
         hitBox.x = x;
-
     }
     public void setY(double y) {
         if (hitBoxTexture != null) {

@@ -35,7 +35,6 @@ public class PlayerMove extends PlayerModule implements PlayingKeyListenerInterf
     }
 
     private void updatePos() {
-        float xSpeed = 0;
 //        playerModuleManager.getPlayerAnimation().setAnimationState(PlayerAnimation.AnimationState.IDLE);
 
         if (jump) {
@@ -62,6 +61,7 @@ public class PlayerMove extends PlayerModule implements PlayingKeyListenerInterf
             Rectangle2D.Double newHitBox = new Rectangle2D.Double(
                     oldHitBox.x, oldHitBox.y + ySpeed,
                     oldHitBox.width, oldHitBox.height);
+
             if (playerModuleManager.CanMoveHere(newHitBox)) {
                 updateYPos(ySpeed);
 
@@ -114,7 +114,6 @@ public class PlayerMove extends PlayerModule implements PlayingKeyListenerInterf
     public void draw(Graphics g, float scale, int LvlOffsetX, int LvlOffsetY) {
 
     }
-
 
 
     @Override
@@ -176,6 +175,5 @@ public class PlayerMove extends PlayerModule implements PlayingKeyListenerInterf
         setRight(false);
         setLeft(false);
     }
-
 
 }
