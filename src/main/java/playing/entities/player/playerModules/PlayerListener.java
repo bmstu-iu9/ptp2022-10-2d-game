@@ -25,7 +25,7 @@ public class PlayerListener extends PlayerModule
 
     @Override
     public void mouseClicked(MouseEvent e) {
-
+        playerModuleManager.getPlayerAttack().mouseClicked(e);
     }
 
     @Override

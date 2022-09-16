@@ -53,6 +53,6 @@ public class PlayerAttack extends PlayerModule
     }
 
     public void mouseClicked(MouseEvent e) {
-
+        playerModuleManager.getPlayerAnimation().setAnimationState(PlayerAnimation.AnimationState.ATTACK);
     }
 }

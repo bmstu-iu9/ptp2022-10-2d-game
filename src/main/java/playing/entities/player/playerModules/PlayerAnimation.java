@@ -65,9 +65,8 @@ public class PlayerAnimation extends PlayerModule implements PlayingUpdateInterf
             aniTick = 0;
             aniIndex++;
             if (aniIndex >= GetSpriteAmount()) {
+                animationState = IDLE;
                 aniIndex = 0;
-//                attacking = false;
-//                attackChecked = false;
             }
         }
     }
@@ -120,6 +119,7 @@ public class PlayerAnimation extends PlayerModule implements PlayingUpdateInterf
 
     public void setAnimationState(AnimationState state) {
         animationState = state;
+        aniIndex = 0;
     }
 
     public AnimationState getAnimationState() {
