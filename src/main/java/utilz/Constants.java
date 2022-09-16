@@ -168,9 +168,9 @@ public class Constants {
         public static final class Level {
             public static final String LEVEL_LOCATION_TEXTURES = "level";
             public static final String LVL_TEXTURES_PNG = "lvl_textures.png";
-//            public static final String LVL_BACKGROUND_PNG = "lvl_background.png";
-//            public static final String LVL_CLOUDS_BIG_PNG = "lvl_clouds_big.png";
-//            public static final String LVL_CLOUDS_SMALL_PNG = "lvl_clouds_small.png";
+            public static final String LVL_BACKGROUND_PNG = "lvl_background.png";
+            public static final String LVL_CLOUDS_BIG_PNG = "lvl_clouds_big.png";
+            public static final String LVL_CLOUDS_SMALL_PNG = "lvl_clouds_small.png";
 
         }
 

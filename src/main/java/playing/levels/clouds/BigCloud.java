@@ -1,0 +1,47 @@
+package playing.levels.clouds;
+
+import utilz.LoadSave;
+
+import java.awt.*;
+
+import static utilz.Constants.TextureConstants.Level.LEVEL_LOCATION_TEXTURES;
+import static utilz.Constants.TextureConstants.Level.LVL_CLOUDS_BIG_PNG;
+
+public class BigCloud extends Cloud {
+
+    public static final int BIG_CLOUD_WIDTH_DEFAULT = 448;
+    public static final int BIG_CLOUD_HEIGHT_DEFAULT = 101;
+
+    public BigCloud(int x, int y) {
+        super(x * BIG_CLOUD_WIDTH_DEFAULT, y);
+        cloudSpeed = 0.2;
+        loadCloudImg();
+    }
+
+    private void loadCloudImg() {
+        cloud = LoadSave.GetSpriteAtlas(LEVEL_LOCATION_TEXTURES, LVL_CLOUDS_BIG_PNG);
+    }
+
+    @Override
+    public void update() {
+        x -= cloudSpeed;
+    }
+
+    @Override
+    public void draw(Graphics g, float scale, int lvlOffsetX, int lvlOffsetY) {
+        g.drawImage(cloud,
+                (int) ((x) * scale),
+                (int) (y * scale),
+                (int) (BIG_CLOUD_WIDTH_DEFAULT * scale),
+                (int) (BIG_CLOUD_HEIGHT_DEFAULT * scale),
+                null);
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+}

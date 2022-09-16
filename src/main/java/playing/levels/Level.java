@@ -1,15 +1,17 @@
 package playing.levels;
 
+import main.Game;
 import playing.PlayingDrawInterface;
 import playing.PlayingUpdateInterface;
+import playing.levels.clouds.CloudManager;
 import utilz.LoadSave;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.Random;
 
 import static utilz.Constants.GameWindowConstants.*;
-import static utilz.Constants.TextureConstants.Level.LEVEL_LOCATION_TEXTURES;
-import static utilz.Constants.TextureConstants.Level.LVL_TEXTURES_PNG;
+import static utilz.Constants.TextureConstants.Level.*;
 
 public class Level implements PlayingUpdateInterface, PlayingDrawInterface {
 
@@ -17,13 +19,19 @@ public class Level implements PlayingUpdateInterface, PlayingDrawInterface {
     private BufferedImage[] levelSprite;
     private int[][] lvlData;
 
+    private BufferedImage backgroundImg;
+
+    private CloudManager cloudManager;
+
     private int maxLvlOffsetX, maxLvlOffsetY;
 
     public Level(BufferedImage levelImg) {
         this.levelImg = levelImg;
         GetLevelData(levelImg);
+        loadBackgroundImages();
         calcLvlOffset();
         importOutsideSprites();
+        cloudManager = new CloudManager();
     }
 
     private void GetLevelData(BufferedImage levelImg) {
@@ -39,6 +47,10 @@ public class Level implements PlayingUpdateInterface, PlayingDrawInterface {
             }
 
         this.lvlData = lvlData;
+    }
+
+    private void loadBackgroundImages() {
+        backgroundImg = LoadSave.GetSpriteAtlas(LEVEL_LOCATION_TEXTURES, LVL_BACKGROUND_PNG);
     }
 
     private void calcLvlOffset() {
@@ -65,12 +77,14 @@ public class Level implements PlayingUpdateInterface, PlayingDrawInterface {
 
     @Override
     public void update() {
-
+        cloudManager.update();
     }
 
 
     @Override
     public void draw(Graphics g, float scale, int lvlOffsetX, int lvlOffsetY) {
+        drawBackground(g, scale, lvlOffsetX, lvlOffsetY);
+        cloudManager.draw(g, scale, lvlOffsetX, lvlOffsetY);
         drawLvlSprite(g, scale, lvlOffsetX, lvlOffsetY);
     }
 
@@ -85,6 +99,13 @@ public class Level implements PlayingUpdateInterface, PlayingDrawInterface {
                         (int) (TILE_SIZE_DEFAULT * scale), (int) (TILE_SIZE_DEFAULT * scale), null);
             }
         }
+    }
+
+    private void drawBackground(Graphics g, float scale, int lvlOffsetX, int lvlOffsetY) {
+        g.drawImage(backgroundImg, 0, 0,
+                (int) (GAME_WIDTH_DEFAULT * scale),
+                (int) (GAME_HEIGHT_DEFAULT * scale),
+                null);
     }
 
 
