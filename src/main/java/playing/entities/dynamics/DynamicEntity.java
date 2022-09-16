@@ -7,6 +7,8 @@ import java.awt.geom.Rectangle2D;
 public abstract class DynamicEntity extends Entity {
 
     private EnemyManager enemyManager;
+    private boolean isActive = true;
+
 
     public DynamicEntity(double x, double y) {
         super(x, y);
@@ -49,5 +51,13 @@ public abstract class DynamicEntity extends Entity {
 
     public boolean checkPlayerHit(Rectangle2D.Double attackBox) {
         return enemyManager.checkPlayerHit(attackBox);
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
     }
 }

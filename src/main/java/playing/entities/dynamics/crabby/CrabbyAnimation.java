@@ -7,8 +7,7 @@ import utilz.LoadSave;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-import static playing.entities.dynamics.crabby.CrabbyAnimation.AnimationState.IDLE;
-import static playing.entities.dynamics.crabby.CrabbyAnimation.AnimationState.animationState;
+import static playing.entities.dynamics.crabby.CrabbyAnimation.AnimationState.*;
 import static utilz.Constants.GameConstants.ANI_SPEED;
 import static utilz.Constants.TextureConstants.Entity.CRABBY_SPRITE_PNG;
 import static utilz.Constants.TextureConstants.Entity.ENTITY_LOCATION_TEXTURES;
@@ -30,6 +29,9 @@ public class CrabbyAnimation extends CrabbyModule implements PlayingDrawInterfac
     private int aniTick, aniIndex;
     private int flipW = 1;
     private int flipX = 0;
+
+    private boolean dead;
+    private boolean pause;
 
     public CrabbyAnimation(Crabby crabby) {
         super(crabby);
@@ -68,6 +70,12 @@ public class CrabbyAnimation extends CrabbyModule implements PlayingDrawInterfac
             aniTick = 0;
             aniIndex++;
             if (aniIndex >= GetSpriteAmount()) {
+                if (animationState == DEAD) {
+                    crabby.setActive(false);
+                }
+                if (animationState == HIT) {
+                    pause = false;
+                }
                 animationState = IDLE;
                 aniIndex = 0;
             }
@@ -107,6 +115,15 @@ public class CrabbyAnimation extends CrabbyModule implements PlayingDrawInterfac
     }
 
     public void setAnimationState(AnimationState state) {
+        if (dead || pause) {
+            return;
+        }
+        if (state == DEAD) {
+            dead = true;
+        }
+        if (state == HIT) {
+            pause = true;
+        }
         animationState = state;
         aniIndex = 0;
     }
@@ -114,7 +131,7 @@ public class CrabbyAnimation extends CrabbyModule implements PlayingDrawInterfac
     public AnimationState getAnimationState() {
         return animationState;
     }
-    
+
 
     public int getAniIndex() {
         return aniIndex;

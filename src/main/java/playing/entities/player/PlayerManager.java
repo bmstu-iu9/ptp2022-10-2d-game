@@ -91,4 +91,13 @@ public class PlayerManager implements PlayingUpdateInterface, PlayingDrawInterfa
     public void attackPlayer(int damage) {
         player.attackPlayer(damage);
     }
+
+    public void attackEnemy(Rectangle2D.Double attackBox, int damage) {
+        entityLevelManager.attackEnemy(attackBox, damage);
+    }
+
+    public void setSpawnPlayer(int x, int y) {
+        player.setX(x);
+        player.setY(y);
+    }
 }

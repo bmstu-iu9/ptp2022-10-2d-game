@@ -20,7 +20,6 @@ public class PlayerModuleManager implements PlayingUpdateInterface, PlayingDrawI
     private PlayerOutPut playerOutPut;
     private PlayerListener playerListener;
 
-    private PlayerHitBox playerHitBox;
     private PlayerMove playerMove;
     private PlayerAttack playerAttack;
     private PlayerStatusBar playerStatusBar;
@@ -37,20 +36,20 @@ public class PlayerModuleManager implements PlayingUpdateInterface, PlayingDrawI
         playerOutPut = new PlayerOutPut(this);
         playerListener = new PlayerListener(this);
 
-        playerHitBox = new PlayerHitBox(this, getPlayerX(), getPlayerY(), 20, 27);
         playerAttack = new PlayerAttack(this,
-                (int) (playerHitBox.getHitBox().x + playerHitBox.getHitBox().width) + 3,
-                (int) playerHitBox.getHitBox().y, 20 ,20);
+                (int) (player.getHitBox().x + player.getHitBox().width) + 3,
+                (int) player.getHitBox().y, 20, 20);
         playerMove = new PlayerMove(this);
         playerAnimation = new PlayerAnimation(this);
         playerStatusBar = new PlayerStatusBar(this);
     }
-    public void setPlayerX(double x) {
-        player.setX(x);
+
+    public void updateHitBoxX(double x) {
+        player.setX(player.getX() + x);
     }
 
-    public void setPlayerY(double y) {
-        player.setY(y);
+    public void updateHitBoxY(double y) {
+        player.setY(player.getY() + y);
     }
 
     public int getPlayerX() {
@@ -75,7 +74,7 @@ public class PlayerModuleManager implements PlayingUpdateInterface, PlayingDrawI
 
     @Override
     public void draw(Graphics g, float scale, int lvlOffsetX, int lvlOffsetY) {
-        playerHitBox.draw(g, scale, lvlOffsetX, lvlOffsetY);
+        player.drawHitBox(g, scale, lvlOffsetX, lvlOffsetY);
         playerAttack.draw(g, scale, lvlOffsetX, lvlOffsetY);
         playerAnimation.draw(g, scale, lvlOffsetX, lvlOffsetY);
         playerStatusBar.draw(g, scale, lvlOffsetX, lvlOffsetY);
@@ -108,9 +107,6 @@ public class PlayerModuleManager implements PlayingUpdateInterface, PlayingDrawI
         return playerListener;
     }
 
-    public PlayerHitBox getPlayerHitBox() {
-        return playerHitBox;
-    }
 
     public PlayerMove getPlayerMove() {
         return playerMove;
@@ -135,7 +131,7 @@ public class PlayerModuleManager implements PlayingUpdateInterface, PlayingDrawI
 
 
     public boolean IsPlayerOnFloor() {
-        return player.IsPlayerOnFloor(playerHitBox.getHitBox());
+        return player.IsPlayerOnFloor(player.getHitBox());
     }
 
     public boolean CanMoveHere(Rectangle2D.Double hitBox) {
@@ -146,4 +142,11 @@ public class PlayerModuleManager implements PlayingUpdateInterface, PlayingDrawI
         playerStatusBar.decreasePower(damage);
     }
 
+    public Rectangle2D.Double getHitBox() {
+        return player.getHitBox();
+    }
+
+    public void attackEnemy(Rectangle2D.Double attackBox, int damage) {
+        player.attackEnemy(attackBox, damage);
+    }
 }

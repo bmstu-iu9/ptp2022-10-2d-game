@@ -60,8 +60,7 @@ public class PlayingGame implements GamePanelInterface,
     public void nextLevel() {
         levelManager.nextLevel();
         currentLevel = levelManager.getCurrentLevel();
-        playerManager = new PlayerManager(entityLevelManager);
-
+        playerManager.setSpawnPlayer(100, 100);
 
         initCurrentLevelManager();
         calcLvlOffset();
@@ -139,8 +138,7 @@ public class PlayingGame implements GamePanelInterface,
 
     public void resetAll() {
         playerManager.resetAll();
-        enemyManager.resetAll();
-        objectManager.resetAll();
+        initCurrentLevelManager();
     }
 
     public void resetDirBooleans() {
@@ -158,5 +156,9 @@ public class PlayingGame implements GamePanelInterface,
 
     public void attackPlayer(int damage) {
         playerManager.attackPlayer(damage);
+    }
+
+    public void attackEnemy(Rectangle2D.Double attackBox, int damage) {
+        enemyManager.attackEnemy(attackBox, damage);
     }
 }

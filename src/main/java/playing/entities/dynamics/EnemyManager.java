@@ -35,7 +35,9 @@ public class EnemyManager implements PlayingUpdateInterface, PlayingDrawInterfac
 
     private void updateCrabbies() {
         for (Crabby crabby : crabbies) {
-            crabby.update();
+            if (crabby.isActive()) {
+                crabby.update();
+            }
         }
     }
 
@@ -46,7 +48,19 @@ public class EnemyManager implements PlayingUpdateInterface, PlayingDrawInterfac
 
     private void drawCrabbies(Graphics g, float scale, int lvlOffsetX, int lvlOffsetY) {
         for (Crabby crabby : crabbies) {
-            crabby.draw(g, scale, lvlOffsetX, lvlOffsetY);
+            if (crabby.isActive()) {
+                crabby.draw(g, scale, lvlOffsetX, lvlOffsetY);
+            }
+        }
+    }
+
+    public void attackEnemy(Rectangle2D.Double attackBox, int damage) {
+        for (Crabby crabby : crabbies) {
+            if (crabby.isActive()) {
+                if (attackBox.intersects(crabby.getHitBox())) {
+                    crabby.attackEnemy(damage);
+                }
+            }
         }
     }
 

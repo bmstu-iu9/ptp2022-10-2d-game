@@ -58,7 +58,7 @@ public class PlayerMove extends PlayerModule implements PlayingKeyListenerInterf
         }
 
         if (!onFloor) {
-            Rectangle2D.Double oldHitBox = playerModuleManager.getPlayerHitBox().getHitBox();
+            Rectangle2D.Double oldHitBox = playerModuleManager.getHitBox();
             Rectangle2D.Double newHitBox = new Rectangle2D.Double(
                     oldHitBox.x, oldHitBox.y + ySpeed,
                     oldHitBox.width, oldHitBox.height);
@@ -82,7 +82,7 @@ public class PlayerMove extends PlayerModule implements PlayingKeyListenerInterf
             }
         }
 
-        Rectangle2D.Double oldHitBox = playerModuleManager.getPlayerHitBox().getHitBox();
+        Rectangle2D.Double oldHitBox = playerModuleManager.getHitBox();
         Rectangle2D.Double newHitBox = new Rectangle2D.Double(
                 oldHitBox.x + xSpeed, oldHitBox.y,
                 oldHitBox.width, oldHitBox.height);
@@ -103,11 +103,11 @@ public class PlayerMove extends PlayerModule implements PlayingKeyListenerInterf
     }
 
     private void updateXPos(double xSpeed) {
-        playerModuleManager.getPlayerHitBox().updateHitBoxX(xSpeed);
+        playerModuleManager.updateHitBoxX(xSpeed);
     }
 
     private void updateYPos(double ySpeed) {
-        playerModuleManager.getPlayerHitBox().updateHitBoxY(ySpeed);
+        playerModuleManager.updateHitBoxY(ySpeed);
     }
 
     @Override

@@ -86,7 +86,7 @@ public class PlayerAnimation extends PlayerModule implements PlayingUpdateInterf
 
     @Override
     public void draw(Graphics g, float scale, int lvlOffsetX, int lvlOffsetY) {
-        Rectangle2D.Double hitBox = playerModuleManager.getPlayerHitBox().getHitBox();
+        Rectangle2D.Double hitBox = playerModuleManager.getHitBox();
         BufferedImage bufferedImage = animations[animationState.ordinal()][aniIndex];
         g.drawImage(bufferedImage,
                 (int) ((hitBox.x - 21 - lvlOffsetX + flipX) * scale),

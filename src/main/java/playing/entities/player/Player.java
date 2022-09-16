@@ -75,4 +75,7 @@ public class Player extends Entity implements PlayingUpdateInterface, PlayingDra
     public void attackPlayer(int damage) {
         playerModuleManager.attackPlayer(damage);
     }
+    public void attackEnemy(Rectangle2D.Double attackBox, int damage) {
+        playerManager.attackEnemy(attackBox, damage);
+    }
 }
