@@ -71,6 +71,7 @@ public class PlayingGame implements GamePanelInterface,
         enemyManager.update();
         objectManager.update();
         checkCloseToBorder();
+        objectManager.checkSpikesTouched(playerManager.getPlayer());
     }
 
     private void checkCloseToBorder() {

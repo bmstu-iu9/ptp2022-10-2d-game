@@ -1,5 +1,6 @@
 package playing.entities.player;
 
+import gamestates.playingstates.EnumPlayState;
 import playing.entities.Entity;
 import playing.PlayingDrawInterface;
 import playing.PlayingKeyListenerInterface;
@@ -18,7 +19,7 @@ public class Player extends Entity implements PlayingUpdateInterface, PlayingDra
     private PlayerModuleManager playerModuleManager;
 
     public Player(PlayerManager playerManager, int x, int y) {
-        super(x, y);
+        super(x, y, 20, 27);
         this.playerManager = playerManager;
         initClasses();
     }
@@ -61,8 +62,8 @@ public class Player extends Entity implements PlayingUpdateInterface, PlayingDra
     }
 
 
-    public PlayerModuleManager getPlayerModulesManager() {
-        return playerModuleManager;
+    public void kill() {
+        EnumPlayState.state = EnumPlayState.GAME_OVER;
     }
 
     public boolean IsPlayerOnFloor(Rectangle2D.Double hitBox) {

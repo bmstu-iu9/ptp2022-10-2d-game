@@ -30,15 +30,7 @@ public class PlayerHitBox extends PlayerModule implements PlayingUpdateInterface
 
     @Override
     public void draw(Graphics g, float scale, int lvlOffsetX, int lvlOffsetY) {
-        drawHitBox(g, scale, lvlOffsetX, lvlOffsetY);
-    }
-
-    private void drawHitBox(Graphics g, float scale, int LvlOffsetX, int LvlOffsetY) {
-        g.setColor(Color.PINK);
-        g.drawRect((int) ((hitBox.x - LvlOffsetX) * scale),
-                (int) ((hitBox.y - LvlOffsetY) * scale),
-                (int) (hitBox.width * scale),
-                (int) (hitBox.height * scale));
+        playerModuleManager.drawHitBox(g, scale, lvlOffsetX, lvlOffsetY);
     }
 
     public Rectangle2D.Double getHitBox() {

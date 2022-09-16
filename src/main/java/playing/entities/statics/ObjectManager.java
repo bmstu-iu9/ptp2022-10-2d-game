@@ -3,6 +3,7 @@ package playing.entities.statics;
 import playing.PlayingDrawInterface;
 import playing.PlayingGame;
 import playing.PlayingUpdateInterface;
+import playing.entities.player.Player;
 import playing.levels.Level;
 
 import java.awt.*;
@@ -37,6 +38,15 @@ public class ObjectManager implements PlayingUpdateInterface, PlayingDrawInterfa
             spike.draw(g, scale, lvlOffsetX, lvlOffsetY);
         }
     }
+
+    public void checkSpikesTouched(Player p) {
+        for (Spike s : spikes) {
+            if (s.getHitBox().intersects(p.getHitBox())) {
+                p.kill();
+            }
+        }
+    }
+
 
     public void resetAll() {
 

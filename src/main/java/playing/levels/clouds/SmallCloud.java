@@ -24,24 +24,16 @@ public class SmallCloud extends Cloud {
 
     @Override
     public void update() {
-        x -= cloudSpeed;
+        hitBox.x -=cloudSpeed;
     }
 
     @Override
     public void draw(Graphics g, float scale, int lvlOffsetX, int lvlOffsetY) {
         g.drawImage(cloud,
-                (int) ((x) * scale),
-                (int) (y * scale),
+                (int) ((hitBox.x) * scale),
+                (int) (hitBox.y * scale),
                 (int) (SMALL_CLOUD_WIDTH_DEFAULT * scale),
                 (int) (SMALL_CLOUD_HEIGHT_DEFAULT * scale),
                 null);
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public void setY(int y) {
-        this.y = y;
     }
 }

@@ -61,6 +61,10 @@ public class PlayerModuleManager implements PlayingUpdateInterface, PlayingDrawI
         return (int) player.getY();
     }
 
+    public void drawHitBox(Graphics g, float scale, int LvlOffsetX, int LvlOffsetY) {
+        player.drawHitBox(g, scale, LvlOffsetX, LvlOffsetY);
+    }
+
 
     @Override
     public void update() {

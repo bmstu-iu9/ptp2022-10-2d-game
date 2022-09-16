@@ -4,26 +4,36 @@ import java.awt.*;
 import java.awt.geom.Rectangle2D;
 
 public abstract class Entity {
-    protected double x, y;
 
+    protected Rectangle2D.Double hitBox;
     public Entity(double x, double y) {
-        this.x = x;
-        this.y = y;
+        hitBox = new Rectangle2D.Double(x, y, 0 ,0);
     }
 
-    public void setX(double x) {
-        this.x = x;
+    public Entity(double x, double y, double width, double height) {
+        this.hitBox = new Rectangle2D.Double(x, y, width, height);
+    }
+    public void drawHitBox(Graphics g, float scale, int LvlOffsetX, int LvlOffsetY) {
+        g.drawRect((int) ((hitBox.x - LvlOffsetX) * scale),
+                (int) ((hitBox.y - LvlOffsetY) * scale),
+                (int) (hitBox.width * scale),
+                (int) (hitBox.height * scale));
     }
 
-
-    public void setY(double y) {
-        this.y = y;
+    public Rectangle2D.Double getHitBox() {
+        return new Rectangle2D.Double(hitBox.x, hitBox.y, hitBox.width, hitBox.height);
     }
 
     public double getX() {
-        return x;
+        return hitBox.x;
     }
     public double getY() {
-        return y;
+        return hitBox.y;
+    }
+    public void setX(double x) {
+        hitBox.x = x;
+    }
+    public void setY(double y) {
+        hitBox.y = y;
     }
 }
