@@ -24,7 +24,9 @@ public class Constants {
 
     public static class GameConstants {
         public final static float GRAVITY = 0.035f;
-        public static final float ANI_SPEED = 25;
+        public static final float ANI_SPEED_ENEMY = 25;
+
+        public static final float ANI_SPEED_OBJECT = 50;
 
     }
 
@@ -107,6 +109,7 @@ public class Constants {
                 public static final int OBJECT_INDEX_SPIKE_UP = 2;
                 public static final int OBJECT_INDEX_SPIKE_LEFT = 3;
                 public static final int OBJECT_INDEX_SPIKE_RIGHT = 4;
+                public static final int OBJECT_INDEX_COIN = 65;
                 public static final int OBJECT_INDEX_PORTAL = 108;
             }
 
@@ -124,6 +127,10 @@ public class Constants {
                 public static final int SPIKE_HEIGHT_DEFAULT_UD = 16;
                 public static final int SPIKE_WIDTH_DEFAULT_LR = 16;
                 public static final int SPIKE_HEIGHT_DEFAULT_LR = 32;
+            }
+            public static final class Coin {
+                public static final int COIN_WIDTH_DEFAULT = 32;
+                public static final int COIN_HEIGHT_DEFAULT = 32;
             }
             public static final class Portal {
                 public static final int PORTAL_WIDTH_DEFAULT = 32;
@@ -208,6 +215,7 @@ public class Constants {
         public static final class Entity {
             public static final String ENTITY_LOCATION_TEXTURES = "entity";
 
+            public static final String COIN_ATLAS_PNG = "coin_atlas.png";
             public static final String TRAP_ATLAS_PNG = "trap_atlas.png";
             public static final String PORTAL_ATLAS_PNG = "portal_atlas.png";
             public static final String CRABBY_SPRITE_PNG = "crabby_sprite.png";

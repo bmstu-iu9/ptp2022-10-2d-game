@@ -11,7 +11,7 @@ import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
 import static playing.entities.player.playerModules.PlayerAnimation.AnimationState.*;
-import static utilz.Constants.GameConstants.ANI_SPEED;
+import static utilz.Constants.GameConstants.ANI_SPEED_ENEMY;
 import static utilz.Constants.TextureConstants.Player.PLAYER_LOCATION_TEXTURES;
 import static utilz.Constants.TextureConstants.Player.PLAYER_SPRITES_PNG;
 
@@ -65,7 +65,7 @@ public class PlayerAnimation extends PlayerModule implements PlayingUpdateInterf
 
     private void updateAnimationTick() {
         aniTick++;
-        if (aniTick >= ANI_SPEED) {
+        if (aniTick >= ANI_SPEED_ENEMY) {
             aniTick = 0;
             aniIndex++;
             if (aniIndex >= GetSpriteAmount()) {

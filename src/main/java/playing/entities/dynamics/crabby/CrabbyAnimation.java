@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 import static playing.entities.dynamics.crabby.CrabbyAnimation.AnimationState.*;
-import static utilz.Constants.GameConstants.ANI_SPEED;
+import static utilz.Constants.GameConstants.ANI_SPEED_ENEMY;
 import static utilz.Constants.TextureConstants.Entity.CRABBY_SPRITE_PNG;
 import static utilz.Constants.TextureConstants.Entity.ENTITY_LOCATION_TEXTURES;
 
@@ -66,7 +66,7 @@ public class CrabbyAnimation extends CrabbyModule implements PlayingDrawInterfac
 
     private void updateAnimationTick() {
         aniTick++;
-        if (aniTick >= ANI_SPEED) {
+        if (aniTick >= ANI_SPEED_ENEMY) {
             aniTick = 0;
             aniIndex++;
             if (aniIndex >= GetSpriteAmount()) {
