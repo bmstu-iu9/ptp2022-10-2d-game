@@ -172,7 +172,11 @@ public class Constants {
         }
 
         public static final class Player {
-//            public static final String PLAYER_SPRITES_PNG = "player_sprites.png";
+            public static final String PLAYER_LOCATION_TEXTURES = "player";
+
+            public static final String PLAYER_SPRITES_PNG = "player_sprites.png";
+            public static final String HEALTH_POWER_BAR = "health_power_bar.png";
+
         }
 
     }
