@@ -6,15 +6,11 @@ import gamestates.Playing;
 import utilz.Debug;
 
 import java.awt.*;
-
-public class Game implements Runnable {
-
-    private static final int FPS_SET = 120;
-    private static final int UPS_SET = 200;
-
+import static utilz.Constants.GameWindowConstants.FPS_SET;
+import static utilz.Constants.GameWindowConstants.UPS_SET;
+public class Game implements Runnable{
     private GamePanel gamePanel;
     private Debug debug;
-
     private Menu menu;
     private Playing playing;
 
