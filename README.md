@@ -43,4 +43,4 @@ The goal of the game is to collect all the coins on the level and enter the port
 attack: ```LBM```  
 left: ```A```  
 right:```D```  
-jump: ```W```  
+jump: ```SHIFT```  
