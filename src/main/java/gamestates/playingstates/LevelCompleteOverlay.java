@@ -128,7 +128,20 @@ public class LevelCompleteOverlay extends PlayState {
 
     @Override
     public void keyPressed(KeyEvent e, float scale) {
-
+        switch (e.getKeyCode()) {
+            case KeyEvent.VK_ESCAPE:
+                playing.resetAll();
+                EnumGameState.state = EnumGameState.MENU;
+                EnumPlayState.state = EnumPlayState.PLAYING;
+                playing.resetDirBooleans();
+                break;
+            case KeyEvent.VK_SPACE:
+            case KeyEvent.VK_ENTER:
+                playing.nextLevel();
+                EnumPlayState.state = EnumPlayState.PLAYING;
+                playing.resetDirBooleans();
+                break;
+        }
     }
 
     @Override
