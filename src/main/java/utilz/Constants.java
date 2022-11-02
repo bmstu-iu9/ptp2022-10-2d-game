@@ -21,11 +21,13 @@ public class Constants {
     }
 
     public static class GameConstants {
-        public final static float GRAVITY = 0.035f;
         public static final float ANI_SPEED_ENEMY = 25;
 
         public static final float ANI_SPEED_OBJECT = 50;
 
+        public static float GRAVITY = 0.035f; //NOT FINAL!!! Keep it this way pls.
+        public static float TEMP_GRAVITY = -1.0f;
+        public static float COU = 0;
     }
 
     public static class UI {
@@ -46,6 +48,19 @@ public class Constants {
             public static final int BUTTON_HEIGHT_DEFAULT = 56;
         }
 
+        public static class DebugModeCheats {
+            public static final int COUNT_BUTTONS = 2;
+
+            public static final int APPLY = 0;
+            public static final int ZERO_GRAVITY_CHEAT = 1;
+
+            public static final int BUTTON_WIDTH_DEFAULT = 140;
+            public static final int BUTTON_HEIGHT_DEFAULT = 56;
+
+            public static final int CHEAT_WIDTH_DEFAULT = 222;
+            public static final int CHEAT_HEIGHT_DEFAULT = 27;
+        }
+
         public static class SoundButtons {
             public static final int MUTED_OFF = 0;
             public static final int MUTED_ON = 1;
@@ -59,6 +74,12 @@ public class Constants {
             public static final int URM_MENU = 2;
 
             public static final int URM_DEFAULT_SIZE = 56;
+        }
+
+        public static class DebugModeSummon {
+            public static final int DM_SUMMON = 0;
+
+            public static final int DM_SUMMON_DEFAULT_SIZE = 56;
         }
 
         public static class VolumeButtons {
@@ -80,6 +101,9 @@ public class Constants {
 
                 public static final int PAUSE_VOLUME_POS_X = 309;
                 public static final int PAUSE_VOLUME_POS_Y = 278;
+
+                public static final int DEBUG_MODE_POS_X = 508;
+                public static final int DEBUG_MODE_POS_Y = 93;
             }
 
             public static class GameOver {
@@ -166,6 +190,16 @@ public class Constants {
 
 
     public static final class TextureConstants {
+        public static final class DebugMode {
+            public static final String DEBUG_MODE_LOCATION_TEXTURES = "debug_mode";
+
+            public static final String DEBUG_MODE_ATLAS_PNG = "debug_mode_atlas.png";
+            public static final String DEBUG_MODE_BACKGROUND_PNG = "debug_mode_background.png";
+            public static final String DEBUG_MODE_BUTTONS_PNG = "debug_mode_buttons.png";
+
+            public static final String ZG_CHEAT_BUTTONS_PNG = "zero_gravity_cheat.png";
+        }
+
         public static final class Menu {
             public static final String MENU_LOCATION_TEXTURES = "menu";
 
@@ -190,7 +224,7 @@ public class Constants {
             public static final String OVERLAY_URM_BUTTONS_PNG = "overlay_urm_buttons.png";
             public static final String OVERLAY_VOLUME_BUTTONS_PNG = "overlay_volume_buttons.png";
 
-
+            public static final String OVERLAY_DEBUG_MODE_SUMMON_PNG = "debug_mode_summon_button.png";
         }
 
         public static final class Level {

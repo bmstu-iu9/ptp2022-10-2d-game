@@ -140,8 +140,11 @@ public class PlayingGame implements GamePanelInterface,
         initCurrentLevelManager();
     }
 
-    public void resetDirBooleans() {
-        playerManager.resetDirBooleans();
+    public void resetHorBooleans() {
+        playerManager.resetHorBooleans();
+    }
+    public void resetVertBooleans() {
+        playerManager.resetVertBooleans();
     }
 
     public LevelManager getLevelManager() {
