@@ -49,16 +49,20 @@ public class Constants {
         }
 
         public static class DebugModeCheats {
-            public static final int COUNT_BUTTONS = 2;
+            public static final int COUNT_BUTTONS = 4;
 
             public static final int APPLY = 0;
             public static final int ZERO_GRAVITY_CHEAT = 1;
+            public static final int LEVEL_SELECT_1 = 2;
+            public static final int LEVEL_SELECT_2 = 3;
+            public static final int LEVEL_SELECT_3 = 4;
 
             public static final int BUTTON_WIDTH_DEFAULT = 140;
             public static final int BUTTON_HEIGHT_DEFAULT = 56;
 
             public static final int CHEAT_WIDTH_DEFAULT = 222;
             public static final int CHEAT_HEIGHT_DEFAULT = 27;
+            public static final int CHEAT_BUTTON_OFFSET = 30;
         }
 
         public static class SoundButtons {
@@ -197,7 +201,7 @@ public class Constants {
             public static final String DEBUG_MODE_BACKGROUND_PNG = "debug_mode_background.png";
             public static final String DEBUG_MODE_BUTTONS_PNG = "debug_mode_buttons.png";
 
-            public static final String ZG_CHEAT_BUTTONS_PNG = "zero_gravity_cheat.png";
+            public static final String CHEATS_BUTTONS_PNG = "cheats_buttons.png";
         }
 
         public static final class Menu {

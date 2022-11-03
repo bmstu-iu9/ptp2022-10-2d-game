@@ -1,5 +1,5 @@
 package gamestates;
-
+import gamestates.EnumGameState;
 import ui.debug_mode.DebugModeCheat;
 import ui.debug_mode.DebugModeCheatList;
 import utilz.LoadSave;
@@ -17,18 +17,19 @@ import static utilz.Constants.GameConstants.*;
 public class DebugMode extends GameState implements GamePanelInterface, GamePanelListenerInterface {
 
     private float scale;
-
+    private Playing playing;
 
     private final DebugModeCheat[] buttons = new DebugModeCheat[1];
-    private final DebugModeCheatList[] cheats = new DebugModeCheatList[COUNT_BUTTONS - 1];
+    private final DebugModeCheatList[] cheats = new DebugModeCheatList[COUNT_BUTTONS];
     private BufferedImage debug_modeImg, backgroundImg;
     private int debug_modeX, debug_modeY, debug_modeWidth, debug_modeHeight;
 
-    public DebugMode() {
+    public DebugMode(Playing playing) {
         loadBackgroundImg();
         loadButtons();
         loadCheats();
         calcBorder();
+        this.playing = playing;
     }
 
     private void loadBackgroundImg() {
@@ -49,6 +50,18 @@ public class DebugMode extends GameState implements GamePanelInterface, GamePane
                 GAME_WIDTH_DEFAULT / 2,
                 GAME_HEIGHT_DEFAULT / 2,
                 ZERO_GRAVITY_CHEAT, EnumGameState.PLAYING);
+        cheats[1] = new DebugModeCheatList(
+                GAME_WIDTH_DEFAULT / 2,
+                GAME_HEIGHT_DEFAULT / 2 + CHEAT_BUTTON_OFFSET,
+                LEVEL_SELECT_1, EnumGameState.PLAYING);
+        cheats[2] = new DebugModeCheatList(
+                GAME_WIDTH_DEFAULT / 2,
+                GAME_HEIGHT_DEFAULT / 2 + CHEAT_BUTTON_OFFSET * 2,
+                LEVEL_SELECT_2, EnumGameState.PLAYING);
+        cheats[3] = new DebugModeCheatList(
+                GAME_WIDTH_DEFAULT / 2,
+                GAME_HEIGHT_DEFAULT / 2 + CHEAT_BUTTON_OFFSET * 3,
+                LEVEL_SELECT_3, EnumGameState.PLAYING);
     }
 
     private void calcBorder() {
@@ -99,6 +112,8 @@ public class DebugMode extends GameState implements GamePanelInterface, GamePane
 
     @Override
     public void mousePressed(MouseEvent e, float scale) {
+        if (EnumGameState.state != EnumGameState.DEBUG_MODE)
+            return;
         for (DebugModeCheat dmb : buttons) {
             if (isIn(e, dmb, scale)) {
                 dmb.setMousePressed(true);
@@ -127,28 +142,38 @@ public class DebugMode extends GameState implements GamePanelInterface, GamePane
 
         for (DebugModeCheatList dmb : cheats) {
             if (isIn(e, dmb, scale)) {
-                if (COU%2 == 1) {
-                    GRAVITY = 0.035f;
-                    TEMP_GRAVITY = GRAVITY;
+                if (dmb.isMousePressed()) {
+                    switch (dmb.getTypeButton()) {
+                        case ZERO_GRAVITY_CHEAT:
+                            if (COU % 2 == 1) {
+                                GRAVITY = 0.035f;
+                                TEMP_GRAVITY = GRAVITY;
 
-                    dmb.applyGameState();
+                                dmb.applyGameState();
 
-                    COU++;
-                    break;
-                }
-                 else if (dmb.isMousePressed() && GRAVITY == 0.035f) {
-                    GRAVITY = 0.00f;
-                    TEMP_GRAVITY = GRAVITY;
+                                COU++;
+                                break;
+                            } else if (GRAVITY == 0.035f) {
+                                GRAVITY = 0.00f;
+                                TEMP_GRAVITY = GRAVITY;
 
-                    dmb.applyGameState();
+                                dmb.applyGameState();
 
-                    COU++;
-                    break;
-                } else {
-                    dmb.applyGameState();
+                                COU++;
+                                break;
+                            } else {
+                                dmb.applyGameState();
 
-                    COU++;
-                    break;
+                                COU++;
+                                break;
+                            }
+                        case LEVEL_SELECT_1:
+                        case LEVEL_SELECT_2:
+                        case LEVEL_SELECT_3:
+                            playing.setLevel(dmb.getTypeButton() - 2);
+                            dmb.applyGameState();
+                            break;
+                    }
                 }
             }
         }
