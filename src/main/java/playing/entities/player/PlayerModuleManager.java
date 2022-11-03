@@ -158,4 +158,8 @@ public class PlayerModuleManager implements PlayingUpdateInterface, PlayingDrawI
     public int getCoins() {
         return playerStatusBar.getCoins();
     }
+
+    public void heal() {
+        playerStatusBar.increaseHealth(playerStatusBar.getMaxHealth());
+    }
 }

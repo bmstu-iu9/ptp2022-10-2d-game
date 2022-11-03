@@ -76,6 +76,7 @@ public class PlayingGame implements GamePanelInterface,
         objectManager.checkSpikesTouched(playerManager.getPlayer());
         objectManager.checkPortalTouched(playerManager.getPlayer());
         objectManager.checkCoinsTouched(playerManager.getPlayer());
+        objectManager.checkHeartsTouched(playerManager.getPlayer());
     }
 
     private void checkCloseToBorder() {
