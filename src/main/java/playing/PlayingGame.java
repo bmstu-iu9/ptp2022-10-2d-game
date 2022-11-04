@@ -132,7 +132,15 @@ public class PlayingGame implements GamePanelInterface,
 
     @Override
     public void keyReleased(KeyEvent e) {
-        playerManager.keyReleased(e);
+        switch (e.getKeyCode()) {
+            case KeyEvent.VK_H:
+                setNightOrDay();
+                break;
+            default:
+                playerManager.keyReleased(e);
+                break;
+        }
+
     }
 
     public void resetAll() {
@@ -158,5 +166,9 @@ public class PlayingGame implements GamePanelInterface,
 
     public void attackEnemy(Rectangle2D.Double attackBox, int damage) {
         enemyManager.attackEnemy(attackBox, damage);
+    }
+
+    public void setNightOrDay() {
+        currentLevel.setNightOrDay();
     }
 }
