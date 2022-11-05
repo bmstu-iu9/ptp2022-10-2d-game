@@ -9,15 +9,17 @@ import utilz.LoadSave;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 import static playing.entities.player.playerModules.PlayerAnimation.AnimationState.*;
+import static playing.entities.player.playerModules.PlayerAnimation.AnimationType.*;
 import static utilz.Constants.GameConstants.ANI_SPEED_ENEMY;
-import static utilz.Constants.TextureConstants.Player.PLAYER_LOCATION_TEXTURES;
-import static utilz.Constants.TextureConstants.Player.PLAYER_SPRITES_PNG;
+import static utilz.Constants.TextureConstants.Player.*;
 
 public class PlayerAnimation extends PlayerModule implements PlayingUpdateInterface, PlayingDrawInterface {
 
-    private BufferedImage[][] animations;
+    private ArrayList<BufferedImage[][]> animations = new ArrayList<>();
+    private int shotCount = 0;
 
     public enum AnimationState {
         IDLE,
@@ -29,6 +31,13 @@ public class PlayerAnimation extends PlayerModule implements PlayingUpdateInterf
         DEAD;
 
         public static AnimationState animationState = IDLE;
+    }
+
+    public enum AnimationType{
+        SWORD,
+        PISTOL;
+
+        public static AnimationType animationType = SWORD;
     }
 
     protected Rectangle2D.Double animationBox;
@@ -51,10 +60,18 @@ public class PlayerAnimation extends PlayerModule implements PlayingUpdateInterf
 
     private void loadImages() {
         BufferedImage img = LoadSave.GetSpriteAtlas(PLAYER_LOCATION_TEXTURES, PLAYER_SPRITES_PNG);
-        animations = new BufferedImage[7][8];
-        for (int j = 0; j < animations.length; j++)
-            for (int i = 0; i < animations[j].length; i++)
-                animations[j][i] = img.getSubimage(i * 64, j * 40, 64, 40);
+        BufferedImage[][] animation= new BufferedImage[7][8];
+        for (int j = 0; j < animation.length; j++)
+            for (int i = 0; i < animation[j].length; i++)
+                animation[j][i] = img.getSubimage(i * 64, j * 40, 64, 40);
+        animations.add(animation);
+        img = LoadSave.GetSpriteAtlas(PLAYER_LOCATION_TEXTURES, PLAYER_WITH_PISTOL_SPRITES_PNG);
+        animation = new BufferedImage[7][8];
+        for (int j = 0; j < animation.length; j++)
+            for (int i = 0; i < animation[j].length; i++)
+                animation[j][i] = img.getSubimage(i * 64, j * 40, 64, 40);
+        animations.add(animation);
+        animationType = SWORD;
     }
 
     @Override
@@ -74,6 +91,10 @@ public class PlayerAnimation extends PlayerModule implements PlayingUpdateInterf
                 }
                 animationState = IDLE;
                 aniIndex = 0;
+                if (shotCount >= 3) {
+                    shotCount = 0;
+                    animationType = SWORD;
+                }
             }
         }
     }
@@ -81,7 +102,7 @@ public class PlayerAnimation extends PlayerModule implements PlayingUpdateInterf
     private void updateAnimationBox() {
         boolean right = playerModuleManager.getPlayerMove().isRight();
         boolean left = playerModuleManager.getPlayerMove().isLeft();
-        BufferedImage bufferedImage = animations[animationState.ordinal()][aniIndex];
+        BufferedImage bufferedImage = animations.get(animationType.ordinal())[animationState.ordinal()][aniIndex];
         if (right) {
             flipW = 1;
             flipX = 0;
@@ -94,7 +115,7 @@ public class PlayerAnimation extends PlayerModule implements PlayingUpdateInterf
     @Override
     public void draw(Graphics g, float scale, int lvlOffsetX, int lvlOffsetY) {
         Rectangle2D.Double hitBox = playerModuleManager.getHitBox();
-        BufferedImage bufferedImage = animations[animationState.ordinal()][aniIndex];
+        BufferedImage bufferedImage = animations.get(animationType.ordinal())[animationState.ordinal()][aniIndex];
         g.drawImage(bufferedImage,
                 (int) ((hitBox.x - 21 - lvlOffsetX + flipX) * scale),
                 (int) ((hitBox.y - 4 - lvlOffsetY) * scale),
@@ -131,11 +152,29 @@ public class PlayerAnimation extends PlayerModule implements PlayingUpdateInterf
         if (state == DEAD) {
             dead = true;
         }
+        if (animationType == PISTOL && state == ATTACK) {
+            shotCount++;
+        }
         animationState = state;
         aniIndex = 0;
     }
 
     public AnimationState getAnimationState() {
         return animationState;
+    }
+
+    public void setAnimationType(AnimationType type){
+        if (dead) {
+            return;
+        }
+        animationType = type;
+    }
+
+    public AnimationType getAnimationType() {
+        return animationType;
+    }
+
+    public int getShotCount() {
+        return shotCount;
     }
 }

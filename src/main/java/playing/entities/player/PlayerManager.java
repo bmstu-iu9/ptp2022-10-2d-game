@@ -9,6 +9,8 @@ import playing.entities.EntityLevelManager;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.awt.geom.Line2D;
+import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
 public class PlayerManager implements PlayingUpdateInterface, PlayingDrawInterface,
@@ -95,5 +97,13 @@ public class PlayerManager implements PlayingUpdateInterface, PlayingDrawInterfa
     public void setSpawnPlayer(int x, int y) {
         player.setX(x);
         player.setY(y);
+    }
+
+    public boolean canShot(double x, double y, double x1, double y1) {
+        return entityLevelManager.canShot(x, y, x1, y1);
+    }
+
+    public void shotEnemy(int damage) {
+        entityLevelManager.shotEnemy(damage);
     }
 }

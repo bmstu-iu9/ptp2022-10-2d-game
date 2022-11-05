@@ -1,11 +1,11 @@
 package playing.entities.player;
 
-import gamestates.playingstates.EnumPlayState;
 import playing.PlayingDrawInterface;
 import playing.PlayingKeyListenerInterface;
 import playing.PlayingMouseListenerInterface;
 import playing.PlayingUpdateInterface;
 import playing.entities.Entity;
+import playing.entities.player.playerModules.PlayerAnimation;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -86,5 +86,17 @@ public class Player extends Entity implements PlayingUpdateInterface, PlayingDra
 
     public int getCoins() {
         return playerModuleManager.getCoins();
+    }
+
+    public void setAnimationType(PlayerAnimation.AnimationType type){
+        playerModuleManager.setAnimationType(type);
+    }
+
+    public boolean canShot(double x, double y, double x1, double y1) {
+        return playerManager.canShot(x, y, x1, y1);
+    }
+
+    public void shotEnemy(int damage) {
+        playerManager.shotEnemy(damage);
     }
 }

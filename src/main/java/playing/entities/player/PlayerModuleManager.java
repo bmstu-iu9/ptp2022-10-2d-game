@@ -9,6 +9,8 @@ import playing.entities.player.playerModules.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.awt.geom.Line2D;
+import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
 public class PlayerModuleManager implements PlayingUpdateInterface, PlayingDrawInterface,
@@ -157,5 +159,17 @@ public class PlayerModuleManager implements PlayingUpdateInterface, PlayingDrawI
 
     public int getCoins() {
         return playerStatusBar.getCoins();
+    }
+
+    public void setAnimationType(PlayerAnimation.AnimationType type) {
+        playerAnimation.setAnimationType(type);
+    }
+
+    public boolean canShot(double x, double y, double x1, double y1) {
+        return player.canShot(x, y, x1, y1);
+    }
+
+    public void shotEnemy(int damage) {
+        player.shotEnemy(damage);
     }
 }

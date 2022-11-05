@@ -11,7 +11,10 @@ import playing.levels.LevelManager;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.awt.geom.Line2D;
+import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
+import java.util.ArrayList;
 
 import static utilz.Constants.GameWindowConstants.*;
 
@@ -29,7 +32,9 @@ public class PlayingGame implements GamePanelInterface,
 
     private int lvlOffsetX, lvlOffsetY;
     private int maxLvlOffsetX, maxLvlOffsetY;
+    private float scale;
 
+    private Line2D.Double shotBox;
 
     public PlayingGame() {
         initClasses();
@@ -76,6 +81,7 @@ public class PlayingGame implements GamePanelInterface,
         objectManager.checkSpikesTouched(playerManager.getPlayer());
         objectManager.checkPortalTouched(playerManager.getPlayer());
         objectManager.checkCoinsTouched(playerManager.getPlayer());
+        objectManager.checkPistolsTouched(playerManager.getPlayer());
     }
 
     private void checkCloseToBorder() {
@@ -114,6 +120,7 @@ public class PlayingGame implements GamePanelInterface,
 
     @Override
     public void draw(Graphics g, float scale) {
+        this.scale = scale;
         levelManager.draw(g, scale, lvlOffsetX, lvlOffsetY);
         playerManager.draw(g, scale, lvlOffsetX, lvlOffsetY);
         enemyManager.draw(g, scale, lvlOffsetX, lvlOffsetY);
@@ -158,5 +165,48 @@ public class PlayingGame implements GamePanelInterface,
 
     public void attackEnemy(Rectangle2D.Double attackBox, int damage) {
         enemyManager.attackEnemy(attackBox, damage);
+    }
+
+    public void shotEnemy(int damage) {
+        enemyManager.shotEnemy(shotBox, damage);
+    }
+
+    public ArrayList<Point2D.Double> canShot(double x, double y, double x1, double y1) {
+        ArrayList<Point2D.Double> points = new ArrayList<>();
+        double xIndex = (x - lvlOffsetX) * scale;
+        double yIndex = (y - lvlOffsetY) * scale;
+        shotBox = new Line2D.Double(x, y, x1/scale + lvlOffsetX, y1/scale + lvlOffsetY);
+
+        double t = y1 - yIndex;
+        if (t > 0) {
+            for (double i = t - (int) t; i <= t; i+=t/150) {
+                double pointX = (xIndex + i * (x1 - xIndex) / t)/scale +lvlOffsetX;
+                double pointY = (yIndex + i)/scale + lvlOffsetY;
+                Point2D.Double point = new Point2D.Double(pointX, pointY);
+                points.add(point);
+            }
+        } else if (t < 0) {
+            for (double i = t - (int) t; i >= t; i+=t/150) {
+                double pointX = (xIndex + i * (x1 - xIndex) / t)/scale + lvlOffsetX;
+                double pointY = (yIndex + i)/scale + lvlOffsetY;
+                Point2D.Double point = new Point2D.Double(pointX, pointY);
+                points.add(point);
+            }
+        }
+        if ((int) t == 0){
+            for (double i = xIndex; i <= x1; i++){
+                double pointX = i/scale + lvlOffsetX;
+                double pointY = yIndex/scale + lvlOffsetY;
+                Point2D.Double point = new Point2D.Double(pointX, pointY);
+                points.add(point);
+            }
+            for (double i = x1; i <= xIndex; i++) {
+                double pointX = i/scale + lvlOffsetX;
+                double pointY = yIndex/scale + lvlOffsetY;
+                Point2D.Double point = new Point2D.Double(pointX, pointY);
+                points.add(point);
+            }
+        }
+        return points;
     }
 }

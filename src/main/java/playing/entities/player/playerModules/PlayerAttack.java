@@ -7,12 +7,18 @@ import playing.entities.player.PlayerModuleManager;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.awt.geom.Line2D;
+import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
+import java.awt.image.ImageObserver;
+import java.text.AttributedCharacterIterator;
+import java.util.ArrayList;
 
 public class PlayerAttack extends PlayerModule
         implements PlayingMouseListenerInterface, PlayingUpdateInterface, PlayingDrawInterface {
 
     protected Rectangle2D.Double attackBox;
+    protected Line2D.Double shotBox;
 
     public PlayerAttack(PlayerModuleManager playerModuleManager,
                         int x, int y,
@@ -55,9 +61,21 @@ public class PlayerAttack extends PlayerModule
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        playerModuleManager.getPlayerAnimation().setAnimationState(PlayerAnimation.AnimationState.ATTACK);
+        PlayerAnimation.AnimationType typeAnimation = playerModuleManager.getPlayerAnimation().getAnimationType();
         int damage = 50;
-        playerModuleManager.attackEnemy(attackBox, damage);
+        if (typeAnimation == PlayerAnimation.AnimationType.SWORD) {
+            playerModuleManager.getPlayerAnimation().setAnimationState(PlayerAnimation.AnimationState.ATTACK);
+            playerModuleManager.attackEnemy(attackBox, damage);
+        } else if (typeAnimation == PlayerAnimation.AnimationType.PISTOL && playerModuleManager.getPlayerAnimation().getShotCount() < 3) {
+            double x = attackBox.x + attackBox.width / 2;
+            double y = attackBox.y + attackBox.height / 2;
+            double x2 = e.getX();
+            double y2 = e.getY();
+            if (playerModuleManager.canShot(x, y, x2, y2)){
+                playerModuleManager.getPlayerAnimation().setAnimationState(PlayerAnimation.AnimationState.ATTACK);
+                playerModuleManager.shotEnemy(damage);
+            }
+        }
     }
 
 }

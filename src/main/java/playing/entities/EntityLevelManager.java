@@ -3,7 +3,10 @@ package playing.entities;
 import main.Game;
 import playing.PlayingGame;
 
+import java.awt.geom.Line2D;
+import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
+import java.util.ArrayList;
 
 import static utilz.Constants.GameWindowConstants.TILE_SIZE_DEFAULT;
 
@@ -133,4 +136,18 @@ public class EntityLevelManager {
         return false;
     }
 
+    public boolean canShot(double x, double y, double x1, double y1) {
+        int[][] lvlData = playingGame.getLevelManager().getLvlData();
+        ArrayList<Point2D.Double> points = playingGame.canShot(x, y, x1, y1);
+        for (Point2D.Double point : points) {
+            if (IsSolid(point.x, point.y, lvlData)){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void shotEnemy(int damage) {
+        playingGame.shotEnemy(damage);
+    }
 }
