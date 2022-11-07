@@ -7,13 +7,14 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 import static utilz.Constants.TextureConstants.Overlay.OVERLAY_LOCATION_TEXTURES;
-import static utilz.Constants.TextureConstants.Overlay.OVERLAY_URM_BUTTONS_PNG;
-import static utilz.Constants.UI.URMButtons.URM_DEFAULT_SIZE;
+import static utilz.Constants.TextureConstants.Overlay.OVERLAY_DEBUG_MODE_SUMMON_PNG;
+import static utilz.Constants.UI.DebugModeSummon.DM_SUMMON_DEFAULT_SIZE;
 
-public class UrmButton extends Button {
+
+public class DebugModeButton extends Button {
     private BufferedImage[] images;
 
-    public UrmButton(int x, int y, int width, int height, int typeButton) {
+    public DebugModeButton(int x, int y, int width, int height, int typeButton) {
         super(x, y, width, height);
         this.typeButton = typeButton;
         loadImages();
@@ -21,12 +22,12 @@ public class UrmButton extends Button {
 
     @Override
     protected void loadImages() {
-        BufferedImage temp = LoadSave.GetSpriteAtlas(OVERLAY_LOCATION_TEXTURES, OVERLAY_URM_BUTTONS_PNG);
+        BufferedImage temp = LoadSave.GetSpriteAtlas(OVERLAY_LOCATION_TEXTURES, OVERLAY_DEBUG_MODE_SUMMON_PNG);
         images = new BufferedImage[3];
         for (int i = 0; i < images.length; i++)
             images[i] = temp.getSubimage(
-                    i * URM_DEFAULT_SIZE, typeButton * URM_DEFAULT_SIZE,
-                    URM_DEFAULT_SIZE, URM_DEFAULT_SIZE);
+                    i * DM_SUMMON_DEFAULT_SIZE, typeButton * DM_SUMMON_DEFAULT_SIZE,
+                    DM_SUMMON_DEFAULT_SIZE, DM_SUMMON_DEFAULT_SIZE);
     }
 
     @Override
@@ -46,6 +47,5 @@ public class UrmButton extends Button {
                 (int) (width * scale),
                 (int) (height * scale),
                 null);
-
     }
 }

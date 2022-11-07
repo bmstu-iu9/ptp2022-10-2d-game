@@ -125,8 +125,12 @@ public class PlayerModuleManager implements PlayingUpdateInterface, PlayingDrawI
 
     }
 
-    public void resetDirBooleans() {
-        playerMove.resetDirBooleans();
+    public void resetHorBooleans() {
+        playerMove.resetHorBooleans();
+    }
+
+    public void resetVertBooleans() {
+        playerMove.resetVertBooleans();
     }
 
     public boolean IsPlayerOnFloor() {
@@ -171,5 +175,8 @@ public class PlayerModuleManager implements PlayingUpdateInterface, PlayingDrawI
 
     public void shotEnemy(int damage) {
         player.shotEnemy(damage);
+    }
+    public void heal() {
+        playerStatusBar.increaseHealth(playerStatusBar.getMaxHealth());
     }
 }

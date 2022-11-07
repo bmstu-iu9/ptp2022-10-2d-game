@@ -71,6 +71,16 @@ public class PlayingGame implements GamePanelInterface,
         calcLvlOffset();
     }
 
+    public void setLevel(int level){
+        levelManager.setLevel(level);
+        currentLevel = levelManager.getCurrentLevel();
+        playerManager = new PlayerManager(entityLevelManager);
+        playerManager.setSpawnPlayer(100, 100);
+
+        initCurrentLevelManager();
+        calcLvlOffset();
+    }
+
     @Override
     public void update() {
         levelManager.update();
@@ -82,6 +92,7 @@ public class PlayingGame implements GamePanelInterface,
         objectManager.checkPortalTouched(playerManager.getPlayer());
         objectManager.checkCoinsTouched(playerManager.getPlayer());
         objectManager.checkPistolsTouched(playerManager.getPlayer());
+        objectManager.checkHeartsTouched(playerManager.getPlayer());
     }
 
     private void checkCloseToBorder() {
@@ -139,7 +150,15 @@ public class PlayingGame implements GamePanelInterface,
 
     @Override
     public void keyReleased(KeyEvent e) {
-        playerManager.keyReleased(e);
+        switch (e.getKeyCode()) {
+            case KeyEvent.VK_H:
+                setNightOrDay();
+                break;
+            default:
+                playerManager.keyReleased(e);
+                break;
+        }
+
     }
 
     public void resetAll() {
@@ -147,8 +166,11 @@ public class PlayingGame implements GamePanelInterface,
         initCurrentLevelManager();
     }
 
-    public void resetDirBooleans() {
-        playerManager.resetDirBooleans();
+    public void resetHorBooleans() {
+        playerManager.resetHorBooleans();
+    }
+    public void resetVertBooleans() {
+        playerManager.resetVertBooleans();
     }
 
     public LevelManager getLevelManager() {
@@ -175,38 +197,42 @@ public class PlayingGame implements GamePanelInterface,
         ArrayList<Point2D.Double> points = new ArrayList<>();
         double xIndex = (x - lvlOffsetX) * scale;
         double yIndex = (y - lvlOffsetY) * scale;
-        shotBox = new Line2D.Double(x, y, x1/scale + lvlOffsetX, y1/scale + lvlOffsetY);
+        shotBox = new Line2D.Double(x, y, x1 / scale + lvlOffsetX, y1 / scale + lvlOffsetY);
 
         double t = y1 - yIndex;
         if (t > 0) {
-            for (double i = t - (int) t; i <= t; i+=t/150) {
-                double pointX = (xIndex + i * (x1 - xIndex) / t)/scale +lvlOffsetX;
-                double pointY = (yIndex + i)/scale + lvlOffsetY;
+            for (double i = t - (int) t; i <= t; i += t / 150) {
+                double pointX = (xIndex + i * (x1 - xIndex) / t) / scale + lvlOffsetX;
+                double pointY = (yIndex + i) / scale + lvlOffsetY;
                 Point2D.Double point = new Point2D.Double(pointX, pointY);
                 points.add(point);
             }
         } else if (t < 0) {
-            for (double i = t - (int) t; i >= t; i+=t/150) {
-                double pointX = (xIndex + i * (x1 - xIndex) / t)/scale + lvlOffsetX;
-                double pointY = (yIndex + i)/scale + lvlOffsetY;
+            for (double i = t - (int) t; i >= t; i += t / 150) {
+                double pointX = (xIndex + i * (x1 - xIndex) / t) / scale + lvlOffsetX;
+                double pointY = (yIndex + i) / scale + lvlOffsetY;
                 Point2D.Double point = new Point2D.Double(pointX, pointY);
                 points.add(point);
             }
         }
-        if ((int) t == 0){
-            for (double i = xIndex; i <= x1; i++){
-                double pointX = i/scale + lvlOffsetX;
-                double pointY = yIndex/scale + lvlOffsetY;
+        if ((int) t == 0) {
+            for (double i = xIndex; i <= x1; i++) {
+                double pointX = i / scale + lvlOffsetX;
+                double pointY = yIndex / scale + lvlOffsetY;
                 Point2D.Double point = new Point2D.Double(pointX, pointY);
                 points.add(point);
             }
             for (double i = x1; i <= xIndex; i++) {
-                double pointX = i/scale + lvlOffsetX;
-                double pointY = yIndex/scale + lvlOffsetY;
+                double pointX = i / scale + lvlOffsetX;
+                double pointY = yIndex / scale + lvlOffsetY;
                 Point2D.Double point = new Point2D.Double(pointX, pointY);
                 points.add(point);
             }
         }
         return points;
+    }
+
+    public void setNightOrDay() {
+        currentLevel.setNightOrDay();
     }
 }

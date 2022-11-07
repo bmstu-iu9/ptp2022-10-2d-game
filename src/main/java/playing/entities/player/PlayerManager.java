@@ -43,8 +43,12 @@ public class PlayerManager implements PlayingUpdateInterface, PlayingDrawInterfa
         player = new Player(this, 100, 100);
     }
 
-    public void resetDirBooleans() {
-        player.resetDirBooleans();
+    public void resetHorBooleans() {
+        player.resetHorBooleans();
+    }
+
+    public void resetVertBooleans() {
+        player.resetVertBooleans();
     }
 
     public Player getPlayer() {

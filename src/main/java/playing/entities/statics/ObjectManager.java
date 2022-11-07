@@ -21,6 +21,8 @@ public class ObjectManager implements PlayingUpdateInterface, PlayingDrawInterfa
     private ArrayList<Coin> coins;
     private ArrayList<Pistol> pistols;
 
+    private ArrayList<Heart> hearts;
+
     public ObjectManager(EntityLevelManager entityLevelManager, Level level) {
         this.entityLevelManager = entityLevelManager;
         loadObjects(level);
@@ -31,6 +33,7 @@ public class ObjectManager implements PlayingUpdateInterface, PlayingDrawInterfa
         portals = level.getPortals();
         coins = level.getCoins();
         pistols = level.getPistols();
+        hearts = level.getHearts();
     }
 
     @Override
@@ -47,9 +50,14 @@ public class ObjectManager implements PlayingUpdateInterface, PlayingDrawInterfa
                 coin.update();
             }
         }
-        for (Pistol pistol : pistols){
-            if (pistol.isActive()){
+        for (Pistol pistol : pistols) {
+            if (pistol.isActive()) {
                 pistol.update();
+            }
+        }
+        for (Heart heart : hearts) {
+            if (heart.isActive()) {
+                heart.update();
             }
         }
     }
@@ -60,6 +68,7 @@ public class ObjectManager implements PlayingUpdateInterface, PlayingDrawInterfa
         drawPortals(g, scale, lvlOffsetX, lvlOffsetY);
         drawCoins(g, scale, lvlOffsetX, lvlOffsetY);
         drawPistol(g, scale, lvlOffsetX, lvlOffsetY);
+        drawHearts(g, scale, lvlOffsetX, lvlOffsetY);
     }
 
 
@@ -90,6 +99,14 @@ public class ObjectManager implements PlayingUpdateInterface, PlayingDrawInterfa
         }
     }
 
+    private void drawHearts(Graphics g, float scale, int lvlOffsetX, int lvlOffsetY) {
+        for (Heart heart : hearts) {
+            if (heart.isActive()) {
+                heart.draw(g, scale, lvlOffsetX, lvlOffsetY);
+            }
+        }
+    }
+
     public void checkSpikesTouched(Player p) {
         for (Spike s : spikes) {
             if (s.getHitBox().intersects(p.getHitBox())) {
@@ -115,6 +132,16 @@ public class ObjectManager implements PlayingUpdateInterface, PlayingDrawInterfa
                 if (pistol.getHitBox().intersects(p.getHitBox())) {
                     pistol.setActive(false);
                     p.setAnimationType(PlayerAnimation.AnimationType.PISTOL);
+                }
+            }
+        }
+    }
+    public void checkHeartsTouched(Player p) {
+        for (Heart heart : hearts) {
+            if (heart.isActive()) {
+                if (heart.getHitBox().intersects(p.getHitBox())) {
+                    p.heal();
+                    heart.setActive(false);
                 }
             }
         }
