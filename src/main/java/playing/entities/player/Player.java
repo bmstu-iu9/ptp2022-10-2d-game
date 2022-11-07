@@ -87,4 +87,8 @@ public class Player extends Entity implements PlayingUpdateInterface, PlayingDra
     public int getCoins() {
         return playerModuleManager.getCoins();
     }
+
+    public void heal() {
+        playerModuleManager.heal();
+    }
 }

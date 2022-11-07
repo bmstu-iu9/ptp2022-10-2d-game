@@ -108,6 +108,7 @@ public class Constants {
                 public static final int OBJECT_INDEX_SPIKE_LEFT = 3;
                 public static final int OBJECT_INDEX_SPIKE_RIGHT = 4;
                 public static final int OBJECT_INDEX_COIN = 65;
+                public static final int OBJECT_INDEX_HEART = 70;
                 public static final int OBJECT_INDEX_PORTAL = 108;
             }
 
@@ -132,6 +133,11 @@ public class Constants {
             public static final class Coin {
                 public static final int COIN_WIDTH_DEFAULT = 32;
                 public static final int COIN_HEIGHT_DEFAULT = 32;
+            }
+
+            public static final class Heart {
+                public static final int HEART_WIDTH_DEFAULT = 32;
+                public static final int HEART_HEIGHT_DEFAULT = 32;
             }
 
             public static final class CRABBY {
@@ -214,6 +220,8 @@ public class Constants {
             public static final String ENTITY_LOCATION_TEXTURES = "entity";
 
             public static final String COIN_ATLAS_PNG = "coin_atlas.png";
+
+            public static final String HEART_ATLAS_PNG = "heart_atlas.png";
             public static final String TRAP_ATLAS_PNG = "trap_atlas.png";
             public static final String PORTAL_ATLAS_PNG = "portal_atlas.png";
             public static final String CRABBY_SPRITE_PNG = "crabby_sprite.png";
