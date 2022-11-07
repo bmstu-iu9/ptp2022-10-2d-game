@@ -2,6 +2,7 @@ package main;
 
 import gamestates.EnumGameState;
 import gamestates.Menu;
+import gamestates.DebugMode;
 import gamestates.Playing;
 
 import java.awt.*;
@@ -13,6 +14,7 @@ public class GameDistribution implements MainGameInterface, MouseListener, Mouse
     private final float scale;
 
     private Menu menu;
+    private DebugMode debug_mode;
     private Playing playing;
 
     public GameDistribution(Game game) {
@@ -24,6 +26,7 @@ public class GameDistribution implements MainGameInterface, MouseListener, Mouse
     private void initClasses() {
         menu = new Menu();
         playing = new Playing();
+        debug_mode = new DebugMode(playing);
     }
 
     @Override
@@ -37,6 +40,9 @@ public class GameDistribution implements MainGameInterface, MouseListener, Mouse
                 break;
             case QUIT:
                 game.setGameExit();
+            case DEBUG_MODE:
+                debug_mode.update();
+                break;
             default:
                 System.exit(0);
                 break;
@@ -55,6 +61,9 @@ public class GameDistribution implements MainGameInterface, MouseListener, Mouse
                 menu.draw(g, scale);
                 break;
             case QUIT:
+            case DEBUG_MODE:
+                debug_mode.draw(g, scale);
+                break;
             default:
                 break;
         }
@@ -69,6 +78,8 @@ public class GameDistribution implements MainGameInterface, MouseListener, Mouse
             case MENU:
                 menu.mouseClicked(e, scale);
             case QUIT:
+            case DEBUG_MODE:
+                debug_mode.mouseClicked(e, scale);
             default:
                 break;
         }
@@ -83,6 +94,8 @@ public class GameDistribution implements MainGameInterface, MouseListener, Mouse
             case MENU:
                 menu.mousePressed(e, scale);
             case QUIT:
+            case DEBUG_MODE:
+                debug_mode.mousePressed(e, scale);
             default:
                 break;
         }
@@ -97,6 +110,8 @@ public class GameDistribution implements MainGameInterface, MouseListener, Mouse
             case MENU:
                 menu.mouseReleased(e, scale);
             case QUIT:
+            case DEBUG_MODE:
+                debug_mode.mouseReleased(e, scale);
             default:
                 break;
         }
@@ -121,6 +136,8 @@ public class GameDistribution implements MainGameInterface, MouseListener, Mouse
             case MENU:
                 menu.mouseDragged(e, scale);
             case QUIT:
+            case DEBUG_MODE:
+                debug_mode.mouseDragged(e, scale);
             default:
                 break;
         }
@@ -135,6 +152,8 @@ public class GameDistribution implements MainGameInterface, MouseListener, Mouse
             case MENU:
                 menu.mouseMoved(e, scale);
             case QUIT:
+            case DEBUG_MODE:
+                debug_mode.mouseMoved(e, scale);
             default:
                 break;
         }
@@ -153,6 +172,7 @@ public class GameDistribution implements MainGameInterface, MouseListener, Mouse
                 break;
             case MENU:
             case QUIT:
+            case DEBUG_MODE:
             default:
                 break;
         }
@@ -166,6 +186,7 @@ public class GameDistribution implements MainGameInterface, MouseListener, Mouse
                 break;
             case MENU:
             case QUIT:
+            case DEBUG_MODE:
             default:
                 break;
         }
@@ -173,6 +194,7 @@ public class GameDistribution implements MainGameInterface, MouseListener, Mouse
 
     public void windowFocusLost() {
         if (EnumGameState.state == EnumGameState.PLAYING)
-            playing.resetDirBooleans();
+            playing.resetHorBooleans();
+            playing.resetVertBooleans();
     }
 }

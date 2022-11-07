@@ -57,8 +57,12 @@ public class Player extends Entity implements PlayingUpdateInterface, PlayingDra
         playerModuleManager.resetAll();
     }
 
-    public void resetDirBooleans() {
-        playerModuleManager.resetDirBooleans();
+    public void resetHorBooleans() {
+        playerModuleManager.resetHorBooleans();
+    }
+
+    public void resetVertBooleans() {
+        playerModuleManager.resetVertBooleans();
     }
 
     public void kill() {
@@ -85,5 +89,9 @@ public class Player extends Entity implements PlayingUpdateInterface, PlayingDra
 
     public int getCoins() {
         return playerModuleManager.getCoins();
+    }
+
+    public void heal() {
+        playerModuleManager.heal();
     }
 }

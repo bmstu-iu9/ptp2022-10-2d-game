@@ -61,4 +61,8 @@ public class LevelManager implements PlayingUpdateInterface, PlayingDrawInterfac
             lvlIndex = 0;
         }
     }
+
+    public void setLevel(int level) {
+        lvlIndex = level;
+    }
 }

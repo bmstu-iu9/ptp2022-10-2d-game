@@ -66,6 +66,16 @@ public class PlayingGame implements GamePanelInterface,
         calcLvlOffset();
     }
 
+    public void setLevel(int level){
+        levelManager.setLevel(level);
+        currentLevel = levelManager.getCurrentLevel();
+        playerManager = new PlayerManager(entityLevelManager);
+        playerManager.setSpawnPlayer(100, 100);
+
+        initCurrentLevelManager();
+        calcLvlOffset();
+    }
+
     @Override
     public void update() {
         levelManager.update();
@@ -76,6 +86,7 @@ public class PlayingGame implements GamePanelInterface,
         objectManager.checkSpikesTouched(playerManager.getPlayer());
         objectManager.checkPortalTouched(playerManager.getPlayer());
         objectManager.checkCoinsTouched(playerManager.getPlayer());
+        objectManager.checkHeartsTouched(playerManager.getPlayer());
     }
 
     private void checkCloseToBorder() {
@@ -132,7 +143,15 @@ public class PlayingGame implements GamePanelInterface,
 
     @Override
     public void keyReleased(KeyEvent e) {
-        playerManager.keyReleased(e);
+        switch (e.getKeyCode()) {
+            case KeyEvent.VK_H:
+                setNightOrDay();
+                break;
+            default:
+                playerManager.keyReleased(e);
+                break;
+        }
+
     }
 
     public void resetAll() {
@@ -140,8 +159,11 @@ public class PlayingGame implements GamePanelInterface,
         initCurrentLevelManager();
     }
 
-    public void resetDirBooleans() {
-        playerManager.resetDirBooleans();
+    public void resetHorBooleans() {
+        playerManager.resetHorBooleans();
+    }
+    public void resetVertBooleans() {
+        playerManager.resetVertBooleans();
     }
 
     public LevelManager getLevelManager() {
@@ -158,5 +180,9 @@ public class PlayingGame implements GamePanelInterface,
 
     public void attackEnemy(Rectangle2D.Double attackBox, int damage) {
         enemyManager.attackEnemy(attackBox, damage);
+    }
+
+    public void setNightOrDay() {
+        currentLevel.setNightOrDay();
     }
 }

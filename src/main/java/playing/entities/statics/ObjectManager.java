@@ -19,6 +19,8 @@ public class ObjectManager implements PlayingUpdateInterface, PlayingDrawInterfa
     private ArrayList<Portal> portals;
     private ArrayList<Coin> coins;
 
+    private ArrayList<Heart> hearts;
+
     public ObjectManager(EntityLevelManager entityLevelManager, Level level) {
         this.entityLevelManager = entityLevelManager;
         loadObjects(level);
@@ -28,6 +30,7 @@ public class ObjectManager implements PlayingUpdateInterface, PlayingDrawInterfa
         spikes = level.getSpikes();
         portals = level.getPortals();
         coins = level.getCoins();
+        hearts = level.getHearts();
     }
 
     @Override
@@ -44,6 +47,11 @@ public class ObjectManager implements PlayingUpdateInterface, PlayingDrawInterfa
                 coin.update();
             }
         }
+        for (Heart heart : hearts) {
+            if (heart.isActive()) {
+                heart.update();
+            }
+        }
     }
 
     @Override
@@ -51,6 +59,7 @@ public class ObjectManager implements PlayingUpdateInterface, PlayingDrawInterfa
         drawTraps(g, scale, lvlOffsetX, lvlOffsetY);
         drawPortals(g, scale, lvlOffsetX, lvlOffsetY);
         drawCoins(g, scale, lvlOffsetX, lvlOffsetY);
+        drawHearts(g, scale, lvlOffsetX, lvlOffsetY);
     }
 
 
@@ -74,6 +83,14 @@ public class ObjectManager implements PlayingUpdateInterface, PlayingDrawInterfa
         }
     }
 
+    private void drawHearts(Graphics g, float scale, int lvlOffsetX, int lvlOffsetY) {
+        for (Heart heart : hearts) {
+            if (heart.isActive()) {
+                heart.draw(g, scale, lvlOffsetX, lvlOffsetY);
+            }
+        }
+    }
+
     public void checkSpikesTouched(Player p) {
         for (Spike s : spikes) {
             if (s.getHitBox().intersects(p.getHitBox())) {
@@ -88,6 +105,17 @@ public class ObjectManager implements PlayingUpdateInterface, PlayingDrawInterfa
                 if (coin.getHitBox().intersects(p.getHitBox())) {
                     p.addCoin(coin.getValue());
                     coin.setActive(false);
+                }
+            }
+        }
+    }
+
+    public void checkHeartsTouched(Player p) {
+        for (Heart heart : hearts) {
+            if (heart.isActive()) {
+                if (heart.getHitBox().intersects(p.getHitBox())) {
+                    p.heal();
+                    heart.setActive(false);
                 }
             }
         }

@@ -21,11 +21,13 @@ public class Constants {
     }
 
     public static class GameConstants {
-        public final static float GRAVITY = 0.035f;
         public static final float ANI_SPEED_ENEMY = 25;
 
         public static final float ANI_SPEED_OBJECT = 50;
 
+        public static float GRAVITY = 0.035f; //NOT FINAL!!! Keep it this way pls.
+        public static float TEMP_GRAVITY = -1.0f;
+        public static float COU = 0;
     }
 
     public static class UI {
@@ -46,6 +48,23 @@ public class Constants {
             public static final int BUTTON_HEIGHT_DEFAULT = 56;
         }
 
+        public static class DebugModeCheats {
+            public static final int COUNT_BUTTONS = 4;
+
+            public static final int APPLY = 0;
+            public static final int ZERO_GRAVITY_CHEAT = 1;
+            public static final int LEVEL_SELECT_1 = 2;
+            public static final int LEVEL_SELECT_2 = 3;
+            public static final int LEVEL_SELECT_3 = 4;
+
+            public static final int BUTTON_WIDTH_DEFAULT = 140;
+            public static final int BUTTON_HEIGHT_DEFAULT = 56;
+
+            public static final int CHEAT_WIDTH_DEFAULT = 222;
+            public static final int CHEAT_HEIGHT_DEFAULT = 27;
+            public static final int CHEAT_BUTTON_OFFSET = 30;
+        }
+
         public static class SoundButtons {
             public static final int MUTED_OFF = 0;
             public static final int MUTED_ON = 1;
@@ -59,6 +78,12 @@ public class Constants {
             public static final int URM_MENU = 2;
 
             public static final int URM_DEFAULT_SIZE = 56;
+        }
+
+        public static class DebugModeSummon {
+            public static final int DM_SUMMON = 0;
+
+            public static final int DM_SUMMON_DEFAULT_SIZE = 56;
         }
 
         public static class VolumeButtons {
@@ -80,6 +105,9 @@ public class Constants {
 
                 public static final int PAUSE_VOLUME_POS_X = 309;
                 public static final int PAUSE_VOLUME_POS_Y = 278;
+
+                public static final int DEBUG_MODE_POS_X = 508;
+                public static final int DEBUG_MODE_POS_Y = 93;
             }
 
             public static class GameOver {
@@ -109,6 +137,7 @@ public class Constants {
                 public static final int OBJECT_INDEX_SPIKE_RIGHT = 4;
                 public static final int OBJECT_INDEX_COIN = 65;
                 public static final int OBJECT_INDEX_COIN_5 = 66;
+                public static final int OBJECT_INDEX_HEART = 70;
                 public static final int OBJECT_INDEX_PORTAL = 108;
             }
 
@@ -137,6 +166,11 @@ public class Constants {
                 public static final int COIN_5_HEIGHT_DEFAULT = 40;
                 public static final double DIFF_SIZE_WIDTH = COIN_5_WIDTH_DEFAULT - COIN_WIDTH_DEFAULT;
                 public static final double DIFF_SIZE_HEIGHT = COIN_5_HEIGHT_DEFAULT - COIN_HEIGHT_DEFAULT;
+            }
+
+            public static final class Heart {
+                public static final int HEART_WIDTH_DEFAULT = 32;
+                public static final int HEART_HEIGHT_DEFAULT = 32;
             }
 
             public static final class CRABBY {
@@ -171,6 +205,16 @@ public class Constants {
 
 
     public static final class TextureConstants {
+        public static final class DebugMode {
+            public static final String DEBUG_MODE_LOCATION_TEXTURES = "debug_mode";
+
+            public static final String DEBUG_MODE_ATLAS_PNG = "debug_mode_atlas.png";
+            public static final String DEBUG_MODE_BACKGROUND_PNG = "debug_mode_background.png";
+            public static final String DEBUG_MODE_BUTTONS_PNG = "debug_mode_buttons.png";
+
+            public static final String CHEATS_BUTTONS_PNG = "cheats_buttons.png";
+        }
+
         public static final class Menu {
             public static final String MENU_LOCATION_TEXTURES = "menu";
 
@@ -195,13 +239,17 @@ public class Constants {
             public static final String OVERLAY_URM_BUTTONS_PNG = "overlay_urm_buttons.png";
             public static final String OVERLAY_VOLUME_BUTTONS_PNG = "overlay_volume_buttons.png";
 
-
+            public static final String OVERLAY_DEBUG_MODE_SUMMON_PNG = "debug_mode_summon_button.png";
         }
 
         public static final class Level {
             public static final String LEVEL_LOCATION_TEXTURES = "level";
             public static final String LVL_TEXTURES_PNG = "lvl_textures.png";
             public static final String LVL_BACKGROUND_PNG = "lvl_background.png";
+
+            public static final String LVL_BACKGROUND_NIGHT_PNG = "lvl_background_night.png";
+
+            public static final String MOON_PNG = "moon.png";
             public static final String LVL_CLOUDS_BIG_PNG = "lvl_clouds_big.png";
             public static final String LVL_CLOUDS_SMALL_PNG = "lvl_clouds_small.png";
 
@@ -220,6 +268,8 @@ public class Constants {
 
             public static final String COIN_ATLAS_PNG = "coin_atlas.png";
             public static final String COIN_5_PNG = "coin_5.png";
+
+            public static final String HEART_ATLAS_PNG = "heart_atlas.png";
             public static final String TRAP_ATLAS_PNG = "trap_atlas.png";
             public static final String PORTAL_ATLAS_PNG = "portal_atlas.png";
             public static final String CRABBY_SPRITE_PNG = "crabby_sprite.png";
