@@ -177,4 +177,8 @@ public class PlayerAnimation extends PlayerModule implements PlayingUpdateInterf
     public int getShotCount() {
         return shotCount;
     }
+
+    public int getAniIndex(){
+        return aniIndex;
+    }
 }
