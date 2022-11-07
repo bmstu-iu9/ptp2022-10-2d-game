@@ -120,12 +120,15 @@ public class PlayerMove extends PlayerModule implements PlayingKeyListenerInterf
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_A:
+            case KeyEvent.VK_LEFT:
                 setLeft(true);
                 break;
             case KeyEvent.VK_D:
+            case KeyEvent.VK_RIGHT:
                 setRight(true);
                 break;
             case KeyEvent.VK_SPACE:
+            case KeyEvent.VK_UP:
                 setJump(true);
                 break;
         }
@@ -135,12 +138,15 @@ public class PlayerMove extends PlayerModule implements PlayingKeyListenerInterf
     public void keyReleased(KeyEvent e) {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_A:
+            case KeyEvent.VK_LEFT:
                 setLeft(false);
                 break;
             case KeyEvent.VK_D:
+            case KeyEvent.VK_RIGHT:
                 setRight(false);
                 break;
             case KeyEvent.VK_SPACE:
+            case KeyEvent.VK_UP:
                 setJump(false);
                 break;
         }
