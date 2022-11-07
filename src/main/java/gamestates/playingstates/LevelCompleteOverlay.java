@@ -97,13 +97,15 @@ public class LevelCompleteOverlay extends PlayState {
                 playing.resetAll();
                 EnumGameState.state = EnumGameState.MENU;
                 EnumPlayState.state = EnumPlayState.PLAYING;
-                playing.resetDirBooleans();
+                playing.resetHorBooleans();
+                playing.resetVertBooleans();
             }
         } else if (isIn(e, next, scale))
             if (next.isMousePressed()) {
                 playing.nextLevel();
                 EnumPlayState.state = EnumPlayState.PLAYING;
-                playing.resetDirBooleans();
+                playing.resetHorBooleans();
+                playing.resetVertBooleans();
             }
 
         menu.resetBool();

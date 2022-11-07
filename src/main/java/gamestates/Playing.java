@@ -189,7 +189,8 @@ public class Playing implements GamePanelInterface, GamePanelListenerInterface {
             case PAUSED:
                 if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
                     EnumPlayState.state = EnumPlayState.PLAYING;
-                    playingGame.resetDirBooleans();
+                    playingGame.resetHorBooleans();
+                    playingGame.resetVertBooleans();
                 } else {
                     pauseOverlay.keyReleased(e, scale);
                 }
@@ -209,8 +210,11 @@ public class Playing implements GamePanelInterface, GamePanelListenerInterface {
         playingGame.resetAll();
     }
 
-    public void resetDirBooleans() {
-        playingGame.resetDirBooleans();
+    public void resetHorBooleans() {
+        playingGame.resetHorBooleans();
+    }
+    public void resetVertBooleans() {
+        playingGame.resetVertBooleans();
     }
 
     public void nextLevel() {

@@ -10,16 +10,18 @@ import java.awt.event.KeyEvent;
 import java.awt.geom.Rectangle2D;
 
 import static utilz.Constants.GameConstants.GRAVITY;
+import static utilz.Constants.GameConstants.TEMP_GRAVITY;
 
 public class PlayerMove extends PlayerModule implements PlayingKeyListenerInterface, PlayingUpdateInterface, PlayingDrawInterface {
 
     private boolean moving;
-    private boolean left, right, jump;
+    private boolean left, right, jump, fall;
     private boolean inAir, inWater;
     private boolean onFloor;
 
+    private float speedJump = -2.65f + GRAVITY;
+
     private final float speedWalk = 1.f;
-    private final float speedJump = -2.6f;
     private float speedInAir;
     private float speedInWater;
     private float ySpeed = 0;
@@ -42,6 +44,9 @@ public class PlayerMove extends PlayerModule implements PlayingKeyListenerInterf
                 onFloor = false;
                 ySpeed = speedJump;
             }
+            if(TEMP_GRAVITY == 0.0f) {
+                GRAVITY = TEMP_GRAVITY;
+            }
         }
 
         if (left) {
@@ -49,6 +54,11 @@ public class PlayerMove extends PlayerModule implements PlayingKeyListenerInterf
         }
         if (right) {
             xSpeed += speedWalk;
+        }
+
+        if(fall) {
+            ySpeed = 1.5f;
+            GRAVITY = 0.035f;
         }
 
         if (onFloor) {
@@ -123,13 +133,31 @@ public class PlayerMove extends PlayerModule implements PlayingKeyListenerInterf
             case KeyEvent.VK_LEFT:
                 setLeft(true);
                 break;
+            case KeyEvent.VK_LEFT:
+                setLeft(true);
+                break;
             case KeyEvent.VK_D:
             case KeyEvent.VK_RIGHT:
                 setRight(true);
                 break;
+            case KeyEvent.VK_RIGHT:
+                setRight(true);
+                break;
+            case KeyEvent.VK_W:
+                setJump(true);
+                break;
+            case KeyEvent.VK_UP:
+                setJump(true);
+                break;
             case KeyEvent.VK_SPACE:
             case KeyEvent.VK_UP:
                 setJump(true);
+                break;
+            case KeyEvent.VK_S:
+                setFall(true);
+                break;
+            case KeyEvent.VK_DOWN:
+                setFall(true);
                 break;
         }
     }
@@ -141,13 +169,31 @@ public class PlayerMove extends PlayerModule implements PlayingKeyListenerInterf
             case KeyEvent.VK_LEFT:
                 setLeft(false);
                 break;
+            case KeyEvent.VK_LEFT:
+                setLeft(false);
+                break;
             case KeyEvent.VK_D:
             case KeyEvent.VK_RIGHT:
                 setRight(false);
                 break;
+            case KeyEvent.VK_RIGHT:
+                setRight(false);
+                break;
+            case KeyEvent.VK_W:
+                setJump(false);
+                break;
+            case KeyEvent.VK_UP:
+                setJump(false);
+                break;
             case KeyEvent.VK_SPACE:
             case KeyEvent.VK_UP:
                 setJump(false);
+                break;
+            case KeyEvent.VK_S:
+                setFall(false);
+                break;
+            case KeyEvent.VK_DOWN:
+                setFall(false);
                 break;
         }
     }
@@ -164,6 +210,10 @@ public class PlayerMove extends PlayerModule implements PlayingKeyListenerInterf
         this.jump = jump;
     }
 
+    public void setFall(boolean fall) {
+        this.fall = fall;
+    }
+
     public boolean isLeft() {
         return left;
     }
@@ -176,8 +226,12 @@ public class PlayerMove extends PlayerModule implements PlayingKeyListenerInterf
         return jump;
     }
 
-    public void resetDirBooleans() {
+    public void resetVertBooleans() {
         setJump(false);
+        setFall(false);
+    }
+
+    public void resetHorBooleans() {
         setRight(false);
         setLeft(false);
     }

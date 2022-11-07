@@ -5,6 +5,7 @@ import gamestates.Playing;
 import ui.pause.SoundButton;
 import ui.pause.UrmButton;
 import ui.pause.VolumeButton;
+import ui.pause.DebugModeButton;
 import utilz.LoadSave;
 
 import java.awt.*;
@@ -20,6 +21,7 @@ import static utilz.Constants.UI.Overlay.Pause.*;
 import static utilz.Constants.UI.SoundButtons.*;
 import static utilz.Constants.UI.URMButtons.*;
 import static utilz.Constants.UI.VolumeButtons.*;
+import static utilz.Constants.UI.DebugModeSummon.*;
 
 public class PauseOverlay extends PlayState {
 
@@ -29,6 +31,8 @@ public class PauseOverlay extends PlayState {
     private SoundButton musicButton, sfxButton;
     private UrmButton menuB, replayB, unpauseB;
     private VolumeButton volumeButton;
+
+    private DebugModeButton dmsB;
 
     public PauseOverlay(Playing playing) {
         super(playing);
@@ -72,6 +76,10 @@ public class PauseOverlay extends PlayState {
                 PAUSE_VOLUME_POS_Y,
                 SLIDER_WIDTH_DEFAULT,
                 VOLUME_HEIGHT_DEFAULT);
+
+        dmsB = new DebugModeButton(DEBUG_MODE_POS_X,
+                DEBUG_MODE_POS_Y, DM_SUMMON_DEFAULT_SIZE,
+                DM_SUMMON_DEFAULT_SIZE, DM_SUMMON);
     }
 
     @Override
@@ -84,6 +92,8 @@ public class PauseOverlay extends PlayState {
         unpauseB.update();
 
         volumeButton.update();
+
+        dmsB.update();
     }
 
     @Override
@@ -103,10 +113,13 @@ public class PauseOverlay extends PlayState {
         unpauseB.draw(g, scale);
 
         volumeButton.draw(g, scale);
+
+        dmsB.draw(g, scale);
     }
 
     @Override
     public void mouseClicked(MouseEvent e, float scale) {
+
     }
 
     @Override
@@ -123,6 +136,8 @@ public class PauseOverlay extends PlayState {
             unpauseB.setMousePressed(true);
         else if (isIn(e, volumeButton, scale))
             volumeButton.setMousePressed(true);
+        else if (isIn(e, dmsB, scale))
+            dmsB.setMousePressed(true);
     }
 
     @Override
@@ -139,27 +154,41 @@ public class PauseOverlay extends PlayState {
             if (menuB.isMousePressed()) {
                 EnumGameState.state = EnumGameState.MENU;
                 EnumPlayState.state = EnumPlayState.PLAYING;
-                playing.resetDirBooleans();
+                playing.resetHorBooleans();
+                playing.resetVertBooleans();
             }
         } else if (isIn(e, replayB, scale)) {
             if (replayB.isMousePressed()) {
                 playing.resetAll();
                 EnumPlayState.state = EnumPlayState.PLAYING;
-                playing.resetDirBooleans();
+                playing.resetHorBooleans();
+                playing.resetVertBooleans();
             }
         } else if (isIn(e, unpauseB, scale)) {
             if (unpauseB.isMousePressed()) {
                 EnumPlayState.state = EnumPlayState.PLAYING;
-                playing.resetDirBooleans();
+                playing.resetHorBooleans();
+                playing.resetVertBooleans();
+            }
+        } else if (isIn(e, dmsB, scale)) {
+            if (dmsB.isMousePressed()) {
+                EnumGameState.state = EnumGameState.DEBUG_MODE;
+
+                playing.resetHorBooleans();
+                playing.resetVertBooleans();
             }
         }
 
         musicButton.resetBool();
         sfxButton.resetBool();
+
         menuB.resetBool();
         replayB.resetBool();
         unpauseB.resetBool();
+
         volumeButton.resetBool();
+
+        dmsB.resetBool();
     }
 
     @Override
@@ -173,10 +202,14 @@ public class PauseOverlay extends PlayState {
     public void mouseMoved(MouseEvent e, float scale) {
         musicButton.setMouseOver(false);
         sfxButton.setMouseOver(false);
+
         menuB.setMouseOver(false);
         replayB.setMouseOver(false);
         unpauseB.setMouseOver(false);
+
         volumeButton.setMouseOver(false);
+
+        dmsB.setMouseOver(false);
 
         if (isIn(e, musicButton, scale))
             musicButton.setMouseOver(true);
@@ -190,6 +223,8 @@ public class PauseOverlay extends PlayState {
             unpauseB.setMouseOver(true);
         else if (isIn(e, volumeButton, scale))
             volumeButton.setMouseOver(true);
+        else if (isIn(e,dmsB, scale))
+            dmsB.setMouseOver(true);
     }
 
     @Override

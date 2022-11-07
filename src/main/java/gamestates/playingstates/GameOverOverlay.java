@@ -97,13 +97,15 @@ public class GameOverOverlay extends PlayState {
                 playing.resetAll();
                 EnumGameState.state = EnumGameState.MENU;
                 EnumPlayState.state = EnumPlayState.PLAYING;
-                playing.resetDirBooleans();
+                playing.resetHorBooleans();
+                playing.resetVertBooleans();
             }
         } else if (isIn(e, play, scale))
             if (play.isMousePressed()) {
                 playing.resetAll();
                 EnumPlayState.state = EnumPlayState.PLAYING;
-                playing.resetDirBooleans();
+                playing.resetHorBooleans();
+                playing.resetVertBooleans();
             }
 
         menu.resetBool();
