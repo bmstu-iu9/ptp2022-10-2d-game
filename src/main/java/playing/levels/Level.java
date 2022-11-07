@@ -27,9 +27,15 @@ public class Level implements PlayingUpdateInterface, PlayingDrawInterface {
 
     private BufferedImage backgroundImg;
 
+    private BufferedImage backgroundNightImg;
+
+    private BufferedImage moonImg;
+
     private CloudManager cloudManager;
 
     private int maxLvlOffsetX, maxLvlOffsetY;
+
+    private boolean isNight;
 
     public Level(BufferedImage levelImg) {
         this.levelImg = levelImg;
@@ -57,6 +63,8 @@ public class Level implements PlayingUpdateInterface, PlayingDrawInterface {
 
     private void loadBackgroundImages() {
         backgroundImg = LoadSave.GetSpriteAtlas(LEVEL_LOCATION_TEXTURES, LVL_BACKGROUND_PNG);
+        backgroundNightImg = LoadSave.GetSpriteAtlas(LEVEL_LOCATION_TEXTURES, LVL_BACKGROUND_NIGHT_PNG);
+        moonImg = LoadSave.GetSpriteAtlas(LEVEL_LOCATION_TEXTURES, MOON_PNG);
     }
 
     private void calcLvlOffset() {
@@ -89,9 +97,34 @@ public class Level implements PlayingUpdateInterface, PlayingDrawInterface {
 
     @Override
     public void draw(Graphics g, float scale, int lvlOffsetX, int lvlOffsetY) {
-        drawBackground(g, scale, lvlOffsetX, lvlOffsetY);
+        if (isNight) {
+            g.drawImage(backgroundNightImg, 0, 0,
+                    (int) (GAME_WIDTH_DEFAULT * scale),
+                    (int) (GAME_HEIGHT_DEFAULT * scale),
+                    null);
+            g.drawImage(moonImg, (int) (175* scale), (int) (125 * scale),
+                    (int) (TILE_SIZE_DEFAULT * 2 * scale), (int) (TILE_SIZE_DEFAULT * 2 * scale), null);
+            g.drawImage(moonImg, (int) (200 * scale), (int) (150 * scale),
+                    (int) (TILE_SIZE_DEFAULT * 3 * scale), (int) (TILE_SIZE_DEFAULT * 3 * scale), null);
+
+        } else {
+            drawBackground(g, scale, lvlOffsetX, lvlOffsetY);
+        }
         cloudManager.draw(g, scale, lvlOffsetX, lvlOffsetY);
         drawLvlSprite(g, scale, lvlOffsetX, lvlOffsetY);
+
+        if (isNight) {
+            drawNight(g, scale);
+        }
+
+    }
+
+    private void drawNight(Graphics g, float scale) {
+        g.setColor(new Color(0, 0, 0, 200));
+        g.fillRect(0, 0,
+                (int) (GAME_WIDTH_DEFAULT * scale),
+                (int) (GAME_HEIGHT_DEFAULT * scale));
+
     }
 
 
@@ -210,5 +243,9 @@ public class Level implements PlayingUpdateInterface, PlayingDrawInterface {
         }
 
         return list;
+    }
+
+    public void setNightOrDay() {
+        isNight = !isNight;
     }
 }
