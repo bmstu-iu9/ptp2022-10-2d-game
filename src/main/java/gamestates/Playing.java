@@ -220,4 +220,8 @@ public class Playing implements GamePanelInterface, GamePanelListenerInterface {
     public void nextLevel() {
         playingGame.nextLevel();
     }
+
+    public void setLevel(int level) {
+        playingGame.setLevel(level);
+    }
 }

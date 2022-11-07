@@ -25,8 +25,8 @@ public class GameDistribution implements MainGameInterface, MouseListener, Mouse
 
     private void initClasses() {
         menu = new Menu();
-        debug_mode = new DebugMode();
         playing = new Playing();
+        debug_mode = new DebugMode(playing);
     }
 
     @Override

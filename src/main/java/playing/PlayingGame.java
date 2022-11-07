@@ -66,6 +66,16 @@ public class PlayingGame implements GamePanelInterface,
         calcLvlOffset();
     }
 
+    public void setLevel(int level){
+        levelManager.setLevel(level);
+        currentLevel = levelManager.getCurrentLevel();
+        playerManager = new PlayerManager(entityLevelManager);
+        playerManager.setSpawnPlayer(100, 100);
+
+        initCurrentLevelManager();
+        calcLvlOffset();
+    }
+
     @Override
     public void update() {
         levelManager.update();

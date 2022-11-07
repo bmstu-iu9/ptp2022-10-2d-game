@@ -26,10 +26,10 @@ public class DebugModeCheatList extends Button {
 
     protected void loadImages() {
         cheats = new BufferedImage[3];
-        BufferedImage temp = LoadSave.GetSpriteAtlas(DEBUG_MODE_LOCATION_TEXTURES, ZG_CHEAT_BUTTONS_PNG);
+        BufferedImage temp = LoadSave.GetSpriteAtlas(DEBUG_MODE_LOCATION_TEXTURES, CHEATS_BUTTONS_PNG);
         for (int i = 0; i < cheats.length; i++) {
             cheats[i] = temp.getSubimage(
-                    i * CHEAT_WIDTH_DEFAULT, 0,
+                    i * CHEAT_WIDTH_DEFAULT, CHEAT_HEIGHT_DEFAULT*(typeButton-1),
                     CHEAT_WIDTH_DEFAULT, CHEAT_HEIGHT_DEFAULT);
         }
     }
@@ -55,6 +55,10 @@ public class DebugModeCheatList extends Button {
 
     public void applyGameState() {
         EnumGameState.state = state;
+    }
+
+    public int getTypeButton(){
+        return typeButton;
     }
 
 }
