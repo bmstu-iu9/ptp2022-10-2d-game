@@ -165,6 +165,8 @@ public class Constants {
                 public static final int COIN_HEIGHT_DEFAULT = 32;
                 public static final int COIN_5_WIDTH_DEFAULT = 40;
                 public static final int COIN_5_HEIGHT_DEFAULT = 40;
+                public static final double DIFF_SIZE_WIDTH = COIN_5_WIDTH_DEFAULT - COIN_WIDTH_DEFAULT;
+                public static final double DIFF_SIZE_HEIGHT = COIN_5_HEIGHT_DEFAULT - COIN_HEIGHT_DEFAULT;
             }
 
             public static final class Heart {

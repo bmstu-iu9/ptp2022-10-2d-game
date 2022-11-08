@@ -206,7 +206,10 @@ public class Level implements PlayingUpdateInterface, PlayingDrawInterface {
                 Color color = new Color(levelImg.getRGB(i, j));
                 int value = color.getBlue();
                 if (value == OBJECT_INDEX_COIN) {
-                    list.add(new Coin(i * TILE_SIZE_DEFAULT, j * TILE_SIZE_DEFAULT));
+                    list.add(new Coin(i * TILE_SIZE_DEFAULT, j * TILE_SIZE_DEFAULT, 1));
+                }
+                if (value == OBJECT_INDEX_COIN_5) {
+                    list.add(new Coin(i * TILE_SIZE_DEFAULT, j * TILE_SIZE_DEFAULT, 5));
                 }
             }
         }

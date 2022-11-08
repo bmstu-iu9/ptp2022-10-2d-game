@@ -84,8 +84,8 @@ public class Player extends Entity implements PlayingUpdateInterface, PlayingDra
         playerManager.attackEnemy(attackBox, damage);
     }
 
-    public void addCoin() {
-        playerModuleManager.addCoin();
+    public void addCoin(int v) {
+        playerModuleManager.addCoin(v);
     }
 
     public int getCoins() {
