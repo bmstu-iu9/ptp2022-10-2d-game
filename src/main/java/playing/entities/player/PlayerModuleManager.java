@@ -173,8 +173,8 @@ public class PlayerModuleManager implements PlayingUpdateInterface, PlayingDrawI
         return player.canShot(x, y, x1, y1);
     }
 
-    public void shotEnemy(int damage) {
-        player.shotEnemy(damage);
+    public boolean shotEnemy(int damage) {
+        return player.shotEnemy(damage);
     }
     public void heal() {
         playerStatusBar.increaseHealth(playerStatusBar.getMaxHealth());

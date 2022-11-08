@@ -100,8 +100,8 @@ public class Player extends Entity implements PlayingUpdateInterface, PlayingDra
         return playerManager.canShot(x, y, x1, y1);
     }
 
-    public void shotEnemy(int damage) {
-        playerManager.shotEnemy(damage);
+    public boolean shotEnemy(int damage) {
+        return playerManager.shotEnemy(damage);
     }
     public void heal() {
         playerModuleManager.heal();

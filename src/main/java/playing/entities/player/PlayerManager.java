@@ -107,7 +107,7 @@ public class PlayerManager implements PlayingUpdateInterface, PlayingDrawInterfa
         return entityLevelManager.canShot(x, y, x1, y1);
     }
 
-    public void shotEnemy(int damage) {
-        entityLevelManager.shotEnemy(damage);
+    public boolean shotEnemy(int damage) {
+        return entityLevelManager.shotEnemy(damage);
     }
 }

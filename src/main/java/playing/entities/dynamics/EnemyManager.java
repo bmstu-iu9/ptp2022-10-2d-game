@@ -101,13 +101,16 @@ public class EnemyManager implements PlayingUpdateInterface, PlayingDrawInterfac
         return entityLevelManager.checkPlayerHit(attackBox);
     }
 
-    public void shotEnemy(Line2D.Double shotBox, int damage) {
+    public boolean shotEnemy(Line2D.Double shotBox, int damage) {
+        boolean hit = false;
         for (Crabby crabby : crabbies) {
             if (crabby.isActive()) {
                 if (shotBox.intersects(crabby.getHitBox())) {
                     crabby.attackEnemy(damage);
+                    hit = true;
                 }
             }
         }
+        return hit;
     }
 }
