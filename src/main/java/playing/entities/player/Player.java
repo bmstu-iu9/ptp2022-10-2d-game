@@ -1,6 +1,5 @@
 package playing.entities.player;
 
-import gamestates.playingstates.EnumPlayState;
 import playing.PlayingDrawInterface;
 import playing.PlayingKeyListenerInterface;
 import playing.PlayingMouseListenerInterface;
@@ -84,8 +83,8 @@ public class Player extends Entity implements PlayingUpdateInterface, PlayingDra
         playerManager.attackEnemy(attackBox, damage);
     }
 
-    public void addCoin() {
-        playerModuleManager.addCoin();
+    public void addCoin(int v) {
+        playerModuleManager.addCoin(v);
     }
 
     public int getCoins() {
