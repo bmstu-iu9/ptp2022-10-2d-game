@@ -136,6 +136,7 @@ public class Constants {
                 public static final int OBJECT_INDEX_SPIKE_LEFT = 3;
                 public static final int OBJECT_INDEX_SPIKE_RIGHT = 4;
                 public static final int OBJECT_INDEX_COIN = 65;
+                public static final int OBJECT_INDEX_COIN_5 = 66;
                 public static final int OBJECT_INDEX_HEART = 70;
                 public static final int OBJECT_INDEX_PORTAL = 108;
             }
@@ -161,6 +162,10 @@ public class Constants {
             public static final class Coin {
                 public static final int COIN_WIDTH_DEFAULT = 32;
                 public static final int COIN_HEIGHT_DEFAULT = 32;
+                public static final int COIN_5_WIDTH_DEFAULT = 40;
+                public static final int COIN_5_HEIGHT_DEFAULT = 40;
+                public static final double DIFF_SIZE_WIDTH = COIN_5_WIDTH_DEFAULT - COIN_WIDTH_DEFAULT;
+                public static final double DIFF_SIZE_HEIGHT = COIN_5_HEIGHT_DEFAULT - COIN_HEIGHT_DEFAULT;
             }
 
             public static final class Heart {
@@ -262,6 +267,7 @@ public class Constants {
             public static final String ENTITY_LOCATION_TEXTURES = "entity";
 
             public static final String COIN_ATLAS_PNG = "coin_atlas.png";
+            public static final String COIN_5_PNG = "coin_5.png";
 
             public static final String HEART_ATLAS_PNG = "heart_atlas.png";
             public static final String TRAP_ATLAS_PNG = "trap_atlas.png";

@@ -155,8 +155,8 @@ public class PlayerModuleManager implements PlayingUpdateInterface, PlayingDrawI
         playerAnimation.setAnimationState(PlayerAnimation.AnimationState.DEAD);
     }
 
-    public void addCoin() {
-        playerStatusBar.addCoin();
+    public void addCoin(int v) {
+        playerStatusBar.addCoin(v);
     }
 
     public int getCoins() {

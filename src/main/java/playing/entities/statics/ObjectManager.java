@@ -103,7 +103,7 @@ public class ObjectManager implements PlayingUpdateInterface, PlayingDrawInterfa
         for (Coin coin : coins) {
             if (coin.isActive()) {
                 if (coin.getHitBox().intersects(p.getHitBox())) {
-                    p.addCoin();
+                    p.addCoin(coin.getValue());
                     coin.setActive(false);
                 }
             }
@@ -124,7 +124,11 @@ public class ObjectManager implements PlayingUpdateInterface, PlayingDrawInterfa
     public void checkPortalTouched(Player p) {
         for (Portal portal : portals) {
             if (portal.getHitBox().intersects(p.getHitBox())) {
-                if (p.getCoins() == coins.size()) {
+                int sum = 0;
+                for (Coin coin : coins){
+                    sum += coin.getValue();
+                }
+                if (p.getCoins() == sum) {
                     EnumPlayState.state = EnumPlayState.LVL_COMPLETED;
                 }
             }

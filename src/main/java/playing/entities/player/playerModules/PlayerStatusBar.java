@@ -95,7 +95,7 @@ public class PlayerStatusBar extends PlayerModule implements PlayingUpdateInterf
                 null);
         for (int i = 0; i < numbers.length; i++) {
             g.drawImage(numberImages[numbers[i]],
-                    (int) ((STATUS_BAR_POS_X + STATUS_BAR_WIDTH + 10 + 32) * scale),
+                    (int) ((STATUS_BAR_POS_X + STATUS_BAR_WIDTH + 10 + 32*(i+1)) * scale),
                     (int) ((STATUS_BAR_POS_Y + 10) * scale),
                     (int) (16 * scale),
                     (int) (16 * scale),
@@ -146,8 +146,8 @@ public class PlayerStatusBar extends PlayerModule implements PlayingUpdateInterf
         return currentPower;
     }
 
-    public void addCoin() {
-        coins++;
+    public void addCoin(int v) {
+        coins+=v;
     }
 
     public int getCoins() {
