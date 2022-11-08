@@ -5,6 +5,7 @@ import playing.PlayingKeyListenerInterface;
 import playing.PlayingMouseListenerInterface;
 import playing.PlayingUpdateInterface;
 import playing.entities.Entity;
+import playing.entities.player.playerModules.PlayerAnimation;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -91,7 +92,19 @@ public class Player extends Entity implements PlayingUpdateInterface, PlayingDra
         return playerModuleManager.getCoins();
     }
 
+    public void setAnimationType(PlayerAnimation.AnimationType type){
+        playerModuleManager.setAnimationType(type);
+    }
+
+    public boolean canShot(double x, double y, double x1, double y1) {
+        return playerManager.canShot(x, y, x1, y1);
+    }
+
+    public void shotEnemy(int damage) {
+        playerManager.shotEnemy(damage);
+    }
     public void heal() {
         playerModuleManager.heal();
+
     }
 }

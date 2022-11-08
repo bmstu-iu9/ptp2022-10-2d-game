@@ -8,6 +8,7 @@ import playing.entities.dynamics.crabby.Crabby;
 import playing.levels.Level;
 
 import java.awt.*;
+import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 
@@ -98,5 +99,15 @@ public class EnemyManager implements PlayingUpdateInterface, PlayingDrawInterfac
 
     public boolean checkPlayerHit(Rectangle2D.Double attackBox) {
         return entityLevelManager.checkPlayerHit(attackBox);
+    }
+
+    public void shotEnemy(Line2D.Double shotBox, int damage) {
+        for (Crabby crabby : crabbies) {
+            if (crabby.isActive()) {
+                if (shotBox.intersects(crabby.getHitBox())) {
+                    crabby.attackEnemy(damage);
+                }
+            }
+        }
     }
 }
