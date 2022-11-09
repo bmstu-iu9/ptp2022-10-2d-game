@@ -189,8 +189,8 @@ public class PlayingGame implements GamePanelInterface,
         enemyManager.attackEnemy(attackBox, damage);
     }
 
-    public void shotEnemy(int damage) {
-        enemyManager.shotEnemy(shotBox, damage);
+    public boolean shotEnemy(int damage) {
+         return enemyManager.shotEnemy(shotBox, damage);
     }
 
     public ArrayList<Point2D.Double> canShot(double x, double y, double x1, double y1) {

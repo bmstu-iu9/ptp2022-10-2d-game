@@ -147,7 +147,7 @@ public class EntityLevelManager {
         return true;
     }
 
-    public void shotEnemy(int damage) {
-        playingGame.shotEnemy(damage);
+    public boolean shotEnemy(int damage) {
+        return playingGame.shotEnemy(damage);
     }
 }

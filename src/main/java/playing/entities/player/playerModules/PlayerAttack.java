@@ -4,11 +4,16 @@ import playing.PlayingDrawInterface;
 import playing.PlayingMouseListenerInterface;
 import playing.PlayingUpdateInterface;
 import playing.entities.player.PlayerModuleManager;
+import utilz.LoadSave;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
-import java.awt.geom.Line2D;
+import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
+import java.awt.image.BufferedImage;
+
+import static utilz.Constants.GameConstants.ANI_SPEED_ENEMY;
+import static utilz.Constants.TextureConstants.Entity.ENTITY_LOCATION_TEXTURES;
 
 public class PlayerAttack extends PlayerModule
         implements PlayingMouseListenerInterface, PlayingUpdateInterface, PlayingDrawInterface {
@@ -16,25 +21,34 @@ public class PlayerAttack extends PlayerModule
     protected Rectangle2D.Double attackBox;
 
     private boolean shotChecked = true;
-    private int aniCount = 0;
-    private PlayerAnimation.AnimationState prevAnimState;
-    private int prevAniIndex;
+    private boolean canDrawPlaceShot = false;
     private final int damage = 50;
+    private Point2D.Double lastShot;
+    private int aniTick, aniIndex;
+    private BufferedImage placeShot;
+    private boolean shotHit;
+
 
     public PlayerAttack(PlayerModuleManager playerModuleManager,
                         int x, int y,
                         int width, int height) {
         super(playerModuleManager);
         initAttackBox(x, y, width, height);
+        loadImages();
     }
     protected void initAttackBox(int x, int y ,int width, int height) {
         attackBox = new Rectangle2D.Double(x, y, width, height);
+    }
+    private void loadImages() {
+        BufferedImage img = LoadSave.GetSpriteAtlas(ENTITY_LOCATION_TEXTURES, "fire.png");
+        placeShot = img.getSubimage(0, 0, 1600, 1600);
     }
 
     @Override
     public void update() {
         updateAttackBox();
         checkShot();
+        updateAnimationTick();
     }
     private void updateAttackBox() {
         Rectangle2D.Double hitBox = playerModuleManager.getHitBox();
@@ -49,29 +63,20 @@ public class PlayerAttack extends PlayerModule
         attackBox.y = hitBox.y + 10;
     }
     private void checkShot() {
-        if ((playerModuleManager.getPlayerAnimation().getAnimationType() == PlayerAnimation.AnimationType.PISTOL) &&
-            (playerModuleManager.getPlayerAnimation().getAnimationState() == PlayerAnimation.AnimationState.ATTACK)){
+        if ((shotChecked) && (playerModuleManager.getPlayerAnimation().getAnimationType() == PlayerAnimation.AnimationType.PISTOL) &&
+                (playerModuleManager.getPlayerAnimation().getAnimationState() == PlayerAnimation.AnimationState.ATTACK)){
             shotChecked = false;
-            prevAnimState = PlayerAnimation.AnimationState.ATTACK;
-            prevAniIndex = playerModuleManager.getPlayerAnimation().getAniIndex();
+            aniIndex = 10;
         }
-        if (!shotChecked) {
-            if ((prevAnimState != playerModuleManager.getPlayerAnimation().getAnimationState()) ||
-                    (prevAniIndex != playerModuleManager.getPlayerAnimation().getAniIndex())) {
-                prevAnimState = playerModuleManager.getPlayerAnimation().getAnimationState();
-                prevAniIndex = playerModuleManager.getPlayerAnimation().getAniIndex();
-                aniCount++;
-            }
-        }
-        if ((!shotChecked) &&(aniCount >= 2)){
+        if ((!shotChecked) && (aniIndex >= 14)){
             shotChecked = true;
-            aniCount=0;
-            playerModuleManager.shotEnemy(damage);
+            shotHit = playerModuleManager.shotEnemy(damage);
         }
     }
 
     @Override
     public void draw(Graphics g, float scale, int lvlOffsetX, int lvlOffsetY) {
+        drawPlaceShot(g, scale, lvlOffsetX, lvlOffsetY);
 //        drawAttackBox(g, scale, lvlOffsetX, lvlOffsetY);
     }
     protected void drawAttackBox(Graphics g, float scale, int lvlOffsetX, int lvlOffsetY) {
@@ -80,6 +85,37 @@ public class PlayerAttack extends PlayerModule
                 (int) ((attackBox.y - lvlOffsetY) * scale),
                 (int) (attackBox.width * scale),
                 (int) (attackBox.height * scale));
+    }
+
+    private void drawPlaceShot(Graphics g, float scale, int lvlOffsetX, int lvlOffsetY) {
+        if (lastShot != null && shotChecked) {
+            if (!canDrawPlaceShot) {
+                aniIndex = 0;
+                canDrawPlaceShot = true;
+            } if ((aniIndex < 3) && (!shotHit)) {
+                    g.drawImage(placeShot,
+                            (int) lastShot.x-8,
+                            (int) lastShot.y-8,
+                            16,
+                            16,
+                            null);
+
+                } else {
+                    lastShot = null;
+                    canDrawPlaceShot = false;
+                }
+        }
+    }
+
+    private void updateAnimationTick() {
+        aniTick++;
+        if (aniTick >= ANI_SPEED_ENEMY) {
+            aniTick = 0;
+            aniIndex++;
+            if (aniIndex > 1000){
+                aniIndex =0;
+            }
+        }
     }
 
     @Override
@@ -95,8 +131,8 @@ public class PlayerAttack extends PlayerModule
             double y2 = e.getY();
             if (playerModuleManager.canShot(x, y, x2, y2)){
                 playerModuleManager.getPlayerAnimation().setAnimationState(PlayerAnimation.AnimationState.ATTACK);
+                lastShot = new Point2D.Double(x2, y2);
             }
         }
     }
-
 }
