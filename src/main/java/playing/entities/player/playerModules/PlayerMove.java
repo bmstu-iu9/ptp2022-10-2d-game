@@ -138,15 +138,11 @@ public class PlayerMove extends PlayerModule implements PlayingKeyListenerInterf
                 setRight(true);
                 break;
             case KeyEvent.VK_W:
-                setJump(true);
-                break;
             case KeyEvent.VK_SPACE:
             case KeyEvent.VK_UP:
                 setJump(true);
                 break;
             case KeyEvent.VK_S:
-                setFall(true);
-                break;
             case KeyEvent.VK_DOWN:
                 setFall(true);
                 break;
@@ -165,15 +161,11 @@ public class PlayerMove extends PlayerModule implements PlayingKeyListenerInterf
                 setRight(false);
                 break;
             case KeyEvent.VK_W:
-                setJump(false);
-                break;
             case KeyEvent.VK_SPACE:
             case KeyEvent.VK_UP:
                 setJump(false);
                 break;
             case KeyEvent.VK_S:
-                setFall(false);
-                break;
             case KeyEvent.VK_DOWN:
                 setFall(false);
                 break;
